@@ -7,7 +7,7 @@
     "light": "#22D3EE",
     "dark": "#0E7490"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/whale.svg",
   "navigation": {
     "tabs": [
       {
@@ -74,61 +74,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication",
-              "api-reference/errors"
-            ]
-          },
-          {
-            "group": "Workspaces",
-            "pages": [
-              "api-reference/workspaces/list",
-              "api-reference/workspaces/create",
-              "api-reference/workspaces/get",
-              "api-reference/workspaces/update",
-              "api-reference/workspaces/delete"
-            ]
-          },
-          {
-            "group": "Datasets",
-            "pages": [
-              "api-reference/datasets/list",
-              "api-reference/datasets/create",
-              "api-reference/datasets/get",
-              "api-reference/datasets/update",
-              "api-reference/datasets/delete",
-              "api-reference/datasets/import-csv"
-            ]
-          },
-          {
-            "group": "Agents",
-            "pages": [
-              "api-reference/agents/list",
-              "api-reference/agents/create",
-              "api-reference/agents/get",
-              "api-reference/agents/update",
-              "api-reference/agents/delete"
-            ]
-          },
-          {
-            "group": "Tools",
-            "pages": [
-              "api-reference/tools/list",
-              "api-reference/tools/create",
-              "api-reference/tools/get",
-              "api-reference/tools/update",
-              "api-reference/tools/delete",
-              "api-reference/tools/execute"
-            ]
-          }
-        ]
       }
     ],
     "global": {
@@ -152,8 +97,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/whale-32.png",
+    "dark": "/logo/whale.svg"
   },
   "navbar": {
     "links": [
