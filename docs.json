@@ -103,6 +103,10 @@
   "navbar": {
     "links": [
       {
+        "label": "Documentation",
+        "href": "https://docs.radicalwhale.com/"
+      },
+      {
         "label": "Support",
         "href": "mailto:support@radicalwhale.com"
       }
