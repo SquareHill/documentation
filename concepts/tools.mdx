@@ -1,0 +1,403 @@
+---
+title: "Tools"
+description: "Understanding tools and how they extend agent capabilities"
+---
+
+## What are Tools?
+
+Tools are custom integrations that extend your agents' capabilities beyond their base AI model. They enable agents to access external APIs, databases, web services, and other resources to gather additional information, perform specialized tasks, or integrate with your existing systems.
+
+[Screenshot Placeholder: Tools overview dashboard]
+
+## Key Concepts
+
+### Tool Types
+
+Different types of tools serve various purposes:
+
+- **API Tools**: Connect to REST APIs and web services
+- **Database Tools**: Query databases and data warehouses (coming soon)
+- **Web Tools**: Scrape websites and access web content (coming soon)
+- **File Tools**: Process files and documents (coming soon)
+- **Custom Tools**: User-defined integrations and functions (coming soon)
+
+### Tool Configuration
+
+Each tool requires specific configuration:
+
+- **Connection Settings**: URLs, endpoints, and connection parameters
+- **Authentication**: API keys, OAuth tokens, and other credentials
+- **Input Schema**: Define what parameters the tool accepts
+- **Output Format**: Specify how results should be structured
+- **Error Handling**: How to handle failures and edge cases
+
+### Agent Integration
+
+Tools integrate seamlessly with agents:
+
+- **Automatic Selection**: Agents choose appropriate tools based on context
+- **Parameter Passing**: Agents provide dynamic parameters to tools
+- **Result Processing**: Agents interpret and use tool results
+- **Chain Operations**: Combine multiple tools for complex workflows
+
+[Screenshot Placeholder: Tool architecture diagram]
+
+## API Tools
+
+API Tools are the most common type, enabling agents to connect with external web services.
+
+### Configuration
+
+#### Basic Settings
+
+- **Name**: Descriptive name for the tool
+- **Description**: Brief explanation of the tool's purpose
+- **Base URL**: The root URL for the API
+- **HTTP Method**: GET, POST, PUT, DELETE, etc.
+
+#### Authentication
+
+- **API Key**: Simple API key authentication
+- **Bearer Token**: OAuth or JWT token authentication
+- **Basic Auth**: Username and password authentication
+- **Custom Headers**: Custom authentication headers
+
+#### Request Configuration
+
+```json
+{
+  "url": "https://api.example.com/v1/companies/{company_id}",
+  "method": "GET",
+  "headers": {
+    "Authorization": "Bearer {{api_key}}",
+    "Content-Type": "application/json"
+  },
+  "parameters": {
+    "company_id": {
+      "type": "string",
+      "required": true,
+      "description": "Unique company identifier"
+    }
+  }
+}
+```
+
+#### Response Processing
+
+- **Data Extraction**: Pull specific fields from API responses
+- **Format Conversion**: Convert between different data formats
+- **Error Mapping**: Map API errors to user-friendly messages
+- **Caching**: Cache responses to improve performance
+
+[Screenshot Placeholder: API tool configuration form]
+
+### Common API Tool Examples
+
+#### Company Enrichment
+
+```json
+{
+  "name": "Clearbit Company API",
+  "description": "Enrich company data with additional information",
+  "url": "https://company.clearbit.com/v2/companies/find",
+  "method": "GET",
+  "parameters": {
+    "domain": {
+      "type": "string",
+      "required": true,
+      "description": "Company domain name"
+    }
+  }
+}
+```
+
+#### Contact Information
+
+```json
+{
+  "name": "Hunter Email Finder",
+  "description": "Find email addresses for company contacts",
+  "url": "https://api.hunter.io/v2/email-finder",
+  "method": "GET",
+  "parameters": {
+    "domain": { "type": "string", "required": true },
+    "first_name": { "type": "string", "required": false },
+    "last_name": { "type": "string", "required": false }
+  }
+}
+```
+
+#### Web Search
+
+```json
+{
+  "name": "Tavily Search",
+  "description": "Search the web for current information",
+  "url": "https://api.tavily.com/search",
+  "method": "POST",
+  "parameters": {
+    "query": { "type": "string", "required": true },
+    "max_results": { "type": "integer", "default": 5 }
+  }
+}
+```
+
+[Screenshot Placeholder: Tool examples gallery]
+
+## Tool Security
+
+### Credential Management
+
+- **Variable Storage**: Store API keys in encrypted workspace variables
+- **Access Control**: Limit which agents can use specific tools
+- **Key Rotation**: Regular rotation of API keys and tokens
+- **Audit Logging**: Track tool usage and access patterns
+
+### Data Privacy
+
+- **Data Transmission**: Secure HTTPS connections for all API calls
+- **Data Retention**: Control how long API responses are cached
+- **PII Handling**: Special handling for personally identifiable information
+- **Compliance**: GDPR, CCPA, and other privacy regulation compliance
+
+### Rate Limiting
+
+- **API Quotas**: Respect provider rate limits and quotas
+- **Usage Monitoring**: Track API usage and costs
+- **Throttling**: Automatic throttling to prevent rate limit violations
+- **Fallback Strategies**: Handle rate limit exceeded scenarios
+
+[Screenshot Placeholder: Security configuration panel]
+
+## Tool Performance
+
+### Performance Metrics
+
+- **Response Time**: Average time for tool operations
+- **Success Rate**: Percentage of successful tool executions
+- **Error Rate**: Frequency and types of errors encountered
+- **Throughput**: Number of operations per minute
+
+### Optimization Strategies
+
+- **Caching**: Cache frequently requested data
+- **Parallel Execution**: Run multiple tool operations simultaneously
+- **Request Batching**: Combine multiple requests when possible
+- **Circuit Breakers**: Automatically disable failing tools temporarily
+
+### Monitoring
+
+- **Real-time Dashboard**: Current tool performance and status
+- **Historical Analytics**: Performance trends over time
+- **Error Analysis**: Detailed error reports and patterns
+- **Cost Tracking**: API usage costs and budget monitoring
+
+[Screenshot Placeholder: Performance monitoring dashboard]
+
+## Advanced Features
+
+### Dynamic Parameters
+
+Tools can accept dynamic parameters from agents:
+
+```json
+{
+  "parameters": {
+    "search_query": {
+      "type": "string",
+      "dynamic": true,
+      "description": "Agent-generated search query"
+    },
+    "location": {
+      "type": "string",
+      "default": "global",
+      "description": "Geographic scope for search"
+    }
+  }
+}
+```
+
+### Response Transformation
+
+Transform API responses to match your needs:
+
+```json
+{
+  "response_mapping": {
+    "company_name": "$.name",
+    "employee_count": "$.metrics.employees",
+    "industry": "$.category.industry",
+    "website": "$.domain"
+  }
+}
+```
+
+### Conditional Logic
+
+Execute tools based on conditions:
+
+```json
+{
+  "conditions": {
+    "if": "{{company_domain}} != null",
+    "then": "execute",
+    "else": "skip"
+  }
+}
+```
+
+### Error Handling
+
+Robust error handling strategies:
+
+```json
+{
+  "error_handling": {
+    "retry_count": 3,
+    "retry_delay": 1000,
+    "fallback_tool": "backup_search_tool",
+    "error_mapping": {
+      "404": "Company not found",
+      "429": "Rate limit exceeded, try again later"
+    }
+  }
+}
+```
+
+## Best Practices
+
+### Tool Design
+
+- **Single Purpose**: Each tool should have a focused, specific purpose
+- **Clear Documentation**: Provide detailed descriptions and examples
+- **Consistent Naming**: Use consistent naming conventions across tools
+- **Error Messages**: Provide helpful error messages for debugging
+
+### Configuration Management
+
+- **Version Control**: Track changes to tool configurations
+- **Testing**: Test tools thoroughly before deploying to agents
+- **Staging Environment**: Use separate tools for development and production
+- **Backup Configurations**: Maintain backups of working configurations
+
+### Security Best Practices
+
+- **Principle of Least Privilege**: Give tools minimum necessary permissions
+- **Regular Audits**: Periodically review tool access and usage
+- **Secure Defaults**: Use secure default configurations
+- **Incident Response**: Have procedures for handling security incidents
+
+### Performance Optimization
+
+- **Efficient Queries**: Design API calls to minimize response times
+- **Caching Strategy**: Cache appropriate data to reduce API calls
+- **Load Testing**: Test tools under expected load conditions
+- **Monitoring Alerts**: Set up alerts for performance degradation
+
+## Common Use Cases
+
+### Data Enrichment
+
+- **Company Information**: Enhance company records with additional details
+- **Contact Discovery**: Find email addresses and contact information
+- **Geographic Data**: Add location details and timezone information
+- **Social Media**: Gather social media profiles and activity
+
+### External Validation
+
+- **Email Verification**: Validate email address deliverability
+- **Phone Verification**: Check phone number validity and carrier
+- **Address Validation**: Verify and standardize postal addresses
+- **Business Verification**: Confirm business registration and status
+
+### Market Intelligence
+
+- **Competitor Analysis**: Gather information about competitors
+- **Industry Research**: Collect industry trends and insights
+- **News Monitoring**: Track news and mentions about companies
+- **Financial Data**: Access financial information and metrics
+
+### Content & Communication
+
+- **Translation Services**: Translate content between languages
+- **Content Analysis**: Analyze text for sentiment and topics
+- **Communication APIs**: Send emails, SMS, or notifications
+- **Document Processing**: Extract data from various document types
+
+[Screenshot Placeholder: Use case examples]
+
+## Troubleshooting
+
+### Common Issues
+
+**Tool Not Responding**
+
+- Check API endpoint URL and availability
+- Verify authentication credentials are valid
+- Review request format and required parameters
+- Check for API service outages or maintenance
+
+**Authentication Failures**
+
+- Verify API keys are correct and active
+- Check authentication method configuration
+- Ensure proper headers and formats are used
+- Review API provider documentation for changes
+
+**Rate Limit Errors**
+
+- Monitor API usage against provider limits
+- Implement appropriate delays between requests
+- Consider upgrading API plan if needed
+- Use caching to reduce API calls
+
+**Inconsistent Results**
+
+- Review API response format for changes
+- Check data extraction and mapping rules
+- Verify parameter values are correct
+- Test with known good data
+
+### Debugging Tools
+
+- **Request/Response Logging**: View actual API calls and responses
+- **Test Interface**: Test tools with sample data
+- **Error Analysis**: Detailed error reports and stack traces
+- **Performance Profiler**: Identify performance bottlenecks
+
+### Getting Help
+
+For tool-related issues:
+
+- Check our [tool creation guides](/guides/tools/creating-tools)
+- Review [API tool documentation](/guides/tools/api-tools)
+- Contact [support](mailto:support@radicalwhale.com) for complex integrations
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Create Your First Tool"
+    icon="plus"
+    href="/guides/tools/creating-tools"
+  >
+    Step-by-step guide to creating custom tools
+  </Card>
+  <Card
+    title="API Tool Configuration"
+    icon="api"
+    href="/guides/tools/api-tools"
+  >
+    Learn how to configure API integrations
+  </Card>
+  <Card title="Tool Testing" icon="flask" href="/guides/tools/testing-tools">
+    Test and validate your tool configurations
+  </Card>
+  <Card
+    title="Managing Variables"
+    icon="key"
+    href="/guides/variables/managing-variables"
+  >
+    Learn how to securely store API keys and credentials
+  </Card>
+</CardGroup>

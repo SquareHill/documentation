@@ -1,0 +1,701 @@
+---
+title: "Working with Records"
+description: "Complete guide to viewing, editing, filtering, and managing data records"
+---
+
+## Overview
+
+Records are the individual rows of data in your dataset. Radical Whale provides powerful tools for viewing, editing, filtering, and managing your records, whether you're working with a few hundred rows or millions of records. This guide covers everything from basic record operations to advanced data manipulation techniques.
+
+## Prerequisites
+
+- Access to a Radical Whale workspace
+- A dataset with imported data
+- Appropriate permissions to view and edit records
+- Basic understanding of your data structure
+
+## Record View Interface
+
+### Main Data Grid
+
+#### Understanding the Grid
+
+The main interface displays your records in a spreadsheet-like grid:
+
+- **Rows**: Individual records/entries in your dataset
+- **Columns**: Data fields as configured in your dataset
+- **Headers**: Column names with sorting and filtering controls
+- **Cell Values**: Individual data points that can be edited
+
+#### Grid Navigation
+
+- **Scrolling**: Use scroll bars or arrow keys to navigate
+- **Pagination**: Navigate between pages of records
+- **Jump to Record**: Quickly navigate to specific record numbers
+- **Column Width**: Adjust column widths by dragging column borders
+
+[Screenshot Placeholder: Main data grid interface]
+
+### Record Display Options
+
+#### View Modes
+
+**Table View** (Default)
+
+- Traditional spreadsheet-style display
+- Shows multiple records simultaneously
+- Best for: Scanning data, bulk operations, comparison
+
+**Card View**
+
+- Individual record cards with larger, more readable layout
+- Shows one or few records at a time with all details
+- Best for: Detailed record review, data entry, complex records
+
+**List View**
+
+- Compact list format showing key fields
+- Optimized for mobile and narrow screens
+- Best for: Quick browsing, mobile access
+
+#### Display Customization
+
+- **Column Selection**: Show/hide specific columns
+- **Column Order**: Rearrange columns by dragging headers
+- **Row Height**: Adjust row height for better readability
+- **Font Size**: Increase or decrease text size
+- **Color Coding**: Apply conditional formatting based on data values
+
+[Screenshot Placeholder: View mode selection and customization options]
+
+## Viewing and Selecting Records
+
+### Record Selection
+
+#### Single Record Selection
+
+- **Click Row**: Click anywhere in a row to select it
+- **Row Highlighting**: Selected rows are highlighted
+- **Details Panel**: Selected record details appear in side panel
+
+#### Multiple Record Selection
+
+- **Ctrl/Cmd + Click**: Add individual records to selection
+- **Shift + Click**: Select range of records
+- **Select All**: Use checkbox in header to select all visible records
+- **Selection Counter**: Shows number of selected records
+
+#### Selection Tools
+
+- **Select by Criteria**: Automatically select records matching conditions
+- **Inverse Selection**: Select all records except currently selected
+- **Clear Selection**: Deselect all records
+- **Selection Filters**: Filter view to show only selected records
+
+[Screenshot Placeholder: Record selection interface]
+
+### Record Details
+
+#### Detailed Record View
+
+Click any record to see detailed information:
+
+- **All Fields**: Complete view of all column values
+- **Processing History**: Timeline of agent processing and changes
+- **Quality Metrics**: Data quality scores for this specific record
+- **Related Data**: Links to related records in other datasets
+
+#### Record Metadata
+
+Each record includes metadata:
+
+- **Created Date**: When the record was first added
+- **Last Modified**: When the record was last updated
+- **Processing Status**: Current agent processing state
+- **Source Information**: How the record was imported
+- **Quality Score**: Overall data quality assessment
+
+[Screenshot Placeholder: Detailed record view panel]
+
+## Editing Records
+
+### Individual Record Editing
+
+#### Edit Modes
+
+**Inline Editing**
+
+- Double-click any cell to edit in place
+- Press Enter to save, Escape to cancel
+- Tab to move to next cell
+- Best for: Quick corrections, single value updates
+
+**Form Editing**
+
+- Click "Edit Record" to open dedicated form
+- All fields available for editing simultaneously
+- Validation feedback in real-time
+- Best for: Comprehensive record updates, new record creation
+
+#### Field-Specific Editing
+
+**Text Fields**
+
+- Direct text entry with spell check
+- Auto-complete based on existing values
+- Format validation (phone numbers, URLs, etc.)
+- Character count limits
+
+**Number Fields**
+
+- Numeric input validation
+- Calculator widget for complex calculations
+- Currency formatting
+- Range validation
+
+**Date Fields**
+
+- Calendar picker widget
+- Multiple date format support
+- Timezone handling
+- Date range validation
+
+**Boolean Fields**
+
+- Checkbox or toggle switch
+- Yes/No dropdown options
+- True/False text entry
+
+[Screenshot Placeholder: Inline editing and form editing interfaces]
+
+### Bulk Record Editing
+
+#### Bulk Edit Operations
+
+Select multiple records and apply changes to all:
+
+- **Find and Replace**: Replace values across selected records
+- **Set Value**: Set the same value for all selected records
+- **Clear Values**: Remove values from selected records
+- **Apply Formula**: Calculate new values based on existing data
+
+#### Example Bulk Operations
+
+**Standardize Company Names**
+
+```
+Find: "Corp"
+Replace: "Corporation"
+Apply to: Selected records in "Company Name" column
+```
+
+**Update Status for Inactive Accounts**
+
+```
+Set Field: "Status"
+New Value: "Inactive"
+Condition: Last Activity Date > 90 days ago
+```
+
+**Calculate Derived Values**
+
+```
+Field: "Full Name"
+Formula: {First Name} + " " + {Last Name}
+Apply to: All records where Full Name is empty
+```
+
+#### Bulk Edit Safety Features
+
+- **Preview Changes**: See exactly what will change before applying
+- **Undo Support**: Reverse bulk changes if needed
+- **Backup Creation**: Automatic backup before major bulk operations
+- **Validation Checks**: Ensure bulk changes don't violate data rules
+
+[Screenshot Placeholder: Bulk editing interface with preview]
+
+## Record Filtering and Search
+
+### Quick Search
+
+#### Search Functionality
+
+- **Global Search**: Search across all visible columns
+- **Column-Specific Search**: Search within individual columns
+- **Multiple Terms**: Use multiple search terms with AND/OR logic
+- **Exact Match**: Use quotes for exact phrase matching
+
+#### Search Operators
+
+```
+"exact phrase" - Exact match
+company:Acme - Search specific column
+status:active OR status:pending - Multiple values
+created:>2024-01-01 - Date comparisons
+employees:100..500 - Numeric ranges
+```
+
+[Screenshot Placeholder: Search interface with examples]
+
+### Advanced Filtering
+
+#### Filter Types
+
+**Text Filters**
+
+- Contains, Starts with, Ends with
+- Equals, Not equals
+- Is empty, Is not empty
+- Regular expressions for complex patterns
+
+**Number Filters**
+
+- Equals, Greater than, Less than
+- Between ranges
+- Top N values, Bottom N values
+- Statistical filters (above average, below median)
+
+**Date Filters**
+
+- Before, After, Between dates
+- Relative dates (last 30 days, this month)
+- Date parts (day of week, month, year)
+- Custom date ranges
+
+**Boolean Filters**
+
+- True/False values
+- Yes/No values
+- Checked/Unchecked states
+
+#### Combining Filters
+
+- **AND Logic**: All conditions must be true
+- **OR Logic**: Any condition can be true
+- **NOT Logic**: Exclude records matching condition
+- **Nested Conditions**: Complex filter combinations
+
+#### Filter Management
+
+- **Save Filters**: Save commonly used filter combinations
+- **Filter Presets**: Quick access to saved filter sets
+- **Share Filters**: Share filter configurations with team members
+- **Filter History**: Track recently used filters
+
+[Screenshot Placeholder: Advanced filtering interface]
+
+### Sorting and Ordering
+
+#### Single Column Sorting
+
+- **Ascending Order**: A to Z, 1 to 10, oldest to newest
+- **Descending Order**: Z to A, 10 to 1, newest to oldest
+- **Custom Sort Orders**: Define custom sorting for categorical data
+
+#### Multi-Column Sorting
+
+Sort by multiple columns with priority:
+
+```
+Primary Sort: Company Name (A-Z)
+Secondary Sort: Last Contact Date (Newest first)
+Tertiary Sort: Deal Value (Largest first)
+```
+
+#### Advanced Sorting Options
+
+- **Null Handling**: Sort empty values first or last
+- **Case Sensitivity**: Case-sensitive or case-insensitive sorting
+- **Natural Sorting**: Handle numbers in text correctly (item1, item2, item10)
+- **Custom Sort Orders**: Define business-specific sorting rules
+
+[Screenshot Placeholder: Multi-column sorting configuration]
+
+## Record Operations
+
+### Creating New Records
+
+#### Manual Record Creation
+
+1. **Click "Add Record"**: Opens new record form
+2. **Fill Required Fields**: Complete mandatory fields marked with \*
+3. **Optional Fields**: Add additional information as needed
+4. **Validation**: System validates data as you type
+5. **Save Record**: Click "Save" to create the record
+
+#### Bulk Record Creation
+
+- **Import from File**: Upload CSV, Excel, or JSON files
+- **Copy from Another Dataset**: Import records from existing datasets
+- **Template-Based Creation**: Use templates for consistent data entry
+- **API Creation**: Create records programmatically via API
+
+#### Record Templates
+
+Create templates for common record types:
+
+- **Company Template**: Standard fields for business records
+- **Contact Template**: Person-focused data fields
+- **Product Template**: Product/service specific fields
+- **Custom Templates**: Create templates for your specific needs
+
+[Screenshot Placeholder: New record creation form]
+
+### Duplicating Records
+
+#### Single Record Duplication
+
+1. **Select Record**: Choose the record to duplicate
+2. **Click "Duplicate"**: Opens duplicate record form
+3. **Modify Values**: Change values that should be different
+4. **Save Copy**: Create the new record
+
+#### Bulk Duplication
+
+- **Template Duplication**: Create multiple similar records from one template
+- **Variation Creation**: Create records with systematic variations
+- **Test Data Generation**: Create test records based on existing data
+
+### Deleting Records
+
+#### Single Record Deletion
+
+1. **Select Record**: Choose the record to delete
+2. **Click "Delete"**: Confirm deletion intent
+3. **Confirmation**: Confirm you want to permanently delete
+4. **Soft Delete Option**: Move to trash instead of permanent deletion
+
+#### Bulk Deletion
+
+- **Select Multiple**: Choose records to delete
+- **Bulk Delete**: Delete all selected records
+- **Conditional Delete**: Delete records matching specific criteria
+- **Safety Checks**: Prevent accidental deletion of important data
+
+#### Deletion Safety Features
+
+- **Trash/Recycle Bin**: Recover deleted records within 30 days
+- **Deletion Audit**: Track who deleted what and when
+- **Dependency Checking**: Warn about related data that might be affected
+- **Backup Before Delete**: Automatic backup before major deletions
+
+[Screenshot Placeholder: Record deletion confirmation and safety features]
+
+## Record Relationships
+
+### Linking Records
+
+#### Cross-Dataset Relationships
+
+Connect records across different datasets:
+
+- **Company to Contacts**: Link contacts to their companies
+- **Projects to Tasks**: Connect project records to task records
+- **Orders to Customers**: Link orders to customer records
+
+#### Relationship Types
+
+- **One-to-One**: Each record relates to exactly one other record
+- **One-to-Many**: One record relates to multiple others
+- **Many-to-Many**: Records can have multiple relationships
+
+#### Creating Links
+
+1. **Select Source Record**: Choose the record to link from
+2. **Choose Target Dataset**: Select which dataset to link to
+3. **Select Target Record**: Choose the specific record to link to
+4. **Define Relationship**: Specify the nature of the relationship
+
+[Screenshot Placeholder: Record linking interface]
+
+### Viewing Related Data
+
+#### Relationship Panel
+
+- **Related Records**: See all records connected to current record
+- **Relationship Type**: Understand the nature of each connection
+- **Quick Navigation**: Jump to related records easily
+- **Relationship Strength**: Measure of relationship confidence
+
+#### Visual Relationship Maps
+
+- **Relationship Diagrams**: Visual representation of record connections
+- **Network Views**: See complex relationship networks
+- **Hierarchy Views**: Parent-child relationship trees
+- **Interactive Navigation**: Click through relationships visually
+
+## Data Export and Sharing
+
+### Export Options
+
+#### Export Formats
+
+- **CSV**: Universal format for spreadsheet applications
+- **Excel**: Native Excel format with formatting preservation
+- **JSON**: Structured data format for technical applications
+- **PDF**: Formatted reports for presentation and archival
+
+#### Export Scope
+
+- **All Records**: Export entire dataset
+- **Filtered Records**: Export only currently visible/filtered records
+- **Selected Records**: Export only selected records
+- **Specific Columns**: Choose which columns to include
+
+#### Export Settings
+
+- **Column Headers**: Include or exclude column names
+- **Data Formatting**: Preserve original formatting or export raw values
+- **Date Formats**: Choose date representation format
+- **Encoding**: Select character encoding (UTF-8, ASCII, etc.)
+
+[Screenshot Placeholder: Export configuration dialog]
+
+### Sharing Records
+
+#### Sharing Options
+
+- **Public Links**: Create shareable links for specific records or views
+- **Team Sharing**: Share filtered views with team members
+- **External Sharing**: Share data with people outside your organization
+- **Embed Codes**: Embed data views in other applications
+
+#### Permission Controls
+
+- **View Only**: Recipients can see but not modify data
+- **Edit Access**: Allow recipients to make changes
+- **Time-Limited Access**: Set expiration dates for shared access
+- **IP Restrictions**: Limit access to specific networks
+
+## Performance and Optimization
+
+### Large Dataset Handling
+
+#### Pagination
+
+- **Page Size**: Adjust number of records shown per page
+- **Smart Pagination**: Intelligent loading of nearby pages
+- **Jump to Page**: Quick navigation to specific page numbers
+- **Infinite Scroll**: Continuous loading as you scroll
+
+#### Virtual Scrolling
+
+- **Efficient Rendering**: Only render visible rows for better performance
+- **Smooth Scrolling**: Seamless navigation through large datasets
+- **Memory Management**: Efficient memory usage for huge datasets
+
+#### Data Loading Strategies
+
+- **Lazy Loading**: Load data only when needed
+- **Progressive Loading**: Load most important data first
+- **Background Refresh**: Update data without interrupting work
+- **Cache Management**: Intelligent caching of frequently accessed data
+
+[Screenshot Placeholder: Performance settings and large dataset handling]
+
+### Search and Filter Performance
+
+#### Index Usage
+
+- **Automatic Indexing**: System creates indexes for commonly searched columns
+- **Custom Indexes**: Create specific indexes for your query patterns
+- **Index Monitoring**: Track index usage and performance
+- **Index Optimization**: Recommendations for better search performance
+
+#### Query Optimization
+
+- **Filter Order**: Apply most selective filters first
+- **Search Scope**: Limit searches to relevant columns
+- **Result Limiting**: Use pagination to limit result size
+- **Cache Results**: Cache frequently accessed search results
+
+## Data Quality and Validation
+
+### Quality Monitoring
+
+#### Real-time Quality Metrics
+
+- **Completeness**: Percentage of records with all required fields
+- **Validity**: Percentage of records passing validation rules
+- **Consistency**: Measure of data standardization across records
+- **Accuracy**: Estimated accuracy based on validation checks
+
+#### Quality Alerts
+
+- **Threshold Alerts**: Notifications when quality drops below thresholds
+- **Anomaly Detection**: Identify unusual patterns in your data
+- **Trend Monitoring**: Track quality changes over time
+- **Quality Reports**: Regular summaries of data quality status
+
+[Screenshot Placeholder: Data quality dashboard and metrics]
+
+### Validation and Correction
+
+#### Automatic Validation
+
+- **Format Checking**: Verify data matches expected formats
+- **Range Validation**: Ensure numeric values are within acceptable ranges
+- **Cross-Field Validation**: Check relationships between different fields
+- **Business Rule Validation**: Apply custom business logic validation
+
+#### Error Handling
+
+- **Error Highlighting**: Visual indicators for data quality issues
+- **Error Details**: Specific information about what's wrong
+- **Correction Suggestions**: Automated suggestions for fixing issues
+- **Bulk Corrections**: Apply corrections to multiple records simultaneously
+
+#### Manual Review Workflows
+
+- **Review Queues**: Organize records needing manual review
+- **Assignment**: Assign records to specific team members for review
+- **Approval Workflows**: Multi-step approval for important changes
+- **Audit Trails**: Complete history of reviews and approvals
+
+## Security and Access Control
+
+### Record-Level Security
+
+#### Access Permissions
+
+- **View Permissions**: Control who can see specific records
+- **Edit Permissions**: Control who can modify records
+- **Delete Permissions**: Control who can remove records
+- **Field-Level Security**: Hide sensitive fields from unauthorized users
+
+#### Role-Based Access
+
+- **Admin**: Full access to all records and operations
+- **Editor**: Can view and modify assigned records
+- **Viewer**: Read-only access to permitted records
+- **Custom Roles**: Define specific permission combinations
+
+#### Data Masking
+
+- **Sensitive Data Protection**: Automatically mask PII and sensitive information
+- **Custom Masking Rules**: Define what data to mask for different user roles
+- **Dynamic Masking**: Apply masking based on user context and permissions
+
+[Screenshot Placeholder: Security and access control settings]
+
+### Audit and Compliance
+
+#### Change Tracking
+
+- **Change History**: Complete log of all record modifications
+- **User Attribution**: Track who made each change
+- **Timestamp Tracking**: When each change was made
+- **Before/After Values**: See what changed from what to what
+
+#### Compliance Features
+
+- **GDPR Tools**: Easy data export and deletion for data subject requests
+- **Retention Policies**: Automatic archiving of old records
+- **Access Logging**: Log all record access for compliance auditing
+- **Data Lineage**: Track where data came from and how it's been processed
+
+## Troubleshooting Common Issues
+
+### Performance Issues
+
+**Slow Loading Records**
+
+- Check dataset size and consider pagination
+- Review active filters and their complexity
+- Monitor index usage and create indexes for common queries
+- Consider archiving old data to improve performance
+
+**Search Taking Too Long**
+
+- Use more specific search terms to reduce result size
+- Apply filters before searching to narrow scope
+- Check if indexes exist for searched columns
+- Consider using exact match instead of fuzzy search
+
+### Data Issues
+
+**Records Not Appearing**
+
+- Check active filters that might be hiding records
+- Verify you have permission to view the records
+- Look for records in trash/recycle bin if recently deleted
+- Check import logs for records that failed to import
+
+**Cannot Edit Records**
+
+- Verify you have edit permissions for the dataset
+- Check if record is locked by another user
+- Look for validation errors preventing saves
+- Ensure you're not trying to edit computed columns
+
+**Data Quality Problems**
+
+- Review validation rules and their configurations
+- Check for recent changes to data processing agents
+- Monitor import processes for data corruption
+- Use data quality reports to identify systematic issues
+
+[Screenshot Placeholder: Troubleshooting guide and diagnostic tools]
+
+## Best Practices
+
+### Data Management
+
+- **Regular Backups**: Export important data regularly
+- **Quality Monitoring**: Set up alerts for data quality issues
+- **Access Reviews**: Regularly review who has access to sensitive data
+- **Documentation**: Keep notes about data sources and processing decisions
+
+### Performance Optimization
+
+- **Use Filters**: Apply filters before performing bulk operations
+- **Batch Operations**: Group similar operations for better efficiency
+- **Index Strategy**: Create indexes for commonly queried columns
+- **Archive Old Data**: Move historical data to separate storage
+
+### User Experience
+
+- **Consistent Naming**: Use clear, consistent names for columns and values
+- **Regular Cleanup**: Remove unused columns and obsolete data
+- **Training**: Ensure team members understand best practices
+- **Feedback Loop**: Regularly gather user feedback for improvements
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Creating Agents"
+    icon="robot"
+    href="/guides/agents/creating-agents"
+  >
+    Set up AI agents to process and enhance your records
+  </Card>
+  <Card
+    title="Dataset Analytics"
+    icon="chart-line"
+    href="/guides/datasets/analytics"
+  >
+    Analyze and visualize your record data
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api-reference/datasets/records"
+  >
+    Technical documentation for record management APIs
+  </Card>
+  <Card
+    title="Data Quality Tools"
+    icon="shield-check"
+    href="/guides/datasets/data-quality"
+  >
+    Advanced tools for maintaining data quality
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+- [Managing Columns](/guides/datasets/managing-columns) - Configure column settings
+- [Data Import Guide](/guides/datasets/importing-data) - Getting data into datasets
+- [Understanding Datasets](/concepts/datasets) - Conceptual overview
+- [Security Guide](/guides/security/data-access) - Data security best practices

@@ -1,68 +1,131 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Radical Whale Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#06B6D4",
+    "light": "#22D3EE",
+    "dark": "#0E7490"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Get Started",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
+            "group": "Introduction",
+            "pages": ["index", "quickstart"]
           },
           {
-            "group": "Customization",
+            "group": "Core Concepts",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "concepts/workspaces",
+              "concepts/datasets",
+              "concepts/agents",
+              "concepts/tools"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "User Guide",
+        "groups": [
+          {
+            "group": "Workspaces",
+            "pages": [
+              "guides/workspaces/creating-workspaces",
+              "guides/workspaces/managing-members",
+              "guides/workspaces/workspace-settings"
+            ]
+          },
+          {
+            "group": "Datasets",
+            "pages": [
+              "guides/datasets/creating-datasets",
+              "guides/datasets/importing-data",
+              "guides/datasets/managing-columns",
+              "guides/datasets/working-with-records"
+            ]
+          },
+          {
+            "group": "Agents",
+            "pages": [
+              "guides/agents/creating-agents",
+              "guides/agents/configuring-models",
+              "guides/agents/managing-tools",
+              "guides/agents/testing-agents"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": [
+              "guides/tools/creating-tools",
+              "guides/tools/api-tools",
+              "guides/tools/tool-configuration",
+              "guides/tools/testing-tools"
+            ]
+          },
+          {
+            "group": "Variables",
+            "pages": [
+              "guides/variables/managing-variables",
+              "guides/variables/api-keys"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
         "groups": [
           {
             "group": "API documentation",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/errors"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Workspaces",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/workspaces/list",
+              "api-reference/workspaces/create",
+              "api-reference/workspaces/get",
+              "api-reference/workspaces/update",
+              "api-reference/workspaces/delete"
+            ]
+          },
+          {
+            "group": "Datasets",
+            "pages": [
+              "api-reference/datasets/list",
+              "api-reference/datasets/create",
+              "api-reference/datasets/get",
+              "api-reference/datasets/update",
+              "api-reference/datasets/delete",
+              "api-reference/datasets/import-csv"
+            ]
+          },
+          {
+            "group": "Agents",
+            "pages": [
+              "api-reference/agents/list",
+              "api-reference/agents/create",
+              "api-reference/agents/get",
+              "api-reference/agents/update",
+              "api-reference/agents/delete"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": [
+              "api-reference/tools/list",
+              "api-reference/tools/create",
+              "api-reference/tools/get",
+              "api-reference/tools/update",
+              "api-reference/tools/delete",
+              "api-reference/tools/execute"
             ]
           }
         ]
@@ -71,19 +134,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Dashboard",
+          "href": "https://radicalwhale.com",
+          "icon": "chart-line"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "GitHub",
+          "href": "https://github.com/SquareHill/radical-whale-api",
+          "icon": "github"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:support@radicalwhale.com",
+          "icon": "envelope"
         }
       ]
     }
@@ -96,32 +159,32 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@radicalwhale.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://radicalwhale.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/radicalwhale",
+      "github": "https://github.com/SquareHill/radical-whale-api",
+      "linkedin": "https://linkedin.com/company/radicalwhale"
     }
   }
 }

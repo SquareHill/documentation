@@ -1,97 +1,119 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Welcome to Radical Whale"
+description: "The powerful platform for AI-driven data processing and workflow automation"
 ---
 
-## Setting up
+<img
+  className="block dark:hidden"
+  src="/images/hero-light.png"
+  alt="Hero Light"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/hero-dark.png"
+  alt="Hero Dark"
+/>
 
-Get your documentation site up and running in minutes.
+## What is Radical Whale?
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+Radical Whale is a comprehensive platform that enables teams to process, analyze, and extract insights from their data using AI agents and custom tools. Whether you're extracting information from documents, enriching datasets, or automating complex workflows, Radical Whale provides the infrastructure and tools you need.
 
-## Make it yours
+## Key Features
 
-Design a docs site that looks great and empowers your users.
+<CardGroup cols={2}>
+  <Card title="AI Agents" icon="robot" href="/concepts/agents">
+    Deploy intelligent agents with custom models, prompts, and tool access to
+    process your data automatically.
+  </Card>
+  <Card title="Dataset Management" icon="database" href="/concepts/datasets">
+    Import, organize, and manage your data with powerful column definitions and
+    structured records.
+  </Card>
+  <Card title="Custom Tools" icon="wrench" href="/concepts/tools">
+    Create and configure custom API tools to extend your agents' capabilities
+    and integrate with external services.
+  </Card>
+  <Card title="Team Workspaces" icon="users" href="/concepts/workspaces">
+    Collaborate with your team in dedicated workspaces with role-based access
+    control and shared resources.
+  </Card>
+</CardGroup>
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+## How It Works
+
+Radical Whale operates on four core concepts that work together to create powerful data processing workflows:
+
+### 1. Workspaces
+
+Your team's dedicated environment where all resources are organized. Each workspace has its own datasets, agents, tools, and team members with specific roles and permissions.
+
+### 2. Datasets
+
+Structured collections of data with defined columns and records. Import CSV files, define column types and instructions, and let AI agents process and enrich your data.
+
+### 3. Agents
+
+AI-powered processors configured with specific models (like GPT-4), system prompts, and access to custom tools. Agents can be assigned to dataset columns to automatically process and extract information.
+
+### 4. Tools
+
+Custom integrations that extend agent capabilities. Create API tools to connect with external services, databases, or any REST endpoint your agents need to access.
+
+## Getting Started
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Get up and running with Radical Whale in just a few minutes.
   </Card>
   <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
+    title="Create Your First Workspace"
+    icon="plus"
+    href="/guides/workspaces/creating-workspaces"
   >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+    Set up your team workspace and invite collaborators.
   </Card>
   <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
+    title="Import Your Data"
+    icon="upload"
+    href="/guides/datasets/importing-data"
   >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
-
-## Create beautiful pages
-
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+    Learn how to import and structure your data for AI processing.
   </Card>
   <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
+    title="Build AI Agents"
+    icon="brain"
+    href="/guides/agents/creating-agents"
   >
-    Add sample code to demonstrate how to use your product.
+    Create intelligent agents to process and enrich your data.
+  </Card>
+</CardGroup>
+
+## Use Cases
+
+**Document Processing**: Extract structured data from invoices, contracts, resumes, and other documents.
+
+**Data Enrichment**: Enhance existing datasets with additional information from APIs, web scraping, or AI analysis.
+
+**Research Automation**: Gather and synthesize information from multiple sources automatically.
+
+**Content Analysis**: Analyze text, sentiment, topics, and trends across large datasets.
+
+**API Integration**: Connect your data processing workflows with external services and databases.
+
+## Need Help?
+
+<CardGroup cols={3}>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Complete API documentation with examples and schemas.
   </Card>
   <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
+    title="User Guides"
+    icon="book"
+    href="/guides/workspaces/creating-workspaces"
   >
-    Display images and other media.
+    Step-by-step tutorials for all platform features.
   </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
+  <Card title="Support" icon="life-ring" href="mailto:support@radicalwhale.com">
+    Get help from our support team.
   </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+</CardGroup>

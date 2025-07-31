@@ -1,0 +1,216 @@
+---
+title: "Workspaces"
+description: "Understanding workspaces and team collaboration in Radical Whale"
+---
+
+## What are Workspaces?
+
+Workspaces are isolated environments that contain all your team's resources: datasets, agents, tools, and variables. Think of a workspace as your team's dedicated area where you can collaborate on data processing projects while keeping everything organized and secure.
+
+[Screenshot Placeholder: Workspace overview dashboard]
+
+## Key Features
+
+### Team Collaboration
+
+- **Role-based Access**: Control who can view, edit, or manage workspace resources
+- **Member Management**: Invite team members and assign appropriate roles
+- **Shared Resources**: All workspace members have access to shared datasets, agents, and tools
+
+### Resource Organization
+
+- **Centralized Assets**: All your datasets, agents, tools, and variables in one place
+- **Cross-resource Relationships**: Agents can use workspace tools, variables store shared credentials
+- **Project Isolation**: Keep different projects or clients in separate workspaces
+
+### Security & Permissions
+
+- **Data Isolation**: Workspace data is completely isolated from other workspaces
+- **Encrypted Variables**: API keys and sensitive data are encrypted and access-controlled
+- **Audit Trail**: Track who accessed what and when (coming soon)
+
+## Workspace Roles
+
+### Owner
+
+- **Full Control**: Complete access to all workspace features
+- **Member Management**: Can invite, remove, and change roles of all members
+- **Billing Management**: Manage subscription and billing settings
+- **Workspace Settings**: Can modify workspace settings and delete the workspace
+- **Resource Management**: Create, edit, and delete all resources
+
+### Admin
+
+- **Resource Management**: Create, edit, and delete datasets, agents, and tools
+- **Member Management**: Can invite and remove members (except owners)
+- **Limited Settings**: Can modify some workspace settings but cannot delete workspace
+- **Variable Access**: Can create and manage workspace variables
+
+### Member
+
+- **Resource Access**: Can view and use existing datasets, agents, and tools
+- **Limited Creation**: Can create new resources but with restrictions
+- **No Member Management**: Cannot invite or remove team members
+- **Read-only Variables**: Can view and use variables but cannot modify them
+
+[Screenshot Placeholder: Role permissions comparison table]
+
+## Workspace Plans
+
+Different plans offer various limits and features:
+
+### Free Plan
+
+- Up to 3 workspace members
+- 1,000 records per month
+- 5 datasets maximum
+- Basic support
+
+### Starter Plan
+
+- Up to 10 workspace members
+- 10,000 records per month
+- 25 datasets maximum
+- Email support
+- Advanced agent features
+
+### Pro Plan
+
+- Unlimited workspace members
+- 100,000 records per month
+- Unlimited datasets
+- Priority support
+- Dedicated processing queue
+- Advanced analytics
+
+[Screenshot Placeholder: Plan comparison table]
+
+## Workspace Settings
+
+### General Settings
+
+- **Name**: Display name for your workspace
+- **Description**: Brief description of workspace purpose
+- **Workspace ID**: Unique identifier for API access
+
+### Billing & Subscription
+
+- **Current Plan**: View your active subscription
+- **Usage Metrics**: Track records processed, datasets created, etc.
+- **Billing History**: View past invoices and payments
+
+### Member Management
+
+- **Active Members**: View all workspace members and their roles
+- **Pending Invites**: Manage outstanding invitations
+- **Role Changes**: Modify member permissions
+
+### Danger Zone
+
+- **Delete Workspace**: Permanently delete workspace and all data
+- **Transfer Ownership**: Transfer workspace ownership to another member
+
+[Screenshot Placeholder: Workspace settings page]
+
+## Best Practices
+
+### Workspace Organization
+
+- **Purpose-focused**: Create workspaces for specific projects or teams
+- **Clear Naming**: Use descriptive names that indicate workspace purpose
+- **Regular Cleanup**: Archive or delete unused resources periodically
+
+### Team Management
+
+- **Principle of Least Privilege**: Give members the minimum access they need
+- **Regular Reviews**: Periodically review member access and roles
+- **Onboarding Process**: Have a clear process for adding new team members
+
+### Security
+
+- **API Key Management**: Use workspace variables for all API keys
+- **Access Monitoring**: Regularly review who has access to sensitive resources
+- **Data Classification**: Understand what data is stored and its sensitivity level
+
+## Common Use Cases
+
+### Development Teams
+
+- **Separate Environments**: Dev, staging, and production workspaces
+- **Feature Development**: Isolate experimental features in separate workspaces
+- **Code Review**: Use workspaces for collaborative review of data processing workflows
+
+### Client Services
+
+- **Client Isolation**: Separate workspace for each client
+- **Project Management**: Organize client work by project or engagement
+- **Access Control**: Give clients access only to their relevant workspace
+
+### Research Teams
+
+- **Project-based**: One workspace per research project
+- **Collaboration**: Share datasets and analysis tools across team members
+- **Publication**: Prepare and organize data for publication or sharing
+
+## Troubleshooting
+
+### Common Issues
+
+**Can't see expected resources**
+
+- Verify you're in the correct workspace
+- Check your role permissions
+- Confirm resources weren't moved or deleted
+
+**Invitation emails not received**
+
+- Check spam/junk folders
+- Verify email address is correct
+- Contact workspace admin to resend invitation
+
+**Billing or plan issues**
+
+- Review current usage against plan limits
+- Check billing information is up to date
+- Contact support for plan-specific questions
+
+### Getting Help
+
+If you need assistance with workspaces:
+
+- Review our [workspace management guide](/guides/workspaces/creating-workspaces)
+- Check the [member management documentation](/guides/workspaces/managing-members)
+- Contact [support](mailto:support@radicalwhale.com) for complex issues
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Create Your First Workspace"
+    icon="plus"
+    href="/guides/workspaces/creating-workspaces"
+  >
+    Step-by-step guide to setting up a new workspace
+  </Card>
+  <Card
+    title="Manage Team Members"
+    icon="users"
+    href="/guides/workspaces/managing-members"
+  >
+    Learn how to invite and manage team members
+  </Card>
+  <Card
+    title="Workspace Settings"
+    icon="settings"
+    href="/guides/workspaces/workspace-settings"
+  >
+    Configure your workspace settings and preferences
+  </Card>
+  <Card
+    title="Understanding Datasets"
+    icon="database"
+    href="/concepts/datasets"
+  >
+    Learn about organizing and managing your data
+  </Card>
+</CardGroup>

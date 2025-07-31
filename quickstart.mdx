@@ -1,80 +1,202 @@
 ---
 title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+description: "Get started with Radical Whale in under 10 minutes"
 ---
 
-## Get started in three steps
+## Welcome to Radical Whale!
 
-Get your documentation site running locally and make your first customization.
+This quickstart guide will help you set up your first workspace, import data, create an AI agent, and process your first dataset. Let's get started!
 
-### Step 1: Set up your local environment
+## Prerequisites
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+Before you begin, make sure you have:
 
-### Step 2: Deploy your changes
+- A Radical Whale account ([sign up here](https://radicalwhale.com/signup))
+- A CSV file with data you'd like to process (optional - we'll provide sample data)
+- An OpenAI API key (for AI agent functionality)
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+## Step 1: Create Your Workspace
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+After logging in, you'll be guided through workspace creation:
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+1. **Choose a Workspace Name**: Pick a descriptive name for your team's workspace
+2. **Add Description**: Briefly describe what you'll use this workspace for
+3. **Select Plan**: Choose the plan that fits your needs (you can start with the free tier)
+4. **Invite Team Members**: Add your colleagues' email addresses (optional)
 
-### Step 3: Go live
+[Screenshot Placeholder: Workspace creation flow]
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+<Tip>
+  Workspaces are isolated environments where your team's data, agents, and tools
+  are organized. Everything within a workspace is shared among team members
+  based on their roles.
+</Tip>
 
-## Next steps
+## Step 2: Set Up Your API Keys
 
-Now that you have your docs running, explore these key features:
+Before creating agents, you'll need to configure your API keys:
+
+1. Navigate to **Variables** section in the sidebar
+2. Click **Create Variable**
+3. Set up an OpenAI API key:
+   - **Name**: `OpenAI API Key`
+   - **Type**: `Secret`
+   - **Value**: Your OpenAI API key (starts with `sk-`)
+
+[Screenshot Placeholder: Variables management page]
+
+<Warning>
+  Keep your API keys secure! They're encrypted and only visible to workspace
+  members who need them.
+</Warning>
+
+## Step 3: Import Your First Dataset
+
+Now let's get some data into Radical Whale:
+
+1. Click **Datasets** in the sidebar
+2. Click **Create Dataset**
+3. Fill in the details:
+   - **Name**: "Sample Customer Data"
+   - **Description**: "Customer information for processing"
+4. Click **Create Dataset**
+5. On the dataset page, click **Import CSV**
+6. Upload your CSV file or use our sample customer data
+
+[Screenshot Placeholder: Dataset creation and import flow]
+
+### Sample Data
+
+If you don't have a CSV file ready, you can use this sample data:
+
+```csv
+company_name,website,description
+Acme Corp,https://acme.com,Manufacturing company
+TechStart Inc,https://techstart.io,Software startup
+Global Solutions,https://globalsolutions.net,Consulting firm
+```
+
+## Step 4: Configure Dataset Columns
+
+After importing, you'll see your data organized into columns. Let's configure them for AI processing:
+
+1. Click on a column header (e.g., "company_name")
+2. Click **Edit Column**
+3. Configure the column:
+   - **Data Type**: Choose the appropriate type (text, number, etc.)
+   - **Instructions**: Tell the AI what to do with this column
+   - **Agent Assignment**: We'll do this in the next step
+
+[Screenshot Placeholder: Column configuration modal]
+
+## Step 5: Create Your First AI Agent
+
+Now let's create an AI agent to process your data:
+
+1. Click **Agents** in the sidebar
+2. Click **Create Agent**
+3. Configure your agent:
+
+   - **Name**: "Company Enrichment Agent"
+   - **Description**: "Enriches company data with additional information"
+   - **Model**: Select "gpt-4" (or your preferred model)
+   - **API Key Variable**: Select the OpenAI key you created earlier
+   - **System Prompt**:
+     ```
+     You are a company research assistant. When given company information, you provide accurate and helpful insights about the company, including industry, size, and other relevant details. Always be factual and concise.
+     ```
+
+4. Click **Create Agent**
+
+[Screenshot Placeholder: Agent creation form]
+
+## Step 6: Assign Agent to Dataset Column
+
+Let's connect your agent to a dataset column:
+
+1. Go back to your **Datasets** and open your sample dataset
+2. Click on a column you want to process (e.g., "description")
+3. Click **Edit Column**
+4. In the **Agent** dropdown, select "Company Enrichment Agent"
+5. Add instructions like: "Analyze this company description and provide insights about their industry and business model"
+6. Click **Save**
+
+[Screenshot Placeholder: Assigning agent to column]
+
+## Step 7: Process Your Data
+
+Now for the exciting part - let your AI agent process the data:
+
+1. Select the rows you want to process (or select all)
+2. Click **Process Selected** or the process button for your column
+3. Watch as your agent analyzes each company and provides insights
+
+[Screenshot Placeholder: Data processing in action]
+
+<Info>
+  Processing time depends on the amount of data and the complexity of your
+  agent's tasks. You can monitor progress in real-time.
+</Info>
+
+## Step 8: Review Results
+
+Once processing is complete:
+
+1. View the enriched data in your dataset
+2. Export the results as CSV if needed
+3. Review the agent's work and adjust prompts if necessary
+
+[Screenshot Placeholder: Processed dataset with results]
+
+## Next Steps
+
+Congratulations! You've successfully:
+
+- ✅ Created a workspace
+- ✅ Set up API keys
+- ✅ Imported data
+- ✅ Created an AI agent
+- ✅ Processed data with AI
+
+### What's Next?
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card
+    title="Create Custom Tools"
+    icon="wrench"
+    href="/guides/tools/creating-tools"
+  >
+    Extend your agents with custom API integrations
+  </Card>
+  <Card
+    title="Advanced Agent Configuration"
+    icon="brain"
+    href="/guides/agents/configuring-models"
+  >
+    Fine-tune your agents for specific tasks
+  </Card>
+  <Card
+    title="Team Collaboration"
+    icon="users"
+    href="/guides/workspaces/managing-members"
+  >
+    Invite team members and manage permissions
+  </Card>
+  <Card
+    title="Workflow Automation"
+    icon="robot"
+    href="/guides/datasets/working-with-records"
+  >
+    Automate complex data processing workflows
+  </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+## Need Help?
+
+If you run into any issues:
+
+- Check our [User Guides](/guides/workspaces/creating-workspaces) for detailed tutorials
+- Review the [API Reference](/api-reference/introduction) for technical details
+- Contact our [support team](mailto:support@radicalwhale.com) for assistance
+
+Happy processing! 🐋

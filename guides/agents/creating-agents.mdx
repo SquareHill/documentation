@@ -1,0 +1,507 @@
+---
+title: "Creating Agents"
+description: "Step-by-step guide to creating and configuring AI agents"
+---
+
+## Overview
+
+AI agents are the core processors in Radical Whale that analyze, extract, and enrich your data. This guide will walk you through creating your first agent, configuring it for your specific needs, and connecting it to your datasets.
+
+## Prerequisites
+
+- Access to a Radical Whale workspace
+- At least one dataset created and configured
+- API keys for your chosen AI model (e.g., OpenAI API key)
+- Basic understanding of your data processing requirements
+
+## Step 1: Navigate to Agents
+
+### Accessing the Agents Section
+
+1. Log into your Radical Whale workspace
+2. Click **Agents** in the left sidebar
+3. You'll see the agents overview page showing existing agents (if any)
+
+[Screenshot Placeholder: Agents overview page]
+
+### Understanding the Agents Interface
+
+- **Agents List**: Shows all agents in your workspace with their status
+- **Create Button**: Primary action to create new agents
+- **Agent Status**: Active/inactive status and recent activity
+- **Performance Metrics**: Success rates and processing statistics
+
+## Step 2: Plan Your Agent
+
+### Define Agent Purpose
+
+Before creating an agent, clearly define:
+
+- **What task** will this agent perform?
+- **What data** will it process?
+- **What output** do you expect?
+- **What external resources** might it need?
+
+### Common Agent Types
+
+#### Data Extraction Agents
+
+- Extract specific information from unstructured text
+- Parse documents and forms
+- Pull data from web pages or PDFs
+
+#### Enrichment Agents
+
+- Add missing information to existing records
+- Enhance data with external sources
+- Standardize and normalize data formats
+
+#### Analysis Agents
+
+- Analyze sentiment, topics, or trends
+- Classify and categorize content
+- Score or rank data based on criteria
+
+#### Validation Agents
+
+- Check data quality and completeness
+- Verify information accuracy
+- Flag potential issues or anomalies
+
+[Screenshot Placeholder: Agent type selection guide]
+
+## Step 3: Start Agent Creation
+
+### Begin Creation Process
+
+1. Click **Create Agent** button
+2. You'll see the agent creation form with several sections
+
+### Basic Information
+
+#### Agent Name
+
+Choose a descriptive name that clearly identifies the agent's purpose:
+
+- **Good examples**: "Company Enrichment Agent", "Resume Parser", "Sentiment Analyzer"
+- **Avoid**: Generic names like "Agent 1" or vague terms
+
+#### Description
+
+Provide a detailed description explaining:
+
+- What the agent does
+- What type of data it processes
+- Expected outputs and results
+- Any special capabilities or limitations
+
+Example:
+
+```
+This agent enriches company records by analyzing company names and websites
+to extract additional information including industry classification, company
+size estimates, headquarters location, and key business focus areas. It uses
+web search and company databases to gather accurate, up-to-date information.
+```
+
+[Screenshot Placeholder: Basic agent information form]
+
+## Step 4: Configure AI Model
+
+### Model Selection
+
+Choose the AI model that best fits your needs:
+
+#### GPT-4
+
+- **Best for**: Complex reasoning, detailed analysis, creative tasks
+- **Pros**: Highest quality results, excellent at following complex instructions
+- **Cons**: Higher cost, slower processing
+- **Use cases**: Document analysis, complex data extraction, nuanced reasoning
+
+#### GPT-4 Mini
+
+- **Best for**: Balanced performance and cost
+- **Pros**: Good quality, faster than GPT-4, more cost-effective
+- **Cons**: Less capable with very complex tasks
+- **Use cases**: Standard data processing, categorization, simple extraction
+
+#### GPT-4 Nano (Coming Soon)
+
+- **Best for**: High-volume, simple tasks
+- **Pros**: Very fast, low cost, good for repetitive tasks
+- **Cons**: Limited reasoning capabilities
+- **Use cases**: Simple classification, data validation, format conversion
+
+[Screenshot Placeholder: Model selection interface]
+
+### API Key Configuration
+
+1. **Select Variable**: Choose from existing API key variables
+2. **Create New**: If needed, create a new variable for your API key
+3. **Verification**: The system will verify the API key is valid
+
+<Warning>
+  Never paste API keys directly into the agent configuration. Always use secure
+  variables to store credentials.
+</Warning>
+
+## Step 5: Write System Prompt
+
+### Understanding System Prompts
+
+The system prompt defines your agent's:
+
+- **Role and expertise**
+- **Processing instructions**
+- **Output format requirements**
+- **Behavior guidelines**
+
+### System Prompt Structure
+
+#### Role Definition
+
+Start by defining who the agent is:
+
+```
+You are a professional business research analyst specializing in company
+intelligence and market research.
+```
+
+#### Task Instructions
+
+Clearly explain what the agent should do:
+
+```
+When provided with company information (name, website, description), your
+task is to:
+
+1. Research and analyze the company's core business
+2. Determine the primary industry and market sector
+3. Estimate company size and maturity level
+4. Identify key products or services offered
+5. Assess market position and competitive landscape
+```
+
+#### Output Format
+
+Specify exactly how results should be formatted:
+
+```
+Provide your analysis in JSON format:
+{
+  "industry": "Primary industry classification",
+  "sector": "Market sector (B2B, B2C, etc.)",
+  "company_size": "Estimated size (Startup, Small, Medium, Large, Enterprise)",
+  "primary_products": ["List of main products/services"],
+  "market_position": "Brief assessment of market position",
+  "confidence_score": 0.85
+}
+```
+
+#### Guidelines and Constraints
+
+Add important guidelines:
+
+```
+Guidelines:
+- Always be factual and cite sources when possible
+- If information is uncertain, indicate confidence level
+- Focus on publicly available information
+- Avoid speculation or assumptions
+- If you cannot find sufficient information, clearly state this
+```
+
+[Screenshot Placeholder: System prompt editor]
+
+### Example Complete System Prompt
+
+```
+You are a professional business research analyst specializing in company
+intelligence and market research.
+
+When provided with company information (name, website, description), your
+task is to research and analyze the company to extract structured business
+intelligence.
+
+Your analysis should include:
+1. Primary industry and business sector
+2. Company size estimation based on available indicators
+3. Key products or services offered
+4. Market position and competitive context
+5. Geographic focus and target markets
+
+Always provide your response in the following JSON format:
+{
+  "industry": "Primary industry classification (e.g., Software, Manufacturing, Healthcare)",
+  "business_model": "Primary business model (B2B, B2C, B2B2C, Marketplace, etc.)",
+  "company_stage": "Development stage (Startup, Growth, Mature, Enterprise)",
+  "key_offerings": ["List of main products or services"],
+  "target_market": "Primary customer segments or geographic focus",
+  "differentiators": "Key competitive advantages or unique selling points",
+  "confidence": 0.85,
+  "sources": ["List of information sources used"]
+}
+
+Guidelines:
+- Base analysis on factual, publicly available information
+- Indicate confidence level (0.0 to 1.0) based on information quality
+- If insufficient information is available, set confidence below 0.5
+- Always list sources used for the analysis
+- Be concise but comprehensive in your assessments
+```
+
+## Step 6: Select Tools (Optional)
+
+### Available Tools
+
+Choose tools that extend your agent's capabilities:
+
+- **Web Search Tools**: For finding current information online
+- **Company Database APIs**: For verified business information
+- **Social Media APIs**: For social presence analysis
+- **Document Processing Tools**: For analyzing uploaded files
+- **Custom APIs**: For accessing your organization's data sources
+
+### Tool Configuration
+
+For each selected tool:
+
+1. **Enable/Disable**: Turn tools on or off for this agent
+2. **Usage Guidelines**: How the agent should use each tool
+3. **Fallback Behavior**: What to do if tools are unavailable
+4. **Rate Limiting**: Respect API limits and quotas
+
+[Screenshot Placeholder: Tool selection interface]
+
+<Info>
+  Start with fewer tools and add more as needed. Too many tools can make agents
+  slower and more expensive to run.
+</Info>
+
+## Step 7: Test Your Agent
+
+### Testing Process
+
+Before deploying your agent:
+
+1. **Create Test Data**: Use a small sample of real data
+2. **Run Test**: Execute the agent on test records
+3. **Review Results**: Analyze the quality and format of outputs
+4. **Iterate**: Refine prompts and settings based on results
+
+### Test Interface
+
+1. Click **Test Agent** in the creation form
+2. Provide sample input data
+3. Review the agent's response
+4. Check formatting, accuracy, and completeness
+
+### Common Test Scenarios
+
+- **Typical Cases**: Standard data that represents most of your dataset
+- **Edge Cases**: Unusual or problematic data
+- **Missing Information**: Records with incomplete data
+- **Ambiguous Data**: Information that could be interpreted multiple ways
+
+[Screenshot Placeholder: Agent testing interface]
+
+### Evaluating Test Results
+
+Look for:
+
+- **Accuracy**: Are the results correct?
+- **Consistency**: Similar inputs produce similar outputs?
+- **Format Compliance**: Does output match specified format?
+- **Completeness**: Are all required fields populated?
+- **Error Handling**: How does the agent handle problematic data?
+
+## Step 8: Save and Deploy
+
+### Final Review
+
+Before creating the agent, review:
+
+- Agent name and description
+- Model selection and API key configuration
+- System prompt completeness and clarity
+- Tool selection and configuration
+- Test results and any needed adjustments
+
+### Create Agent
+
+1. Click **Create Agent** to save your configuration
+2. The agent will be created and marked as active
+3. You'll be redirected to the agent detail page
+
+### Agent Status
+
+Your new agent will be:
+
+- **Active**: Ready to process data
+- **Available**: Visible in dataset column configuration
+- **Monitored**: Performance metrics will be tracked
+
+[Screenshot Placeholder: Newly created agent page]
+
+## Step 9: Connect Agent to Dataset
+
+### Assign to Columns
+
+To use your agent:
+
+1. Navigate to your target dataset
+2. Click on a column header
+3. Select **Edit Column**
+4. In the **Agent** dropdown, select your new agent
+5. Add column-specific instructions if needed
+6. Save the column configuration
+
+### Column-Specific Instructions
+
+Enhance the agent's system prompt with column-specific guidance:
+
+```
+For this "Company Name" column, focus specifically on:
+- Extracting the official business name
+- Identifying any parent company relationships
+- Noting if this is a subsidiary or division
+- Removing legal suffixes unless part of brand identity
+```
+
+[Screenshot Placeholder: Assigning agent to dataset column]
+
+## Step 10: Monitor and Optimize
+
+### Performance Monitoring
+
+Track your agent's performance:
+
+- **Processing Speed**: Records processed per minute
+- **Success Rate**: Percentage of successful completions
+- **Error Rate**: Frequency and types of errors
+- **Cost Tracking**: API usage and associated costs
+
+### Quality Assessment
+
+Regularly review:
+
+- **Output Quality**: Are results meeting expectations?
+- **Consistency**: Is the agent producing consistent results?
+- **User Feedback**: What do team members think of the results?
+- **Business Impact**: Is the agent solving the intended problem?
+
+### Optimization Strategies
+
+- **Prompt Refinement**: Improve instructions based on results
+- **Tool Adjustment**: Add or remove tools based on usage
+- **Model Changes**: Switch models if performance or cost needs change
+- **Batch Size Optimization**: Adjust processing batch sizes
+
+[Screenshot Placeholder: Agent performance dashboard]
+
+## Best Practices
+
+### Prompt Engineering
+
+- **Be Specific**: Clear, detailed instructions produce better results
+- **Include Examples**: Show the agent what good output looks like
+- **Set Expectations**: Define quality standards and error handling
+- **Iterate**: Continuously refine based on real-world results
+
+### Model Selection
+
+- **Match Complexity**: Use simpler models for simple tasks
+- **Consider Cost**: Balance quality needs with budget constraints
+- **Test Alternatives**: Compare different models for your use cases
+- **Monitor Usage**: Track costs and adjust as needed
+
+### Tool Management
+
+- **Start Simple**: Begin with essential tools only
+- **Add Gradually**: Introduce new tools based on specific needs
+- **Monitor Performance**: Track how tools affect processing speed and cost
+- **Document Usage**: Keep notes on when and why tools are used
+
+### Security & Privacy
+
+- **Secure Credentials**: Always use variables for API keys
+- **Data Privacy**: Be mindful of what data is sent to external APIs
+- **Access Control**: Limit who can modify critical agents
+- **Audit Trail**: Keep records of agent changes and performance
+
+## Troubleshooting
+
+### Common Issues
+
+**Agent Not Processing Data**
+
+- Verify agent is active and properly configured
+- Check API key validity and quota availability
+- Review dataset column assignments
+- Look for error messages in processing logs
+
+**Poor Quality Results**
+
+- Review and refine system prompts
+- Check input data quality and completeness
+- Consider different model or tool options
+- Test with various data samples
+
+**Performance Problems**
+
+- Monitor API rate limits and adjust batch sizes
+- Review tool usage and response times
+- Consider simpler models for basic tasks
+- Check for processing bottlenecks
+
+**High Costs**
+
+- Monitor token usage and optimize prompts
+- Use appropriate model for task complexity
+- Implement result caching where appropriate
+- Set usage alerts and budget limits
+
+### Getting Help
+
+For agent-related issues:
+
+- Review our [agent configuration guide](/guides/agents/configuring-models)
+- Check [tool management documentation](/guides/agents/managing-tools)
+- Contact [support](mailto:support@radicalwhale.com) with specific errors
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Configure Models"
+    icon="brain"
+    href="/guides/agents/configuring-models"
+  >
+    Learn advanced model configuration and optimization
+  </Card>
+  <Card
+    title="Manage Agent Tools"
+    icon="wrench"
+    href="/guides/agents/managing-tools"
+  >
+    Add and configure tools for your agents
+  </Card>
+  <Card title="Test Agents" icon="flask" href="/guides/agents/testing-agents">
+    Comprehensive guide to testing and validating agents
+  </Card>
+  <Card
+    title="Create Custom Tools"
+    icon="cog"
+    href="/guides/tools/creating-tools"
+  >
+    Build custom tools to extend agent capabilities
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+- [Understanding Agents](/concepts/agents) - Conceptual overview
+- [Agent Configuration Guide](/guides/agents/configuring-models) - Advanced configuration
+- [Tool Management](/guides/agents/managing-tools) - Working with agent tools
+- [API Reference - Agents](/api-reference/agents/create) - Technical documentation
