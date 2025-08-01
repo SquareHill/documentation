@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Radical Whale Documentation",
   "colors": {
-    "primary": "#06B6D4",
-    "light": "#22D3EE",
-    "dark": "#0E7490"
+    "primary": "#2dd4bf",
+    "light": "#5eead4",
+    "dark": "#0f766e"
   },
   "favicon": "/whale.svg",
   "navigation": {
@@ -97,8 +97,8 @@
     }
   },
   "logo": {
-    "light": "/logo/whale-32.png",
-    "dark": "/logo/whale.svg"
+    "light": "/logo/radical-whale-logo-light.svg",
+    "dark": "/logo/radical-whale-logo.svg"
   },
   "navbar": {
     "links": [
