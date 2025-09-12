@@ -1,0 +1,242 @@
+---
+title: "Configuring Models"
+description: "Advanced configuration and optimization for AI models used by agents"
+---
+
+## Overview
+
+AI model configuration is crucial for optimizing agent performance, managing costs, and ensuring reliable results. This guide covers advanced model settings, performance tuning, and best practices for different model providers.
+
+## Model Selection
+
+### Available Models
+
+Radical Whale supports multiple AI model providers and configurations:
+
+#### OpenAI Models
+- **GPT-4.1**: Latest flagship model with enhanced reasoning
+- **GPT-4.1-mini**: Faster, cost-effective version for simple tasks
+- **GPT-4.1-nano**: Ultra-fast model for basic operations
+- **GPT-5**: Next-generation model with advanced capabilities
+- **GPT-5-mini**: Balanced performance and cost for GPT-5 features
+- **GPT-5-nano**: Lightweight GPT-5 for high-throughput scenarios
+
+#### Model Characteristics
+- **Performance**: GPT-5 > GPT-4.1 > GPT-4.1-mini > GPT-4.1-nano
+- **Cost**: GPT-5 > GPT-4.1 > GPT-4.1-mini > GPT-4.1-nano  
+- **Speed**: nano > mini > standard versions
+- **Context Window**: Varies by model, typically 128K+ tokens
+
+### Selection Criteria
+
+#### Task Complexity
+- **Simple Tasks**: Use nano or mini models for basic data extraction
+- **Complex Analysis**: Use full models for nuanced reasoning
+- **Creative Tasks**: Higher-tier models for content generation
+- **Code Tasks**: Full models for complex programming tasks
+
+#### Volume and Cost
+- **High Volume**: Consider mini/nano models to control costs
+- **Low Volume**: Full models acceptable for quality
+- **Budget Constraints**: Start with smaller models, upgrade as needed
+- **Quality Requirements**: Invest in larger models for critical tasks
+
+## Configuration Options
+
+### API Key Management
+
+#### Variable Configuration
+```json
+{
+  "name": "OpenAI Production Key",
+  "type": "api_key", 
+  "value": "sk-...",
+  "description": "Production OpenAI API key for agents"
+}
+```
+
+#### Best Practices
+- Use separate keys for development and production
+- Set appropriate usage limits on API provider dashboards
+- Monitor API usage and costs regularly
+- Rotate keys periodically for security
+
+### Model Parameters
+
+While Radical Whale manages most model parameters automatically, understanding these settings helps optimize performance:
+
+#### Temperature
+- **Low (0.1-0.3)**: Consistent, deterministic outputs
+- **Medium (0.4-0.7)**: Balanced creativity and consistency  
+- **High (0.8-1.0)**: Creative, varied responses
+
+#### Context Management
+- **System Prompts**: Carefully crafted for consistency
+- **Context Windows**: Automatically managed for optimal token usage
+- **Memory**: Conversation context preserved across tool calls
+
+## Performance Optimization
+
+### Response Time
+
+#### Model Selection Impact
+```
+GPT-4.1-nano: ~500ms average response
+GPT-4.1-mini: ~1-2s average response  
+GPT-4.1: ~2-4s average response
+GPT-5: ~3-6s average response
+```
+
+#### Optimization Strategies
+- **System Prompt Length**: Shorter prompts = faster responses
+- **Tool Selection**: Fewer tools = less processing overhead
+- **Batch Processing**: Group similar requests when possible
+- **Caching**: Radical Whale automatically caches repeated patterns
+
+### Quality vs. Speed
+
+#### Finding the Balance
+1. **Start with mini models** for development and testing
+2. **Test with full models** for quality comparison
+3. **Measure performance** on real data samples
+4. **Choose based on requirements** rather than assumptions
+
+#### A/B Testing
+- Run parallel agents with different models
+- Compare results on identical datasets
+- Measure both quality and processing time
+- Make data-driven decisions about model selection
+
+## Cost Management
+
+### Understanding Pricing
+
+#### Token-Based Pricing
+- **Input Tokens**: Prompt and context tokens
+- **Output Tokens**: Generated response tokens  
+- **Tool Tokens**: Additional tokens for tool descriptions
+
+#### Cost Optimization
+- **Efficient Prompts**: Remove unnecessary context
+- **Appropriate Models**: Don't over-engineer simple tasks
+- **Tool Management**: Only include necessary tools
+- **Batch Operations**: Process multiple records efficiently
+
+### Monitoring Usage
+
+#### Cost Tracking
+- Monitor API usage through provider dashboards
+- Set up billing alerts for unexpected usage spikes
+- Track cost per processed record
+- Compare costs across different agents and models
+
+#### Usage Patterns
+- **Peak Hours**: Identify high-usage periods
+- **Tool Usage**: Track which tools consume most tokens
+- **Model Distribution**: See which models are used most
+- **Error Rates**: Monitor failed requests that waste tokens
+
+## Advanced Configuration
+
+### Custom Model Settings
+
+#### Provider-Specific Options
+Different providers may offer unique configuration options:
+
+- **OpenAI**: Function calling, response format controls
+- **Anthropic**: Constitutional AI settings, safety levels
+- **Google**: PaLM-specific optimization parameters
+- **Local Models**: Custom deployment and scaling options
+
+#### Integration Configuration
+```json
+{
+  "model": "gpt-4.1",
+  "provider": "openai",
+  "api_key_variable": "openai_production_key",
+  "settings": {
+    "timeout": 60,
+    "retry_attempts": 3,
+    "rate_limit_handling": "automatic"
+  }
+}
+```
+
+### Multi-Model Strategies
+
+#### Model Routing
+- **Primary Model**: Main model for standard operations
+- **Fallback Models**: Backup options if primary fails
+- **Specialized Models**: Task-specific model selection
+- **Cost-Aware Routing**: Automatic model selection based on budget
+
+#### Quality Assurance
+- **Validation Agents**: Use different models to verify outputs
+- **Consensus Systems**: Multiple models voting on results
+- **Human Review**: Automatic flagging for human validation
+- **Quality Metrics**: Automated scoring of output quality
+
+## Troubleshooting
+
+### Common Issues
+
+#### API Errors
+- **Rate Limiting**: Automatic retry with exponential backoff
+- **Invalid Keys**: Clear error messages with resolution steps
+- **Model Unavailability**: Automatic fallback to alternative models
+- **Token Limits**: Smart truncation and context management
+
+#### Performance Issues  
+- **Slow Responses**: Model selection and prompt optimization
+- **Inconsistent Quality**: Temperature and prompt tuning
+- **High Costs**: Model selection and usage optimization
+- **Timeout Errors**: Retry logic and timeout adjustment
+
+### Best Practices
+
+#### Development Workflow
+1. **Start Simple**: Begin with basic model configurations
+2. **Test Thoroughly**: Use chat interface for validation
+3. **Monitor Performance**: Track key metrics from day one
+4. **Iterate Gradually**: Make incremental improvements
+5. **Document Changes**: Keep track of what works
+
+#### Production Deployment
+- **Gradual Rollout**: Start with small dataset subsets
+- **Performance Monitoring**: Continuous tracking of key metrics
+- **Cost Management**: Regular review and optimization
+- **Quality Assurance**: Automated and manual validation processes
+- **Incident Response**: Clear procedures for handling issues
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Chat with Agents"
+    icon="message-circle"
+    href="/guides/agents/chatting-with-agents"
+  >
+    Test your model configuration through interactive conversations
+  </Card>
+  <Card
+    title="Managing Tools"
+    icon="wrench"
+    href="/guides/agents/managing-tools"
+  >
+    Configure tools that extend your agent's capabilities
+  </Card>
+  <Card
+    title="Testing Agents"
+    icon="flask"
+    href="/guides/agents/testing-agents"
+  >
+    Comprehensive testing strategies for agent validation
+  </Card>
+  <Card
+    title="Performance Monitoring"
+    icon="chart-line"
+    href="/guides/monitoring/agent-performance"
+  >
+    Monitor and optimize agent performance in production
+  </Card>
+</CardGroup>

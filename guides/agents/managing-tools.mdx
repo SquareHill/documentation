@@ -1,0 +1,300 @@
+---
+title: "Managing Tools"
+description: "Configure and manage tools that extend your agent's capabilities"
+---
+
+## Overview
+
+Tools are external services and APIs that agents can use to gather additional information, perform calculations, or interact with other systems. Proper tool management is essential for creating powerful, versatile agents that can handle complex tasks.
+
+## Understanding Agent Tools
+
+### What Are Agent Tools?
+
+Agent tools are integrations that allow your AI agents to:
+- **Fetch External Data**: Web search, API calls, database queries
+- **Process Information**: Data transformation, calculations, analysis
+- **Interact with Systems**: Send emails, update records, trigger workflows
+- **Validate Results**: Cross-reference information, verify accuracy
+
+### Tool Categories
+
+#### Web Research Tools
+- **Web Search**: Find current information from the internet
+- **Content Extraction**: Parse and analyze web pages
+- **Social Media**: Gather social media insights and mentions
+- **News APIs**: Access current news and trends
+
+#### Data Tools
+- **Database Queries**: Access internal database systems
+- **API Integrations**: Connect to third-party services
+- **File Processing**: Read and analyze uploaded documents
+- **Data Validation**: Verify and cross-check information
+
+#### Communication Tools
+- **Email Integration**: Send notifications and reports
+- **Slack/Teams**: Post updates to team channels
+- **SMS Services**: Send alerts and notifications
+- **Webhook Triggers**: Notify external systems of events
+
+## Tool Configuration
+
+### Adding Tools to Agents
+
+#### From Agent Creation
+1. Navigate to **Agents** in your workspace
+2. Click **Create Agent** or edit an existing agent
+3. Scroll to the **Available Tools** section
+4. Select tools from the list of configured tools
+5. Save your agent configuration
+
+#### Tool Selection Best Practices
+- **Start Minimal**: Begin with essential tools only
+- **Add Gradually**: Introduce new tools based on specific needs
+- **Monitor Usage**: Track which tools are used most frequently
+- **Remove Unused**: Periodically clean up unused tools to improve performance
+
+### Tool Permissions
+
+#### Access Control
+Each tool requires appropriate configuration:
+
+- **API Keys**: Stored securely in workspace variables
+- **Rate Limits**: Automatically managed by Radical Whale
+- **Usage Quotas**: Monitor and control tool usage costs
+- **Error Handling**: Graceful fallbacks when tools are unavailable
+
+#### Security Considerations
+- **Credential Storage**: All API keys encrypted and stored securely
+- **Network Security**: Secure connections for all external tool calls
+- **Data Privacy**: Control what data is sent to external services
+- **Audit Logging**: Track all tool usage for security and compliance
+
+## Available Tools
+
+### Web Search Tools
+
+#### Tavily Search
+- **Purpose**: Comprehensive web search with AI-optimized results
+- **Configuration**: Requires Tavily API key in workspace variables
+- **Use Cases**: Research, fact-checking, current information gathering
+- **Best For**: Agents that need current, accurate web information
+
+```json
+{
+  "name": "Tavily Web Search",
+  "type": "api",
+  "endpoint": "https://api.tavily.com/search",
+  "authentication": "api_key",
+  "rate_limit": "1000/month"
+}
+```
+
+#### Custom Web APIs
+- **Purpose**: Access specific data sources and services
+- **Configuration**: Custom API endpoint and authentication
+- **Use Cases**: Industry-specific data, proprietary services
+- **Best For**: Agents that need specialized information sources
+
+### Database Tools
+
+#### Internal Database Access
+- **Purpose**: Query your organization's databases
+- **Configuration**: Secure database connections and query permissions
+- **Use Cases**: Customer data lookup, inventory checks, historical data
+- **Best For**: Agents working with internal company data
+
+#### External Database APIs
+- **Purpose**: Access third-party database services
+- **Configuration**: API keys and connection parameters
+- **Use Cases**: Market data, financial information, research databases
+- **Best For**: Agents needing specialized external data sources
+
+### Communication Tools
+
+#### Email Integration
+- **Purpose**: Send notifications, reports, and alerts
+- **Configuration**: SMTP settings or email service API keys
+- **Use Cases**: Automated reporting, alert notifications, customer communication
+- **Best For**: Agents that need to communicate results or triggers
+
+#### Team Messaging
+- **Purpose**: Post updates to Slack, Teams, or other chat platforms
+- **Configuration**: Bot tokens and channel permissions
+- **Use Cases**: Progress updates, completion notifications, error alerts
+- **Best For**: Agents working as part of team workflows
+
+## Tool Development
+
+### Creating Custom Tools
+
+#### API Tool Configuration
+1. Navigate to **Tools** in your workspace
+2. Click **Create Tool** → **API Request**
+3. Configure the HTTP request parameters:
+   - **Endpoint URL**: The API endpoint to call
+   - **Method**: GET, POST, PUT, DELETE
+   - **Headers**: Required headers including authentication
+   - **Parameters**: Input schema for agent use
+
+#### Input Schema Design
+```json
+{
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "Search query or parameter"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum number of results",
+      "default": 10
+    }
+  },
+  "required": ["query"]
+}
+```
+
+#### Response Processing
+- **Data Extraction**: Define how to parse API responses
+- **Error Handling**: Handle API errors gracefully
+- **Result Formatting**: Structure data for agent consumption
+- **Caching**: Optimize repeated requests
+
+### Testing Custom Tools
+
+#### Tool Testing Interface
+1. Use the tool testing interface to validate functionality
+2. Test with various input parameters
+3. Verify error handling with invalid inputs
+4. Check response formatting and data quality
+
+#### Integration Testing
+- **Agent Integration**: Test tools within agent workflows
+- **Performance Testing**: Measure response times and reliability
+- **Error Scenarios**: Test behavior when tools fail
+- **Rate Limiting**: Verify proper handling of API limits
+
+## Tool Optimization
+
+### Performance Considerations
+
+#### Response Time Optimization
+- **Caching**: Implement intelligent caching for repeated requests
+- **Parallel Calls**: Execute multiple tools simultaneously when possible
+- **Timeout Management**: Set appropriate timeouts for external calls
+- **Fallback Strategies**: Define backup approaches when tools are slow
+
+#### Cost Management
+- **Usage Monitoring**: Track API calls and associated costs
+- **Rate Limiting**: Respect provider limits to avoid overages
+- **Selective Usage**: Only call tools when necessary
+- **Bulk Operations**: Use batch APIs when available
+
+### Quality Assurance
+
+#### Data Validation
+- **Response Validation**: Verify tool responses meet expected formats
+- **Data Quality Checks**: Validate accuracy and completeness
+- **Cross-Referencing**: Use multiple tools to verify information
+- **Error Detection**: Identify and handle corrupted or invalid data
+
+#### Reliability Monitoring
+- **Uptime Tracking**: Monitor tool availability and response times
+- **Error Rate Analysis**: Track and analyze tool failure patterns
+- **Performance Metrics**: Measure tool effectiveness and accuracy
+- **Alert Systems**: Get notified of tool outages or issues
+
+## Advanced Tool Management
+
+### Tool Orchestration
+
+#### Workflow Design
+- **Sequential Tools**: Chain tools for multi-step processes
+- **Conditional Logic**: Use tools based on intermediate results
+- **Parallel Processing**: Execute independent tools simultaneously
+- **Error Recovery**: Implement fallback strategies for failed tools
+
+#### Agent Collaboration
+- **Shared Tools**: Multiple agents using the same tool configurations
+- **Specialized Agents**: Different agents for different tool categories
+- **Tool Results Sharing**: Pass tool results between agent instances
+- **Coordinated Workflows**: Orchestrate multiple agents with complementary tools
+
+### Enterprise Integration
+
+#### System Integration
+- **SSO Integration**: Use organizational authentication systems
+- **Network Security**: VPN and firewall configuration for tool access
+- **Compliance**: Ensure tools meet organizational security requirements
+- **Audit Trails**: Comprehensive logging for compliance and debugging
+
+#### Scalability
+- **Load Balancing**: Distribute tool requests across multiple endpoints
+- **Resource Allocation**: Manage compute and network resources
+- **Geographic Distribution**: Route requests to regional endpoints
+- **Capacity Planning**: Plan for usage growth and scaling needs
+
+## Troubleshooting
+
+### Common Issues
+
+#### Tool Connectivity
+- **Network Issues**: Firewall and connectivity problems
+- **Authentication Failures**: Invalid or expired API keys
+- **Rate Limiting**: Exceeding provider request limits
+- **Service Outages**: External service unavailability
+
+#### Performance Problems
+- **Slow Response Times**: Network latency or service performance
+- **High Error Rates**: Service reliability or configuration issues
+- **Resource Exhaustion**: Hitting usage quotas or limits
+- **Data Quality Issues**: Inconsistent or invalid responses
+
+### Resolution Strategies
+
+#### Immediate Actions
+1. **Check Tool Status**: Verify tool configuration and availability
+2. **Review Error Logs**: Examine detailed error messages and patterns
+3. **Test Connectivity**: Use tool testing interface for diagnostics
+4. **Verify Credentials**: Ensure API keys and authentication are valid
+
+#### Long-term Solutions
+- **Redundancy**: Configure multiple tools for critical functions
+- **Monitoring**: Implement comprehensive tool performance monitoring
+- **Documentation**: Maintain clear documentation for tool configurations
+- **Training**: Ensure team members understand tool management
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Creating Tools"
+    icon="plus"
+    href="/guides/tools/creating-tools"
+  >
+    Learn how to create custom tools for your agents
+  </Card>
+  <Card
+    title="Testing Agents"
+    icon="flask"
+    href="/guides/agents/testing-agents"
+  >
+    Test agents and tools together for optimal performance
+  </Card>
+  <Card
+    title="API Tools Guide"
+    icon="code"
+    href="/guides/tools/api-tools"
+  >
+    Detailed guide on configuring API-based tools
+  </Card>
+  <Card
+    title="Tool Configuration"
+    icon="settings"
+    href="/guides/tools/tool-configuration"
+  >
+    Advanced tool configuration and optimization techniques
+  </Card>
+</CardGroup>

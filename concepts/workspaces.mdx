@@ -5,182 +5,269 @@ description: "Understanding workspaces and team collaboration in Radical Whale"
 
 ## What are Workspaces?
 
-Workspaces are isolated environments that contain all your team's resources: datasets, agents, tools, and variables. Think of a workspace as your team's dedicated area where you can collaborate on data processing projects while keeping everything organized and secure.
+Workspaces are the foundation of your Radical Whale experience - isolated environments that contain all your team's resources including datasets, agents, tools, variables, and processing machines. Each workspace acts as a complete data collaboration environment where teams can work together on projects while maintaining security and organization.
 
-[Screenshot Placeholder: Workspace overview dashboard]
+Think of a workspace as your team's digital headquarters for data work, where everything from structured datasets to AI agents and custom workflows lives together in one organized, secure space.
 
-## Key Features
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/workspaces.png"
+  alt="Workspaces overview showing team collaboration interface"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/workspaces.png"
+  alt="Workspaces overview showing team collaboration interface"
+/>
 
-### Team Collaboration
+## Workspace Components
 
-- **Role-based Access**: Control who can view, edit, or manage workspace resources
-- **Member Management**: Invite team members and assign appropriate roles
-- **Shared Resources**: All workspace members have access to shared datasets, agents, and tools
+### Datasets & Records
 
-### Resource Organization
+- **Smart Tables**: Upload CSV, Excel, or structured data to create intelligent datasets
+- **Record Management**: Each row becomes a detailed record with expandable views and nested data
+- **Cell Processing**: AI-powered analysis and enrichment of individual table cells
+- **Page Editor**: Create rich documentation and notes for individual records using our advanced text editor
 
-- **Centralized Assets**: All your datasets, agents, tools, and variables in one place
-- **Cross-resource Relationships**: Agents can use workspace tools, variables store shared credentials
-- **Project Isolation**: Keep different projects or clients in separate workspaces
+### AI Agents
 
-### Security & Permissions
+- **Conversational AI**: Chat with specialized agents that understand your workspace data
+- **Custom Configurations**: Set up agents with specific personalities, tools, and knowledge
+- **Data-Aware Responses**: Agents can access and reference your workspace datasets
+- **Multi-Model Support**: Choose from different AI providers and models
 
-- **Data Isolation**: Workspace data is completely isolated from other workspaces
-- **Encrypted Variables**: API keys and sensitive data are encrypted and access-controlled
-- **Audit Trail**: Track who accessed what and when (coming soon)
+### Tools & Automations
 
-## Workspace Roles
+- **API Tools**: Create reusable HTTP requests for data enrichment and external integrations
+- **Workflow Builder**: Design complex data processing pipelines
+- **Custom Functions**: Build specialized tools for your team's unique needs
 
-### Owner
+### Variables & Configuration
 
-- **Full Control**: Complete access to all workspace features
-- **Member Management**: Can invite, remove, and change roles of all members
-- **Billing Management**: Manage subscription and billing settings
-- **Workspace Settings**: Can modify workspace settings and delete the workspace
-- **Resource Management**: Create, edit, and delete all resources
+- **Secure Storage**: Encrypted storage for API keys, database credentials, and configuration
+- **Team Sharing**: Variables are accessible to all workspace members based on permissions
+- **Environment Management**: Organize different configurations for development and production
 
-### Admin
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/variables.png"
+  alt="Variables interface showing secure credential and configuration management"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/variables.png"
+  alt="Variables interface showing secure credential and configuration management"
+/>
 
-- **Resource Management**: Create, edit, and delete datasets, agents, and tools
-- **Member Management**: Can invite and remove members (except owners)
-- **Limited Settings**: Can modify some workspace settings but cannot delete workspace
-- **Variable Access**: Can create and manage workspace variables
+### Processing Infrastructure
 
-### Member
+- **Dedicated Machines**: Spin up processing machines for heavy data work (paid plans)
+- **Queue Management**: Monitor and manage background processing jobs
+- **Resource Scaling**: Add or remove computing resources based on workload
 
-- **Resource Access**: Can view and use existing datasets, agents, and tools
-- **Limited Creation**: Can create new resources but with restrictions
-- **No Member Management**: Cannot invite or remove team members
-- **Read-only Variables**: Can view and use variables but cannot modify them
+## Team Collaboration & Access Control
 
-[Screenshot Placeholder: Role permissions comparison table]
+### Workspace Roles
 
-## Workspace Plans
+**Owner**
 
-Different plans offer various limits and features:
+- Complete workspace control and administration
+- Member management: invite, remove, and change roles
+- Billing and subscription management
+- Workspace settings and deletion capabilities
+- Full access to all resources and features
+
+**Admin**
+
+- Resource management: create, edit, and delete datasets, agents, and tools
+- Member management: invite and remove members (except owners)
+- Variable management: create and manage secure variables
+- Limited workspace settings access
+
+**Member**
+
+- Access and use existing workspace resources
+- Create new resources with standard permissions
+- View and use variables (read-only access)
+- Collaborate on datasets and workflows
+
+### Workspace Switching
+
+Easily switch between multiple workspaces using the workspace switcher in the sidebar. Each workspace maintains its own:
+
+- Complete resource isolation
+- Independent billing and settings
+- Separate team members and permissions
+- Dedicated processing queues and machines
+
+### Invitation System
+
+- **Email Invitations**: Send secure invitations to team members
+- **Role Assignment**: Set specific roles when inviting new members
+- **Expiration Management**: Invitations expire automatically for security
+- **Pending Invite Tracking**: Monitor outstanding invitations in the members page
+
+## Workspace Management
+
+### Creating Workspaces
+
+The workspace creation process guides you through:
+
+1. **Basic Setup**: Name and description for your workspace
+2. **Plan Selection**: Choose from Free, Starter, or Pro plans based on your needs
+3. **Team Invitations**: Optionally invite team members during setup
+4. **Final Configuration**: Complete setup and start collaborating
+
+### Workspace Settings
+
+Access comprehensive workspace management through the settings page:
+
+**General Information**
+
+- Workspace name and description editing
+- Workspace ID for API integrations
+- Creation and modification timestamps
+- Member count and activity overview
+
+**Member Management**
+
+- View all workspace members and their roles
+- Send new invitations with role assignment
+- Monitor pending invitations and expiration
+- Remove members or change permissions
+
+**Billing & Subscription**
+
+- Current plan overview and usage metrics
+- Subscription management and plan upgrades
+- Billing history and payment methods
+- Usage tracking and limits monitoring
+
+### Monitoring & Performance
+
+Track workspace activity and performance:
+
+**Queue Metrics**
+
+- Live monitoring of background processing jobs
+- Queue depth and processing speed insights
+- Bottleneck identification and resolution
+
+**Machine Management** (Paid Plans)
+
+- Deploy dedicated processing machines
+- Monitor CPU and memory utilization
+- Scale resources up or down based on demand
+- Regional deployment options
+
+## Workspace Plans & Pricing
 
 ### Free Plan
 
-- Up to 3 workspace members
-- 1,000 records per month
-- 5 datasets maximum
-- Basic support
+- **3 workspace members** maximum
+- **1,000 records** per month
+- **5 datasets** limit
+- Standard support
+- Shared processing resources
 
 ### Starter Plan
 
-- Up to 10 workspace members
-- 10,000 records per month
-- 25 datasets maximum
+- **10 workspace members** maximum
+- **10,000 records** per month
+- **25 datasets** limit
 - Email support
+- Dedicated processing machines available
 - Advanced agent features
 
 ### Pro Plan
 
-- Unlimited workspace members
-- 100,000 records per month
-- Unlimited datasets
+- **Unlimited workspace members**
+- **100,000 records** per month
+- **Unlimited datasets**
 - Priority support
-- Dedicated processing queue
-- Advanced analytics
-
-[Screenshot Placeholder: Plan comparison table]
-
-## Workspace Settings
-
-### General Settings
-
-- **Name**: Display name for your workspace
-- **Description**: Brief description of workspace purpose
-- **Workspace ID**: Unique identifier for API access
-
-### Billing & Subscription
-
-- **Current Plan**: View your active subscription
-- **Usage Metrics**: Track records processed, datasets created, etc.
-- **Billing History**: View past invoices and payments
-
-### Member Management
-
-- **Active Members**: View all workspace members and their roles
-- **Pending Invites**: Manage outstanding invitations
-- **Role Changes**: Modify member permissions
-
-### Danger Zone
-
-- **Delete Workspace**: Permanently delete workspace and all data
-- **Transfer Ownership**: Transfer workspace ownership to another member
-
-[Screenshot Placeholder: Workspace settings page]
+- Dedicated processing machines included
+- Advanced monitoring and analytics
+- Premium integrations
 
 ## Best Practices
 
 ### Workspace Organization
 
-- **Purpose-focused**: Create workspaces for specific projects or teams
-- **Clear Naming**: Use descriptive names that indicate workspace purpose
-- **Regular Cleanup**: Archive or delete unused resources periodically
+- **Project-Based Structure**: Create separate workspaces for distinct projects or clients
+- **Clear Naming**: Use descriptive workspace names that indicate purpose and scope
+- **Resource Cleanup**: Regularly archive or delete unused datasets and tools
+- **Documentation**: Use record pages and descriptions to document important datasets
 
-### Team Management
+### Security & Permissions
 
-- **Principle of Least Privilege**: Give members the minimum access they need
-- **Regular Reviews**: Periodically review member access and roles
-- **Onboarding Process**: Have a clear process for adding new team members
+- **Principle of Least Privilege**: Assign the minimum access level needed for each team member
+- **Regular Access Reviews**: Periodically audit member permissions and active invitations
+- **Variable Security**: Store all API keys and credentials in encrypted workspace variables
+- **Data Classification**: Understand and document the sensitivity of data in each workspace
 
-### Security
+### Performance Optimization
 
-- **API Key Management**: Use workspace variables for all API keys
-- **Access Monitoring**: Regularly review who has access to sensitive resources
-- **Data Classification**: Understand what data is stored and its sensitivity level
+- **Machine Scaling**: Add processing machines during high-usage periods (paid plans)
+- **Queue Monitoring**: Watch processing queues and scale resources when bottlenecks occur
+- **Data Lifecycle**: Implement retention policies for large datasets
+- **API Rate Limiting**: Use workspace variables to manage API quotas and rate limits
 
 ## Common Use Cases
 
-### Development Teams
+### Product & Engineering Teams
 
-- **Separate Environments**: Dev, staging, and production workspaces
-- **Feature Development**: Isolate experimental features in separate workspaces
-- **Code Review**: Use workspaces for collaborative review of data processing workflows
+- **Feature Development**: Separate workspaces for different product features or experiments
+- **Environment Management**: Dev, staging, and production workspace separation
+- **User Research**: Organize customer feedback data and analysis workflows
+- **A/B Testing**: Track experiment data and results with dedicated agents
 
-### Client Services
+### Data & Analytics Teams
 
-- **Client Isolation**: Separate workspace for each client
-- **Project Management**: Organize client work by project or engagement
-- **Access Control**: Give clients access only to their relevant workspace
+- **Client Projects**: Individual workspaces for each client with dedicated datasets and workflows
+- **Research Initiatives**: Organized spaces for specific research questions or hypotheses
+- **Data Pipeline Development**: Build and test data transformation workflows
+- **Report Automation**: Create reusable reporting templates and schedules
 
-### Research Teams
+### Business Operations
 
-- **Project-based**: One workspace per research project
-- **Collaboration**: Share datasets and analysis tools across team members
-- **Publication**: Prepare and organize data for publication or sharing
+- **Department Isolation**: Separate workspaces for HR, finance, marketing teams
+- **Vendor Management**: Track supplier data and performance metrics
+- **Compliance Tracking**: Organize regulatory data with appropriate access controls
+- **Process Documentation**: Use record pages to document standard operating procedures
 
-## Troubleshooting
+### Consulting & Professional Services
 
-### Common Issues
+- **Client Separation**: Complete data isolation for different client engagements
+- **Project Lifecycle**: Workspace-per-project model with defined start and end dates
+- **Team Collaboration**: Shared access to project resources and findings
+- **Deliverable Preparation**: Organize final reports and presentations
 
-**Can't see expected resources**
+## Getting Started
 
-- Verify you're in the correct workspace
-- Check your role permissions
-- Confirm resources weren't moved or deleted
+### Workspace Creation Process
 
-**Invitation emails not received**
+When you first sign up for Radical Whale or need to create a new workspace:
 
-- Check spam/junk folders
-- Verify email address is correct
-- Contact workspace admin to resend invitation
+1. **Check for Invitations**: The system first checks if you have pending workspace invitations
+2. **Accept or Create**: Either accept an existing invitation or create your own workspace
+3. **Choose Your Plan**: Select from Free, Starter, or Pro based on your needs
+4. **Set Up Team**: Optionally invite team members during the initial setup
+5. **Start Building**: Begin uploading data and creating your first datasets
 
-**Billing or plan issues**
+### First Steps in Your Workspace
 
-- Review current usage against plan limits
-- Check billing information is up to date
-- Contact support for plan-specific questions
+- **Upload your first dataset** from CSV, Excel, or other structured data sources
+- **Set up workspace variables** for any API keys or external service credentials
+- **Invite team members** with appropriate roles for collaboration
+- **Create your first agent** to start exploring data with AI assistance
+- **Build API tools** to connect with external services and data sources
 
-### Getting Help
+### Navigation
 
-If you need assistance with workspaces:
-
-- Review our [workspace management guide](/guides/workspaces/creating-workspaces)
-- Check the [member management documentation](/guides/workspaces/managing-members)
-- Contact [support](mailto:support@radicalwhale.com) for complex issues
+- **Workspace Switcher**: Located in the sidebar for easy switching between workspaces
+- **Main Navigation**: Access datasets, agents, tools, and variables from the primary menu
+- **Settings Access**: Workspace settings, member management, and billing through dedicated pages
+- **Monitoring Dashboard**: Track processing queues and machine performance (paid plans)
 
 ## Next Steps
 
@@ -190,27 +277,27 @@ If you need assistance with workspaces:
     icon="plus"
     href="/guides/workspaces/creating-workspaces"
   >
-    Step-by-step guide to setting up a new workspace
+    Step-by-step guide to setting up a new workspace from scratch
   </Card>
   <Card
-    title="Manage Team Members"
+    title="Managing Team Members"
     icon="users"
     href="/guides/workspaces/managing-members"
   >
-    Learn how to invite and manage team members
+    Learn how to invite colleagues and manage team permissions
   </Card>
   <Card
-    title="Workspace Settings"
+    title="Workspace Settings & Configuration"
     icon="settings"
     href="/guides/workspaces/workspace-settings"
   >
-    Configure your workspace settings and preferences
+    Configure billing, monitoring, and advanced workspace features
   </Card>
   <Card
     title="Understanding Datasets"
     icon="database"
     href="/concepts/datasets"
   >
-    Learn about organizing and managing your data
+    Learn about organizing and working with your data in Radical Whale
   </Card>
 </CardGroup>

@@ -27,53 +27,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "User Guide",
-        "groups": [
-          {
-            "group": "Workspaces",
-            "pages": [
-              "guides/workspaces/creating-workspaces",
-              "guides/workspaces/managing-members",
-              "guides/workspaces/workspace-settings"
-            ]
-          },
-          {
-            "group": "Datasets",
-            "pages": [
-              "guides/datasets/creating-datasets",
-              "guides/datasets/importing-data",
-              "guides/datasets/managing-columns",
-              "guides/datasets/working-with-records"
-            ]
-          },
-          {
-            "group": "Agents",
-            "pages": [
-              "guides/agents/creating-agents",
-              "guides/agents/configuring-models",
-              "guides/agents/managing-tools",
-              "guides/agents/testing-agents"
-            ]
-          },
-          {
-            "group": "Tools",
-            "pages": [
-              "guides/tools/creating-tools",
-              "guides/tools/api-tools",
-              "guides/tools/tool-configuration",
-              "guides/tools/testing-tools"
-            ]
-          },
-          {
-            "group": "Variables",
-            "pages": [
-              "guides/variables/managing-variables",
-              "guides/variables/api-keys"
-            ]
-          }
-        ]
       }
     ],
     "global": {

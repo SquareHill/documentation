@@ -1,299 +1,314 @@
 ---
 title: "Datasets"
-description: "Understanding datasets, columns, and data management in Radical Whale"
+description: "Understanding datasets, records, and intelligent data management in Radical Whale"
 ---
 
 ## What are Datasets?
 
-Datasets are structured collections of data organized into rows (records) and columns. They serve as the foundation for all data processing activities in Radical Whale. Think of a dataset as a smart spreadsheet where each column can be processed by AI agents to extract, enrich, or analyze information.
+Datasets are the heart of your data work in Radical Whale - intelligent data tables where each row becomes a rich record and every cell can be enhanced by AI. Unlike traditional spreadsheets, datasets combine structured data storage with powerful AI-driven research and analysis capabilities.
 
-[Screenshot Placeholder: Dataset overview with sample data]
+Think of a dataset as a smart table where your raw data comes alive through AI agents that can research, validate, enrich, and analyze information automatically.
 
-## Key Components
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset.png"
+  alt="Dataset interface showing intelligent data tables with AI processing"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset.png"
+  alt="Dataset interface showing intelligent data tables with AI processing"
+/>
 
-### Datasets
+## Core Components
 
-The main container that holds all your structured data. Each dataset has:
+### Datasets - The Foundation
 
-- **Name and Description**: For easy identification and organization
-- **Metadata**: Creation date, owner, and modification history
-- **Column Definitions**: Structured schema defining data types and processing rules
-- **Records**: The actual data rows containing your information
+Each dataset is a complete data environment containing:
 
-### Columns
+- **Smart Structure**: Flexible schema that adapts to your data needs
+- **Metadata**: Rich information about creation, ownership, and usage
+- **Real-time Processing**: Live updates as AI agents work on your data
+- **Team Collaboration**: Share and work together on data analysis
+- **Export Capabilities**: Download processed data as CSV for external use
 
-Define the structure and processing rules for your data:
+### Records - Individual Data Points
 
-- **Data Types**: Text, numbers, dates, URLs, and more
-- **AI Instructions**: How agents should process this column
-- **Agent Assignment**: Which AI agent processes this column
-- **Validation Rules**: Constraints and formatting requirements
+Each row in your dataset becomes a detailed record featuring:
 
-### Records
+- **Expandable Views**: Click any record to see detailed information
+- **Rich Pages**: Create documentation, notes, and analysis for specific records
+- **Processing History**: Track how data has changed over time
+- **Cross-references**: Link related records and build relationships
 
-Individual rows of data within your dataset:
+### Columns - Intelligent Fields
 
-- **Unique IDs**: Every record has a unique identifier
-- **Cell Values**: The actual data for each column
-- **Processing Status**: Track which cells have been processed
-- **Metadata**: Creation and modification timestamps
+Columns define both structure and behavior:
 
-### Cells
+- **Data Types**: Short text, long text, numbers, dates, URLs, checkboxes, and selects
+- **AI Instructions**: Guide agents on how to research and fill data
+- **Agent Assignment**: Assign specific AI agents to process column data
+- **Validation Rules**: Ensure data quality and consistency
+- **Batch Operations**: Process all cells in a column simultaneously
 
-The intersection of records and columns:
+### Cells - The Data Points
 
-- **Value**: The actual data content
-- **Status**: Pending, processing, completed, or error
-- **Evidence**: AI reasoning and sources for processed values
-- **History**: Track changes and processing iterations
+Individual data cells offer sophisticated capabilities:
 
-[Screenshot Placeholder: Dataset structure diagram showing relationships]
+- **Smart Values**: Store structured data with metadata
+- **AI Evidence**: See reasoning and sources behind AI-generated values
+- **Processing Status**: Track queued, processing, completed, and error states
+- **Manual Override**: Edit values directly when needed
+- **Source Tracking**: View original sources for research-based data
 
-## Data Types
+## Supported Data Types
 
-Radical Whale supports various data types for different use cases:
+Radical Whale provides specialized data types optimized for different use cases:
 
-### Text Types
+### Text Fields
 
-- **Short Text**: Names, titles, brief descriptions (up to 255 characters)
-- **Long Text**: Detailed descriptions, content, documents
-- **Rich Text**: Formatted content with styling and structure
-
-### Numeric Types
-
-- **Integer**: Whole numbers for counts, IDs, quantities
-- **Decimal**: Precise numbers for financial data, measurements
-- **Currency**: Monetary values with proper formatting
-
-### Date & Time
-
-- **Date**: Calendar dates (YYYY-MM-DD)
-- **DateTime**: Date and time with timezone support
-- **Time**: Time values without date component
-
-### Web & Communication
-
-- **URL**: Web addresses with validation
-- **Email**: Email addresses with format validation
-- **Phone**: Phone numbers with international format support
+- **Short Text**: Names, titles, categories, and brief descriptions (ideal for labels and identifiers)
+- **Long Text**: Detailed descriptions, content, articles, and documentation
+- **URLs**: Web addresses with automatic validation and link preview
 
 ### Structured Data
 
-- **JSON**: Complex nested data structures
-- **Array**: Lists of values
-- **Boolean**: True/false values
+- **Numbers**: Integers and decimals for quantities, measurements, and calculations
+- **Dates**: Calendar dates with intelligent parsing and formatting
+- **Checkboxes**: Boolean true/false values for status flags and binary choices
 
-[Screenshot Placeholder: Column type selection interface]
+### Selection Fields
 
-## Data Import
+- **Select**: Single-choice dropdown lists with predefined options
+- **Multiselect**: Multiple-choice selections for tags, categories, and classifications
 
-### CSV Import
+Each data type includes built-in validation, optimized display formatting, and specialized AI processing capabilities.
 
-The most common way to import data:
+## Creating and Managing Datasets
 
-1. **File Upload**: Drag and drop or select CSV files
-2. **Column Mapping**: Map CSV headers to dataset columns
-3. **Data Validation**: Check for formatting issues and errors
-4. **Import Preview**: Review data before final import
-5. **Processing**: Automatic import with progress tracking
+### Dataset Creation
 
-### Supported Formats
+Creating a new dataset is simple and flexible:
 
-- **CSV**: Comma-separated values (most common)
-- **TSV**: Tab-separated values
-- **Excel**: .xlsx files (coming soon)
-- **JSON**: Structured data import (coming soon)
+1. **Name Your Dataset**: Start with a descriptive name that indicates the data's purpose
+2. **Add Description**: Provide context about what the dataset contains and its intended use
+3. **Import or Build**: Either upload existing data or start building from scratch
+4. **Configure Columns**: Set up data types, AI instructions, and processing rules
 
-### Import Options
+### Data Import
 
-- **Header Detection**: Automatically detect column headers
-- **Data Type Inference**: Smart detection of column types
-- **Encoding Support**: UTF-8, ASCII, and other character encodings
-- **Large File Support**: Handle files with millions of records
+Currently supports CSV file upload with intelligent features:
 
-[Screenshot Placeholder: CSV import wizard interface]
+- **Automatic Header Detection**: Recognizes column names from your CSV files
+- **Data Type Inference**: Smart detection of appropriate column types
+- **Flexible Encoding**: Supports various character encodings and formats
+- **Large File Handling**: Process datasets with thousands of records efficiently
 
-## Column Configuration
+### Column Management
 
-### Basic Settings
+Build and modify your dataset structure:
 
-- **Column Name**: Display name for the column
-- **Data Type**: Choose from supported types
-- **Required**: Whether the column must have values
-- **Default Value**: Value to use when cell is empty
+**Adding Columns**
 
-### AI Processing
+- Choose from 8 specialized data types
+- Assign AI agents for automatic data processing
+- Set up validation rules and formatting
+- Create dropdown options for select fields
 
-- **Agent Assignment**: Select which agent processes this column
-- **Processing Instructions**: Detailed instructions for the AI agent
-- **Input Dependencies**: Which other columns the agent should consider
-- **Output Format**: How results should be structured
+**Column Configuration**
 
-### Validation Rules
+- **Processing Instructions**: Guide AI agents on how to research and fill data
+- **Agent Assignment**: Select which AI agent processes each column
+- **Data Validation**: Set rules for data quality and consistency
+- **Dependencies**: Define relationships between columns
 
-- **Format Constraints**: Pattern matching, length limits
-- **Value Ranges**: Minimum/maximum values for numbers
-- **Allowed Values**: Dropdown lists, predefined options
-- **Custom Validation**: Advanced rules using expressions
+## AI-Powered Data Processing
 
-[Screenshot Placeholder: Column configuration form]
+### Intelligent Cell Processing
 
-## Processing Workflow
+Each cell can be enhanced by AI agents through sophisticated processing:
 
-### Manual Processing
+**Individual Cell Research**
 
-- **Select Records**: Choose specific rows to process
-- **Column Selection**: Pick which columns to process
-- **Batch Processing**: Process multiple records simultaneously
-- **Real-time Monitoring**: Watch progress as it happens
+- Click the research button on any cell to queue it for AI processing
+- Agents analyze context from other columns to inform their research
+- Results include the found value plus supporting evidence and sources
 
-### Automated Processing
+**Batch Processing Operations**
 
-- **Trigger Rules**: Process new records automatically
-- **Scheduled Processing**: Run processing jobs at specific times
-- **Conditional Processing**: Process based on data conditions
-- **Dependency Management**: Process columns in correct order
+- **Run All**: Process every cell in a column regardless of existing values
+- **Run Missing**: Only process empty or incomplete cells
+- **Queue Selected Rows**: Process multiple records simultaneously
+- **Background Processing**: All AI work happens asynchronously without blocking your workflow
 
-### Processing Status
+### Processing States
 
-Each cell can be in one of several states:
+Every cell maintains a clear status throughout its lifecycle:
 
-- **Pending**: Waiting to be processed
-- **Processing**: Currently being analyzed by an agent
+- **Empty**: No value or processing attempt yet
+- **Queued**: Waiting in line for AI processing
+- **Processing**: Currently being analyzed by an AI agent
 - **Completed**: Successfully processed with results
-- **Error**: Processing failed with error details
-- **Skipped**: Intentionally not processed
+- **Error**: Processing failed with detailed error information
 
-[Screenshot Placeholder: Processing status dashboard]
+### Evidence and Sources
 
-## Data Quality & Validation
+AI-processed cells provide rich context:
 
-### Automatic Validation
-
-- **Data Type Checking**: Ensure values match column types
-- **Format Validation**: Check URLs, emails, phone numbers
-- **Range Validation**: Verify numeric values are within bounds
-- **Required Field Checking**: Ensure mandatory fields have values
-
-### Quality Metrics
-
-- **Completeness**: Percentage of non-empty cells
-- **Validity**: Percentage passing validation rules
-- **Consistency**: Data consistency across related columns
-- **Processing Coverage**: Percentage of cells processed by agents
-
-### Error Handling
-
-- **Validation Errors**: Clear messages about data issues
-- **Processing Errors**: Detailed agent processing failures
-- **Bulk Corrections**: Fix common issues across multiple records
-- **Manual Review**: Flag suspicious results for human review
-
-[Screenshot Placeholder: Data quality dashboard]
+- **Reasoning**: Detailed explanation of how the AI arrived at the result
+- **Source Links**: Original web sources with favicons and previews
+- **Confidence Indicators**: Understanding of result reliability
+- **Manual Override**: Edit AI results when needed
 
 ## Advanced Features
 
-### Column Relationships
+### Record Detail Views
 
-- **Dependencies**: Define which columns depend on others
-- **Calculated Fields**: Columns computed from other columns
-- **Lookups**: Reference data from other datasets
-- **Aggregations**: Summary calculations across records
+Each record can be explored in depth:
 
-### Data Versioning
+- **Field Overview**: See all column values and their processing status
+- **Evidence Browser**: Review AI reasoning and sources for each field
+- **Search and Filter**: Find specific information within a record
+- **Related Data**: View connections and relationships
 
-- **Change Tracking**: Track all modifications to data
-- **Rollback**: Revert to previous versions
-- **Audit Trail**: See who changed what and when
-- **Backup**: Automatic backups of important datasets
+### Notebook Pages
 
-### Export & Sharing
+Create rich documentation for individual records:
 
-- **CSV Export**: Download processed data
-- **API Access**: Programmatic access to dataset data
-- **Sharing Links**: Share read-only views with external users
-- **Integration**: Connect with external systems and tools
+- **Markdown Editor**: Write detailed analysis, notes, and observations
+- **Multiple Pages**: Organize different aspects of analysis separately
+- **Version History**: Track changes and updates over time
+- **Team Collaboration**: Share insights and findings with workspace members
+
+### Filtering and Search
+
+Find exactly what you need:
+
+- **Column-based Filters**: Filter data by any column type
+- **Text Search**: Search across all fields simultaneously
+- **Status Filters**: Show only processed, pending, or error records
+- **Creator Filters**: View datasets by specific team members
+
+### Data Management
+
+Keep your datasets organized and efficient:
+
+- **Favorites**: Mark frequently used datasets for quick access
+- **Bulk Operations**: Delete, process, or update multiple records at once
+- **Export**: Download complete datasets or filtered views as CSV
+- **Sorting**: Order data by any column with persistent sort preferences
+
+## Chat-Driven Data Operations
+
+### Conversational Data Management
+
+Work with your datasets through natural conversation:
+
+- **Agent Chat Interface**: Talk directly with AI agents about your data
+- **Column Creation**: Describe new fields and let AI create appropriate columns
+- **Record Addition**: Add new data through conversational prompts
+- **Data Analysis**: Ask questions about patterns and insights in your data
+
+The chat interface understands your dataset context and can perform complex operations through simple conversations, making data management more intuitive and accessible.
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset_chat.png"
+  alt="Dataset chat interface showing conversational data management"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset_chat.png"
+  alt="Dataset chat interface showing conversational data management"
+/>
 
 ## Best Practices
 
 ### Dataset Organization
 
-- **Descriptive Names**: Use clear, descriptive dataset names
-- **Consistent Structure**: Maintain consistent column naming
-- **Documentation**: Add descriptions to datasets and columns
-- **Size Management**: Keep datasets focused and manageable
+- **Purpose-Driven Names**: Use clear, descriptive dataset names that indicate content and intent
+- **Consistent Structure**: Maintain similar column patterns across related datasets
+- **Rich Descriptions**: Add detailed descriptions explaining dataset purpose and contents
+- **Regular Maintenance**: Review and clean up unused or outdated datasets
+
+### Column Design
+
+- **Appropriate Data Types**: Choose the right data type for each field's intended use
+- **Clear Instructions**: Write specific, actionable instructions for AI agents
+- **Logical Dependencies**: Structure columns so agents can build on previous work
+- **Validation Rules**: Set up appropriate validation for data quality
+
+### Processing Efficiency
+
+- **Batch Operations**: Process multiple cells together rather than individually
+- **Strategic Agent Assignment**: Match the right AI agent to each column's requirements
+- **Monitor Processing**: Keep an eye on processing queues and status
+- **Resource Management**: Balance processing speed with cost considerations
 
 ### Data Quality
 
-- **Validation Rules**: Set up appropriate validation for each column
-- **Regular Reviews**: Periodically review data quality metrics
-- **Error Monitoring**: Set up alerts for processing errors
-- **Test Data**: Use sample data to test processing rules
-
-### Performance Optimization
-
-- **Batch Processing**: Process multiple records together
-- **Selective Processing**: Only process necessary columns
-- **Index Strategy**: Plan for efficient data access patterns
-- **Archive Old Data**: Move historical data to reduce active dataset size
+- **Regular Reviews**: Periodically review AI-generated results for accuracy
+- **Source Verification**: Check sources and evidence for important data points
+- **Manual Validation**: Spot-check critical information manually
+- **Error Resolution**: Address processing errors promptly and systematically
 
 ## Common Use Cases
 
-### Document Processing
+### Business Intelligence & Research
 
-- **Invoice Data**: Extract structured data from invoices
-- **Resume Parsing**: Pull relevant information from resumes
-- **Contract Analysis**: Identify key terms and clauses
-- **Form Processing**: Convert form data to structured records
+- **Company Analysis**: Research companies with automatic data enrichment for industry, size, funding, and key personnel
+- **Market Research**: Analyze competitors, market trends, and industry dynamics
+- **Lead Qualification**: Enrich prospect lists with contact information, company details, and firmographic data
+- **Investment Research**: Track startups, funding rounds, and market opportunities
 
-### Data Enrichment
+### Content & Knowledge Management
 
-- **Company Information**: Enhance company records with additional data
-- **Contact Enrichment**: Add missing contact information
-- **Product Categorization**: Classify products automatically
-- **Sentiment Analysis**: Analyze text for sentiment and tone
+- **Document Processing**: Extract key information from contracts, invoices, and legal documents
+- **Content Categorization**: Automatically classify articles, blog posts, and media content
+- **Research Organization**: Structure academic papers, studies, and reference materials
+- **Knowledge Base Building**: Create searchable repositories of institutional knowledge
 
-### Research & Analysis
+### Customer & People Data
 
-- **Survey Data**: Process and analyze survey responses
-- **Social Media**: Analyze social media posts and engagement
-- **Market Research**: Gather and structure market data
-- **Academic Research**: Process research data and citations
+- **Contact Enrichment**: Complete missing information for contacts and leads
+- **Social Media Analysis**: Analyze posts, engagement, and sentiment across platforms
+- **Survey Processing**: Structure and analyze survey responses and feedback
+- **Personnel Research**: Background research and verification for hiring and partnerships
 
-[Screenshot Placeholder: Use case examples gallery]
+### Operations & Compliance
 
-## Troubleshooting
+- **Vendor Management**: Track supplier information, contracts, and performance metrics
+- **Compliance Monitoring**: Organize regulatory data and track compliance status
+- **Process Documentation**: Structure operational procedures and best practices
+- **Quality Assurance**: Track issues, resolutions, and improvement initiatives
 
-### Common Issues
+Each use case benefits from the combination of structured data storage, AI-powered research, and collaborative analysis tools that make Radical Whale unique.
 
-**Import Failures**
+## Getting Started with Datasets
 
-- Check file encoding (use UTF-8)
-- Verify CSV format and delimiters
-- Ensure file size is within limits
-- Check for special characters or formatting issues
+### Your First Dataset
 
-**Processing Errors**
+1. **Create a New Dataset**: Start from the datasets page with a clear, descriptive name
+2. **Import Your Data**: Upload a CSV file or start building columns manually
+3. **Configure Columns**: Set appropriate data types and processing instructions
+4. **Assign AI Agents**: Choose agents for columns that need research or processing
+5. **Process Your Data**: Use batch operations or process individual cells as needed
 
-- Review agent configuration and prompts
-- Check column instructions for clarity
-- Verify API keys and tool configurations
-- Monitor rate limits and quotas
+### Navigation and Interface
 
-**Performance Issues**
+- **Dataset List**: View, search, and filter all datasets in your workspace
+- **Grid View**: Interactive table showing all your data with real-time updates
+- **Record Details**: Deep dive into individual records with full context
+- **Chat Interface**: Conversational access to your data and processing capabilities
 
-- Reduce batch sizes for large datasets
-- Optimize column dependencies
-- Consider archiving old data
-- Review processing complexity
+### Key Features to Explore
 
-### Getting Help
+- **Intelligent Processing**: Let AI agents research and enrich your data automatically
+- **Rich Documentation**: Create notebook pages for detailed analysis and notes
+- **Team Collaboration**: Share insights and work together on data analysis
+- **Export Capabilities**: Download your enhanced data for use in other tools
 
-For dataset-related issues:
-
-- Check our [dataset management guides](/guides/datasets/creating-datasets)
-- Review [data import documentation](/guides/datasets/importing-data)
-- Contact [support](mailto:support@radicalwhale.com) for complex issues
+Datasets in Radical Whale transform static data into dynamic, intelligent information that grows and improves over time through AI collaboration.
 
 ## Next Steps
 
@@ -303,23 +318,23 @@ For dataset-related issues:
     icon="plus"
     href="/guides/datasets/creating-datasets"
   >
-    Step-by-step guide to creating and configuring datasets
+    Step-by-step guide to creating and setting up your first intelligent dataset
   </Card>
   <Card
-    title="Import Data"
+    title="Import and Structure Data"
     icon="upload"
     href="/guides/datasets/importing-data"
   >
-    Learn how to import CSV files and other data sources
+    Learn how to import CSV files and configure columns for AI processing
   </Card>
   <Card
-    title="Configure Columns"
-    icon="columns"
-    href="/guides/datasets/managing-columns"
+    title="Working with Records"
+    icon="table"
+    href="/guides/datasets/working-with-records"
   >
-    Set up column types, validation, and processing rules
+    Explore individual records, create notebook pages, and manage data
   </Card>
-  <Card title="Understand Agents" icon="robot" href="/concepts/agents">
-    Learn how AI agents process your dataset columns
+  <Card title="Understanding AI Agents" icon="robot" href="/concepts/agents">
+    Learn how AI agents process and enhance your dataset information
   </Card>
 </CardGroup>

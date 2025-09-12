@@ -1,321 +1,515 @@
 ---
 title: "Agents"
-description: "Understanding AI agents and how they process your data"
+description: "Understanding AI agents and how they enhance your data workflows"
 ---
 
 ## What are Agents?
 
-Agents are AI-powered processors that analyze, extract, and enrich data in your datasets. Each agent is configured with a specific AI model (like GPT-4), custom instructions, and access to tools that enable it to perform complex data processing tasks automatically.
+Agents are intelligent AI assistants that bring your data to life in Radical Whale. Each agent combines a powerful language model (like GPT-4 or Claude) with custom instructions, specialized tools, and secure API access to automatically process data, conduct research, and engage in meaningful conversations about your work.
 
-[Screenshot Placeholder: Agent configuration interface]
+Unlike simple chatbots, agents in Radical Whale are workspace-aware, tool-enabled, and designed for both data processing and interactive collaboration.
 
-## Key Components
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/agents.png"
+  alt="Agents interface showing AI assistant configuration and management"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/agents.png"
+  alt="Agents interface showing AI assistant configuration and management"
+/>
+
+## Core Components
 
 ### AI Model Configuration
 
-- **Model Selection**: Choose from GPT-4, GPT-4 Mini, Claude, and other supported models
-- **API Key Management**: Secure handling of model provider credentials
-- **Model Parameters**: Temperature, max tokens, and other model-specific settings
-- **Performance Optimization**: Automatic optimization for speed and accuracy
+Every agent is powered by a language model:
+
+- **Model Selection**: Choose from GPT-4o, Claude Opus, and other cutting-edge models
+- **API Key Management**: Secure credential storage through workspace variables
+- **Performance Optimization**: Automatic optimization for speed, accuracy, and cost
+- **Multi-Provider Support**: OpenAI, Anthropic, and future model providers
 
 ### System Prompts
 
-- **Role Definition**: Define the agent's personality and expertise
-- **Task Instructions**: Specific guidance on how to process data
-- **Output Format**: Structure requirements for agent responses
-- **Context Guidelines**: How to use available information and tools
+The system prompt defines your agent's personality, expertise, and behavior:
 
-### Tool Access
+- **Role Definition**: Establish the agent as a research analyst, data processor, or domain expert
+- **Task Instructions**: Specific guidance on how to approach problems and process information
+- **Output Requirements**: Structure and format specifications for responses
+- **Behavioral Guidelines**: How to handle uncertainty, cite sources, and maintain consistency
 
-- **Custom Tools**: API integrations for external data sources
-- **Built-in Functions**: Standard processing capabilities
-- **Tool Orchestration**: How agents coordinate multiple tool usage
-- **Permission Management**: Control which tools agents can access
+### Tool Integration
 
-[Screenshot Placeholder: Agent architecture diagram]
+Agents can be equipped with specialized tools to extend their capabilities beyond their base AI model, enabling access to external APIs, databases, and custom integrations for enhanced data processing and research.
 
-## Agent Types
+### Chat Interface
 
-### Data Extraction Agents
+Every agent provides an interactive chat experience:
 
-Specialized in pulling structured information from unstructured data:
+- **Real-time Conversations**: Discuss your data, ask questions, and receive insights
+- **Tool Usage Visibility**: See when agents use tools and review their reasoning
+- **Context Awareness**: Agents understand your workspace, datasets, and ongoing projects
+- **Streaming Responses**: Live updates as agents work through complex problems
 
-- **Document Processing**: Extract key fields from PDFs, forms, and documents
-- **Web Scraping**: Gather information from websites and online sources
-- **Image Analysis**: Extract text and data from images and screenshots
-- **Email Processing**: Parse emails for important information
+## How Agents Work
 
-### Enrichment Agents
+### Dataset Processing
 
-Focus on enhancing existing data with additional information:
+Agents can be assigned to specific dataset columns to automatically process data:
 
-- **Company Enrichment**: Add industry, size, and contact information
-- **Contact Enhancement**: Find missing email addresses, phone numbers
-- **Product Classification**: Categorize products and services automatically
-- **Geographic Data**: Add location details, timezone, and regional information
+**Column Assignment**
 
-### Analysis Agents
+- Assign agents to individual columns in your datasets
+- Each column can have its own processing instructions
+- Agents understand context from other columns to inform their work
+- Process data individually or in batches across entire columns
 
-Perform analytical tasks on your data:
+**Processing Workflow**
 
-- **Sentiment Analysis**: Determine emotional tone of text content
-- **Content Classification**: Categorize text into predefined groups
-- **Quality Assessment**: Evaluate data quality and completeness
-- **Pattern Recognition**: Identify trends and patterns in data
+- **Individual Processing**: Click the research button on any cell to queue it for processing
+- **Batch Operations**: Process entire columns with "Run All" or "Run Missing" commands
+- **Background Processing**: All work happens asynchronously without blocking your workflow
+- **Status Tracking**: Monitor queued, processing, completed, and error states in real-time
 
-### Validation Agents
+**Evidence and Sources**
 
-Ensure data quality and accuracy:
+- Agents provide detailed reasoning for their results
+- Source links and references for research-based findings
+- Confidence indicators and uncertainty acknowledgment
+- Manual override capabilities when needed
 
-- **Format Validation**: Check data conforms to expected formats
-- **Completeness Checking**: Identify missing or incomplete information
-- **Consistency Verification**: Ensure data consistency across fields
-- **Duplicate Detection**: Find and flag duplicate records
+### Interactive Chat
 
-[Screenshot Placeholder: Agent type examples]
+Beyond data processing, agents serve as knowledgeable collaborators:
 
-## Configuration
+**Workspace Awareness**
 
-### Basic Settings
+- Understand your datasets, tools, and ongoing projects
+- Access to workspace context for informed conversations
+- Ability to help create new columns, records, and structures
+- Integration with your existing data and workflows
 
-- **Name**: Descriptive name for the agent
-- **Description**: Brief summary of agent's purpose and capabilities
-- **Model**: AI model to use (GPT-4, Claude, etc.)
-- **Status**: Active or inactive state
+**Tool-Enhanced Conversations**
 
-### AI Model Settings
+- Use connected tools during chat conversations
+- Research information, verify facts, and gather current data
+- Transparent tool usage with expandable details
+- Real-time tool execution with status updates
 
-- **API Key Variable**: Reference to stored API credentials
-- **Temperature**: Control randomness in responses (0.0 to 1.0)
-- **Max Tokens**: Maximum response length
-- **Timeout**: Maximum processing time per request
+**Collaborative Features**
 
-### System Prompt Configuration
+- Copy and share conversation results
+- Build on previous interactions and context
+- Help with data analysis, planning, and decision-making
+- Support for both quick questions and deep exploration
+
+## Creating and Configuring Agents
+
+### Basic Information
+
+Start with clear identification:
+
+- **Name**: Descriptive names like "Company Research Agent" or "Document Analyzer"
+- **Description**: Detailed explanation of the agent's purpose and capabilities
+- **Status**: Active or inactive state for workspace management
+
+### Model Configuration
+
+Select and configure the AI model:
+
+**Model Selection**
+Choose from available model providers:
+
+- **OpenAI**: GPT-4o, GPT-4o Mini, GPT-4.1 series, GPT-5 series
+- **Anthropic**: Claude Opus 4.1, Claude Sonnet 4.0, Claude Haiku variants
+- **Future Models**: System designed to support new model releases
+
+**API Key Setup**
+
+- Use workspace variables for secure credential storage
+- Never paste API keys directly into agent configuration
+- Automatic validation of API key functionality
+- Support for multiple API keys across different providers
+
+### System Prompt Engineering
+
+Craft effective instructions for your agent:
+
+**Role Definition**
 
 ```
-You are a professional data analyst specializing in company research.
-When provided with company information, you should:
+You are a professional business research analyst specializing in
+company intelligence and market research.
+```
 
-1. Analyze the company's industry and business model
-2. Identify key products or services
-3. Assess company size and maturity
-4. Provide insights about market position
+**Task Instructions**
 
-Always be factual and cite sources when possible. If information
-is uncertain, clearly indicate the level of confidence.
+```
+When provided with company information, your task is to:
+1. Research and analyze the company's core business
+2. Determine the primary industry and market sector
+3. Estimate company size and maturity level
+4. Identify key products or services offered
+5. Assess market position and competitive landscape
+```
+
+**Output Format**
+
+```
+Provide your analysis in JSON format:
+{
+  "industry": "Primary industry classification",
+  "company_size": "Estimated size (Startup, Small, Medium, Large)",
+  "primary_products": ["List of main products/services"],
+  "confidence_score": 0.85
+}
 ```
 
 ### Tool Selection
 
-- **Available Tools**: List of all workspace tools
-- **Selected Tools**: Tools this agent can use
-- **Tool Permissions**: Access levels for each tool
-- **Usage Guidelines**: How agents should use specific tools
+Enhance agent capabilities with tools:
 
-[Screenshot Placeholder: Agent configuration form]
+- Select relevant tools from your workspace tool library
+- Tools are filtered and searchable by name, type, and description
+- Monitor tool usage and performance in chat conversations
 
-## Processing Workflow
+## Agent Management
 
-### Column Assignment
+### Agent Dashboard
 
-Agents are assigned to specific dataset columns:
+The agents interface provides comprehensive management:
 
-- **One-to-Many**: One agent can process multiple columns
-- **Specialized Assignment**: Different agents for different column types
-- **Dependency Management**: Ensure agents process columns in correct order
-- **Load Balancing**: Distribute work across multiple agent instances
+- **Agent List**: View all agents with status, model, and activity information
+- **Search and Filter**: Find agents by name, model, or creation date
+- **Quick Actions**: Edit, duplicate, test, and chat with agents
+- **Performance Metrics**: Success rates, usage statistics, and processing history
 
-### Processing Pipeline
+### Agent Operations
 
-1. **Input Preparation**: Gather data from assigned columns and dependencies
-2. **Context Building**: Combine data with agent instructions and context
-3. **AI Processing**: Send request to configured AI model
-4. **Tool Integration**: Use available tools for additional data gathering
-5. **Result Processing**: Format and validate agent responses
-6. **Output Storage**: Save results to target columns with metadata
+**Creating Agents**
 
-### Batch Processing
+- Step-by-step creation wizard with validation
+- Real-time preview of configuration
+- Tool selection with capability previews
+- API key validation and testing
 
-- **Parallel Execution**: Process multiple records simultaneously
-- **Rate Limiting**: Respect API rate limits and quotas
-- **Error Handling**: Graceful handling of processing failures
-- **Progress Tracking**: Real-time monitoring of processing status
+**Testing and Validation**
 
-[Screenshot Placeholder: Processing pipeline visualization]
+- Interactive chat interface for testing
+- Tool usage verification in controlled environment
+- Prompt refinement through iterative testing
+- Performance evaluation with sample data
+
+**Editing and Maintenance**
+
+- Update system prompts and tool selections
+- Modify model configurations and API keys
+- Manage agent status and availability
+- Version control for configuration changes
+
+### Team Collaboration
+
+**Shared Agents**
+
+- Agents are available to all workspace members
+- Consistent processing across team workflows
+- Shared context and institutional knowledge
+- Collaborative prompt engineering and refinement
+
+**Access Control**
+
+- Workspace-level agent management
+- Tool permissions and usage controls
+- API key security and access management
+- Usage monitoring and cost tracking
 
 ## Tool Integration
 
-### API Tools
+When chatting with agents, tool usage is transparent and interactive:
 
-Connect agents to external services:
+- **Real-time Tool Execution**: Watch agents select and use appropriate tools with expandable details
+- **Tool Call Transparency**: See exactly which tools agents choose, their parameters, and results
+- **Interactive Management**: Agents explain tool selection and combine multiple tools for comprehensive research
 
-- **REST APIs**: Standard HTTP API integrations
-- **Authentication**: OAuth, API keys, and other auth methods
-- **Data Transformation**: Convert between different data formats
-- **Error Handling**: Robust handling of API failures and rate limits
+## Performance and Monitoring
 
-### Database Tools
+### Real-time Status Tracking
 
-Access external databases:
+Monitor agent activity across your workspace:
 
-- **SQL Queries**: Direct database querying capabilities
-- **Connection Management**: Secure database connection handling
-- **Query Optimization**: Efficient data retrieval strategies
-- **Result Caching**: Cache frequently accessed data
+- **Processing States**: Track queued, processing, completed, and error states
+- **Tool Usage**: Monitor which tools agents use and how frequently
+- **Response Times**: Measure agent performance and processing speed
+- **Success Rates**: Track completion rates and error patterns
 
-### Web Tools
+### Chat History and Context
 
-Web-based data gathering:
+- **Conversation Persistence**: Chat history maintained across sessions
+- **Context Continuity**: Agents remember previous conversations and decisions
+- **Message Management**: Clear conversations, copy responses, and manage history
+- **Tool Call Archive**: Complete record of tool usage and results
 
-- **Web Scraping**: Extract data from web pages
-- **Search APIs**: Integrate with search engines
-- **Social Media**: Access social media platforms
-- **News APIs**: Gather current news and information
+### Cost and Usage Management
 
-[Screenshot Placeholder: Tool integration examples]
+**API Usage Monitoring**
 
-## Performance & Monitoring
+- Track token consumption across different models
+- Monitor API key usage and remaining quotas
+- Cost estimation and budget management
+- Usage alerts and limit notifications
 
-### Performance Metrics
+**Efficiency Optimization**
 
-- **Processing Speed**: Records processed per minute
-- **Success Rate**: Percentage of successful processing attempts
-- **Error Rate**: Frequency and types of processing errors
-- **Cost Tracking**: API usage costs and budget monitoring
-
-### Quality Metrics
-
-- **Accuracy**: How often agent results are correct
-- **Consistency**: Variation in results for similar inputs
-- **Completeness**: Percentage of fields successfully populated
-- **User Satisfaction**: Feedback on agent performance
-
-### Monitoring Dashboard
-
-- **Real-time Status**: Current processing activity
-- **Historical Trends**: Performance over time
-- **Error Analysis**: Detailed error reports and patterns
-- **Usage Analytics**: Resource utilization and optimization opportunities
-
-[Screenshot Placeholder: Agent monitoring dashboard]
+- Model selection based on task complexity
+- Prompt optimization for token efficiency
+- Tool usage optimization for speed and cost
+- Batch processing recommendations
 
 ## Best Practices
 
 ### Prompt Engineering
 
-- **Clear Instructions**: Write specific, unambiguous instructions
-- **Example Outputs**: Provide examples of desired results
-- **Error Handling**: Include instructions for handling edge cases
-- **Iterative Refinement**: Test and refine prompts based on results
+**Clear Role Definition**
+
+- Establish specific expertise and personality
+- Define the agent's scope and limitations
+- Set appropriate tone and communication style
+- Include relevant domain knowledge
+
+**Effective Instructions**
+
+- Use specific, actionable language
+- Provide examples of desired outputs
+- Include error handling guidelines
+- Set clear success criteria
+
+**Output Structure**
+
+- Specify format requirements (JSON, markdown, etc.)
+- Define required fields and data types
+- Include confidence indicators where appropriate
+- Plan for edge cases and uncertainty
+
+### Model Selection
+
+**Task-Appropriate Models**
+
+- Use advanced models (GPT-4o, Claude Opus) for complex reasoning
+- Choose efficient models (GPT-4o Mini) for straightforward tasks
+- Consider cost vs. performance trade-offs
+- Test different models for specific use cases
+
+**Configuration Optimization**
+
+- Monitor token usage and adjust prompts accordingly
+- Use appropriate context window sizes
+- Balance speed and accuracy requirements
+- Regular performance evaluation and adjustment
 
 ### Tool Management
 
-- **Minimal Permissions**: Give agents only necessary tool access
-- **Tool Documentation**: Clearly document tool capabilities and limitations
-- **Fallback Strategies**: Plan for tool failures or unavailability
-- **Performance Monitoring**: Track tool usage and performance
+**Strategic Tool Selection**
 
-### Resource Management
+- Start with essential tools and add gradually
+- Match tools to specific agent purposes
+- Monitor tool usage patterns and effectiveness
 
-- **Cost Optimization**: Monitor and optimize API usage costs
-- **Rate Limit Management**: Respect provider rate limits
-- **Error Recovery**: Implement robust error handling and retry logic
-- **Scalability Planning**: Design for increased processing volumes
+**Security and Reliability**
 
-### Security Considerations
+- Use workspace variables for API keys
+- Monitor tool availability and performance
+- Regular testing of tool integrations
 
-- **API Key Security**: Secure storage and rotation of credentials
-- **Data Privacy**: Ensure agents handle sensitive data appropriately
-- **Access Control**: Limit agent access to necessary resources only
-- **Audit Logging**: Track agent activities for compliance and debugging
+### Team Workflow Integration
+
+**Collaborative Agent Development**
+
+- Share effective prompts and configurations
+- Document agent purposes and use cases
+- Regular review and refinement of agent performance
+- Cross-training on agent capabilities and limitations
 
 ## Advanced Features
 
 ### Multi-Agent Workflows
 
-- **Agent Chaining**: Connect multiple agents in sequence
-- **Parallel Processing**: Run multiple agents simultaneously
-- **Conditional Logic**: Route data based on processing results
-- **Quality Assurance**: Use validation agents to check other agents' work
+**Agent Specialization**
 
-### Custom Models
+- Different agents for different types of data processing
+- Specialized agents for research, analysis, and validation
+- Coordinated workflows across multiple agents
+- Context sharing between related agents
 
-- **Fine-tuned Models**: Use domain-specific trained models
-- **Local Models**: Deploy models within your infrastructure
-- **Model Comparison**: A/B test different models for performance
-- **Hybrid Approaches**: Combine multiple models for optimal results
+**Collaborative Processing**
 
-### Advanced Prompting
+- Agents that build on each other's work
+- Sequential processing with different expertise
+- Parallel processing for comprehensive analysis
+- Quality assurance through multiple agent review
 
-- **Few-shot Learning**: Provide examples within prompts
-- **Chain of Thought**: Guide agents through reasoning steps
-- **Role Playing**: Use specific personas for different tasks
-- **Dynamic Prompts**: Adjust prompts based on data characteristics
+### Conversation-Driven Data Management
 
-[Screenshot Placeholder: Advanced agent configuration]
+**Natural Language Data Operations**
+
+- Create new dataset columns through conversation
+- Add records by describing what you need
+- Modify data structures through chat interface
+- Generate analysis and insights through discussion
+
+**Contextual Understanding**
+
+- Agents understand your workspace structure
+- Reference existing datasets and previous work
+- Suggest improvements and optimizations
+- Learn from patterns in your data and workflows
+
+### Advanced Integrations
+
+**Custom Development**
+
+- MCP protocol support for specialized tools
+- API tool creation for custom integrations
+- External system connectivity and data exchange
+
+**Enterprise Features**
+
+- Workspace-wide agent libraries
+- Standardized agent configurations
+- Usage analytics and cost optimization
 
 ## Common Use Cases
 
-### Document Intelligence
+### Business Intelligence and Research
 
-- **Invoice Processing**: Extract vendor, amount, date, and line items
-- **Contract Analysis**: Identify key terms, dates, and obligations
-- **Resume Parsing**: Pull experience, skills, and contact information
-- **Form Processing**: Digitize paper forms and applications
+**Company Analysis**
 
-### Business Intelligence
+- Research company information, industry classification, and market position
+- Enrich contact lists with missing information and firmographic data
+- Analyze competitive landscapes and market opportunities
+- Track funding rounds, acquisitions, and business developments
 
-- **Lead Qualification**: Score and categorize potential customers
-- **Market Research**: Gather and analyze competitive intelligence
-- **Customer Analysis**: Segment customers based on behavior and data
-- **Risk Assessment**: Evaluate financial and operational risks
+**Market Research**
 
-### Content Processing
+- Gather competitive intelligence and industry trends
+- Analyze customer feedback and sentiment across channels
+- Research new markets and expansion opportunities
+- Monitor news and events affecting your industry
 
-- **Social Media Monitoring**: Analyze mentions and sentiment
-- **Content Categorization**: Organize content by topic and type
-- **Translation Services**: Translate content while preserving meaning
-- **Quality Assurance**: Check content for accuracy and completeness
+### Data Processing and Enhancement
 
-## Troubleshooting
+**Data Enrichment**
 
-### Common Issues
+- Fill missing information in existing datasets
+- Standardize and normalize data formats
+- Cross-reference information from multiple sources
+- Validate and verify data accuracy and completeness
 
-**Agent Not Processing Data**
+**Document Analysis**
 
-- Check agent is active and properly configured
-- Verify API keys are valid and have sufficient quota
-- Review column assignment and dependencies
-- Check for processing errors in the activity log
+- Extract structured information from unstructured documents
+- Analyze contracts, invoices, and legal documents
+- Process survey responses and feedback forms
+- Categorize and tag content automatically
 
-**Poor Quality Results**
+### Customer and Contact Management
 
-- Review and refine system prompts
-- Add more specific instructions or examples
-- Check input data quality and completeness
-- Consider using different AI models or tools
+**Lead Qualification**
 
-**Performance Issues**
+- Score and prioritize potential customers
+- Research prospect companies and decision-makers
+- Gather contact information and engagement history
+- Assess fit and buying intent
 
-- Monitor API rate limits and adjust batch sizes
-- Optimize prompts to reduce token usage
-- Review tool performance and response times
-- Consider load balancing across multiple agents
+**Customer Support Enhancement**
 
-**High Costs**
+- Analyze support tickets and identify patterns
+- Research customer companies for context
+- Generate personalized responses and recommendations
+- Track satisfaction and resolution metrics
 
-- Monitor token usage and optimize prompts
-- Use more efficient models when appropriate
-- Implement caching for repeated operations
-- Set up usage alerts and budget controls
+### Content and Knowledge Management
 
-### Getting Help
+**Research Assistance**
 
-For agent-related issues:
+- Gather information on specific topics or questions
+- Synthesize findings from multiple sources
+- Create summaries and briefing documents
+- Maintain current awareness on industry developments
 
-- Review our [agent creation guides](/guides/agents/creating-agents)
-- Check [model configuration documentation](/guides/agents/configuring-models)
-- Contact [support](mailto:support@radicalwhale.com) for complex issues
+**Knowledge Base Development**
+
+- Process and organize institutional knowledge
+- Create searchable documentation and references
+- Analyze best practices and lessons learned
+- Support decision-making with relevant context
+
+## Getting Started with Agents
+
+### Your First Agent
+
+1. **Navigate to Agents**: Access the agents section from your workspace sidebar
+2. **Create New Agent**: Click "Create Agent" to start the configuration wizard
+3. **Basic Setup**: Provide a name and description that clearly identifies the agent's purpose
+4. **Model Configuration**: Select an appropriate AI model and configure API key access
+5. **System Prompt**: Write clear instructions defining the agent's role and behavior
+6. **Tool Selection**: Choose relevant tools to enhance the agent's capabilities
+7. **Test and Refine**: Use the chat interface to test and improve your agent
+
+### Agent Configuration Tips
+
+**Effective Naming**
+
+- Use descriptive names like "Company Research Agent" or "Document Analyzer"
+- Avoid generic names that don't indicate purpose
+- Include the agent's specialty or domain focus
+
+**Model Selection Guide**
+
+- **GPT-4o**: Best for complex reasoning and analysis tasks
+- **GPT-4o Mini**: Good balance of performance and cost for most tasks
+- **Claude Opus**: Excellent for detailed analysis and nuanced understanding
+- **Specialized Models**: Choose based on your specific requirements
+
+**System Prompt Development**
+
+- Start with a clear role definition
+- Include specific task instructions
+- Specify output format requirements
+- Add guidelines for handling uncertainty
+
+### Integration Workflows
+
+**Dataset Integration**
+
+- Assign agents to specific dataset columns
+- Configure column-specific processing instructions
+- Set up batch processing for efficient data enhancement
+- Monitor processing status and results
+
+**Interactive Usage**
+
+- Use chat interface for exploratory analysis
+- Ask questions about your data and workspace
+- Collaborate on data structure and organization
+- Get insights and recommendations for improvements
+
+### Success Metrics
+
+**Performance Indicators**
+
+- Processing success rates and consistency
+- Response quality and accuracy
+- Tool usage effectiveness
+- User satisfaction and value delivered
+
+**Optimization Opportunities**
+
+- Regular prompt refinement based on results
+- Tool selection optimization for specific tasks
+- Model selection based on performance and cost
+- Workflow integration improvements
 
 ## Next Steps
 
