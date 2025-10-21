@@ -1,0 +1,588 @@
+---
+title: "Using Page Context"
+description: "Master the page context system for powerful AI content generation with reference materials"
+---
+
+## Overview
+
+Page context is one of the most powerful features in Radical Whale - it allows your AI agents to access the full content of other pages as reference material when generating new content. This enables consistent style, template replication, and intelligent content synthesis across your workspace.
+
+Think of it as giving your AI agent a reading list before asking it to write something. The agent can read and understand those pages, then use that knowledge to inform its output.
+
+## How Page Context Works
+
+### The Basic Flow
+
+1. **Invoke AI**: Type `/ai` in any page editor to open the AI prompt
+2. **Select Agent**: Choose which AI agent will generate content
+3. **Attach Pages**: Click to select one or more reference pages
+4. **Write Prompt**: Describe what you want the AI to create
+5. **Generate**: AI reads attached pages and generates informed content
+
+### Behind the Scenes
+
+When you attach pages as context:
+
+- Pages become available as dynamic tools for the AI agent
+- Each page is converted to a structured tool with its full content
+- The AI can "call" these tools to read page content when needed
+- Content is provided to the AI in markdown format
+- AI uses this information to inform its response
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/page-context-flow.png"
+  alt="Visual flow showing how page context works with AI agents"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/page-context-flow.png"
+  alt="Visual flow showing how page context works with AI agents"
+/>
+
+## Selecting Reference Pages
+
+### The Page Selector Interface
+
+When you click "Attach pages" in the AI prompt, you see:
+
+**Workspace Pages**
+
+- All pages created at the workspace level
+- Searchable by title for quick finding
+- Visual icons/emojis for easy identification
+- Select multiple pages for comprehensive context
+
+**Dataset Pages**
+
+- Pages attached to specific dataset records
+- Grouped separately for organization
+- Can mix workspace and dataset pages
+- Context from different sources
+
+### Selection Strategies
+
+**Single Page Reference**
+
+Use one page when you want to:
+
+- Replicate a specific template
+- Follow a particular style guide
+- Reference detailed methodology
+- Base content on one document
+
+**Multiple Page Context**
+
+Attach multiple pages to:
+
+- Synthesize information from various sources
+- Compare and contrast different approaches
+- Build comprehensive understanding
+- Provide diverse examples and context
+
+**Smart Selection Tips**
+
+- More pages = more context but slower generation
+- Keep focused on relevant references only
+- Group related pages together
+- Update selections based on results
+
+## Common Use Cases
+
+### 1. Template Replication
+
+**Scenario**: You have a well-formatted page and want to create similar content
+
+**Setup**:
+
+```
+Attached: "Q3 Product Update Template"
+Prompt: "Create a Q4 product update following this template structure with current Q4 data"
+```
+
+**Result**: AI generates new content that follows the exact structure, formatting, and style of your template while incorporating new information.
+
+**Best Practices**:
+
+- Use clean, well-structured templates
+- Include example content in templates
+- Be explicit about what should change vs. stay the same
+- Review generated content for template adherence
+
+### 2. Style Guide Consistency
+
+**Scenario**: Maintain consistent voice and tone across all documentation
+
+**Setup**:
+
+```
+Attached: "Company Writing Style Guide"
+Prompt: "Write a blog post about our new feature launch, following our style guidelines"
+```
+
+**Result**: Content that matches your brand voice, tone, terminology, and writing conventions.
+
+**Best Practices**:
+
+- Create comprehensive style guides with examples
+- Include do's and don'ts
+- Specify terminology preferences
+- Reference guides consistently
+
+### 3. Information Synthesis
+
+**Scenario**: Combine insights from multiple research pages into one summary
+
+**Setup**:
+
+```
+Attached: "Market Research Notes", "User Interview Findings", "Competitor Analysis"
+Prompt: "Create an executive summary synthesizing the key insights from these research documents"
+```
+
+**Result**: Cohesive summary that draws from all attached sources, highlighting patterns and key findings.
+
+**Best Practices**:
+
+- Ensure source pages are well-organized
+- Look for complementary information
+- Specify what type of synthesis you want
+- Ask for specific insights or themes
+
+### 4. Format Conversion
+
+**Scenario**: Convert content from one format to another while preserving information
+
+**Setup**:
+
+```
+Attached: "Detailed Technical Specification"
+Prompt: "Convert this technical spec into a non-technical executive brief for stakeholders"
+```
+
+**Result**: Simplified version that maintains key information but adjusts language and detail level.
+
+**Best Practices**:
+
+- Be clear about target audience
+- Specify level of detail desired
+- Mention what to emphasize or omit
+- Review for accuracy after conversion
+
+### 5. Multi-Source Analysis
+
+**Scenario**: Analyze and compare information from various pages
+
+**Setup**:
+
+```
+Attached: "Option A Analysis", "Option B Analysis", "Budget Constraints"
+Prompt: "Compare these options considering our budget and provide a recommendation"
+```
+
+**Result**: Comparative analysis that considers all provided context and delivers informed recommendation.
+
+**Best Practices**:
+
+- Include all relevant decision factors
+- Be explicit about decision criteria
+- Ask for specific comparison structure
+- Request reasoning and evidence
+
+## Advanced Techniques
+
+### Layered Context
+
+Build context in layers for sophisticated content generation:
+
+**Foundation Layer**
+
+- Company style guide
+- Brand voice documentation
+- Standard terminology
+
+**Domain Layer**
+
+- Industry knowledge pages
+- Technical specifications
+- Market research
+
+**Specific Context**
+
+- Related project documentation
+- Recent updates or changes
+- Specific data or metrics
+
+**Example**:
+
+```
+Attached:
+  - "Brand Voice Guide" (Foundation)
+  - "Product Technical Specs" (Domain)
+  - "Q4 Metrics Dashboard" (Specific)
+
+Prompt: "Write product launch announcement incorporating our brand voice, technical accuracy, and Q4 performance"
+```
+
+### Progressive Refinement
+
+Use page context iteratively to refine content:
+
+1. **Initial Generation**: Generate content with basic context
+2. **Save as Page**: Save generated content as a new page
+3. **Refine with Context**: Attach the generated page plus refinement guides
+4. **Regenerate**: Ask AI to improve based on additional context
+
+**Example Flow**:
+
+```
+Round 1:
+Attached: "Style Guide"
+Prompt: "Write blog post about new feature"
+→ Save result as "Feature Blog Draft v1"
+
+Round 2:
+Attached: "Feature Blog Draft v1", "Top Performing Blog Posts"
+Prompt: "Enhance this draft by incorporating elements from our best-performing posts"
+→ Improved version with proven engagement patterns
+```
+
+### Context Specialization
+
+Match page context to specific generation needs:
+
+**Creative Content**
+
+- Attach creative briefs, brand stories, successful campaigns
+- Reference emotional tone and narrative style
+- Include visual and sensory descriptions
+
+**Technical Documentation**
+
+- Attach architecture diagrams, API docs, system specs
+- Reference code examples and patterns
+- Include troubleshooting guides
+
+**Business Analysis**
+
+- Attach financial reports, market data, competitor research
+- Reference analytical frameworks
+- Include previous analyses and methodologies
+
+**Educational Content**
+
+- Attach learning objectives, curriculum guides
+- Reference successful lesson plans
+- Include student feedback and assessments
+
+## Best Practices
+
+### Page Preparation
+
+**Optimize Pages for Context Use**
+
+Before using pages as context, ensure they're well-structured:
+
+- **Clear Headings**: Use hierarchy (H1, H2, H3) for structure
+- **Descriptive Content**: Write clearly and completely
+- **Remove Cruft**: Clean up outdated or irrelevant information
+- **Add Examples**: Include concrete examples and illustrations
+- **Update Regularly**: Keep information current and accurate
+
+**Create Reusable Templates**
+
+Build a library of reference pages:
+
+- **Style Guides**: Writing voice, tone, and formatting standards
+- **Templates**: Standard document structures for common needs
+- **Examples**: Best-in-class examples of different content types
+- **Methodologies**: Processes and approaches to follow
+- **Standards**: Technical specifications and requirements
+
+### Prompt Engineering with Context
+
+**Be Explicit About Context Use**
+
+Tell the AI how to use attached pages:
+
+```
+Good: "Using the attached style guide, write a blog post that follows our voice and tone guidelines"
+
+Better: "Reference the 'Voice and Tone' section in the attached style guide to match our conversational-yet-professional style when writing this blog post"
+```
+
+**Specify What to Extract**
+
+Direct attention to relevant parts:
+
+```
+"Focus on the 'Success Metrics' section from the attached research when creating this analysis"
+
+"Use the formatting structure from the template but update all data with current Q4 metrics"
+```
+
+**Combine Context and New Information**
+
+Balance reference material with new inputs:
+
+```
+Attached: "Product Launch Template"
+Prompt: "Use this template to create a launch announcement for our new AI feature. The feature includes: [describe new features]. Target audience is enterprise customers. Key benefits are speed and accuracy."
+```
+
+### Quality Control
+
+**Review Generated Content**
+
+Always review AI-generated content that uses page context:
+
+- **Context Accuracy**: Did AI correctly understand the reference material?
+- **Appropriate Application**: Was context used in the right way?
+- **Completeness**: Are all key points from context incorporated?
+- **Original Additions**: Is new information correctly integrated?
+- **Style Consistency**: Does output match reference style?
+
+**Iterate When Needed**
+
+If results aren't quite right:
+
+- Adjust prompt to be more specific about context use
+- Try different combination of reference pages
+- Add more context or remove irrelevant pages
+- Provide examples of desired output in prompt
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+**Issue: AI doesn't seem to reference attached pages**
+
+Solutions:
+
+- Explicitly mention the pages in your prompt
+- Use phrases like "Based on the attached pages..." or "Following the template..."
+- Verify pages have substantial content (not empty or very short)
+- Check that selected pages are relevant to the task
+
+**Issue: Generated content doesn't match template structure**
+
+Solutions:
+
+- Be more explicit: "Follow the exact section structure from the template"
+- Provide specific guidance on what to keep vs. change
+- Reference specific sections by name
+- Consider breaking into smaller, section-by-section generations
+
+**Issue: AI seems overwhelmed by too much context**
+
+Solutions:
+
+- Reduce number of attached pages to most essential ones
+- Break task into smaller pieces with focused context
+- Summarize pages manually before attaching
+- Use more specific prompts that guide attention
+
+**Issue: Content lacks originality, too similar to reference**
+
+Solutions:
+
+- Adjust prompt to request creative interpretation
+- Ask for synthesis rather than replication
+- Provide new information to incorporate
+- Request specific changes or enhancements
+
+### Performance Optimization
+
+**Balance Context and Speed**
+
+More context = slower generation:
+
+- **Quick Tasks**: Use 1-2 focused pages
+- **Complex Tasks**: Can use 4-6 comprehensive pages
+- **Iterative Work**: Start small, add context as needed
+- **Production**: Optimize context set based on testing
+
+**Monitor Token Usage**
+
+Large pages consume more tokens:
+
+- Keep reference pages concise and focused
+- Remove unnecessary content from pages
+- Consider page length when selecting context
+- Balance comprehensiveness with efficiency
+
+## Examples and Patterns
+
+### Example 1: Product Documentation
+
+**Goal**: Create consistent product documentation across features
+
+**Reference Page Setup**:
+
+```
+Page: "Product Docs Template"
+- Overview section structure
+- Feature description format
+- Screenshot placement guidelines
+- Common terminology
+- Support resources format
+```
+
+**Usage**:
+
+```
+Attached: "Product Docs Template"
+Prompt: "Create product documentation for the new dashboard analytics feature following our standard template. The feature allows users to create custom reports and visualize data trends."
+```
+
+**Result**: Complete documentation that follows established format and style.
+
+### Example 2: Research Report
+
+**Goal**: Synthesize multiple research sources into comprehensive report
+
+**Reference Pages**:
+
+- "User Research Interview Notes"
+- "Analytics Data Summary"
+- "Competitor Feature Analysis"
+- "Report Writing Guidelines"
+
+**Usage**:
+
+```
+Attached: [all four pages above]
+Prompt: "Create a comprehensive research report that synthesizes findings from user interviews, analytics data, and competitor analysis. Follow our report format guidelines. Focus on actionable insights and recommendations."
+```
+
+**Result**: Well-structured report drawing from all sources with synthesized insights.
+
+### Example 3: Marketing Content
+
+**Goal**: Create on-brand marketing materials
+
+**Reference Pages**:
+
+- "Brand Voice and Tone Guide"
+- "Top Performing Blog Posts"
+- "Target Audience Personas"
+- "SEO Keywords and Guidelines"
+
+**Usage**:
+
+```
+Attached: [all four pages above]
+Prompt: "Write a blog post announcing our new enterprise features. Match the voice and style of our top performing posts. Target the enterprise buyer persona. Incorporate our SEO keywords naturally."
+```
+
+**Result**: Marketing content that's on-brand, persona-targeted, and SEO-optimized.
+
+## Integration with Workflows
+
+### Standard Operating Procedures
+
+Build page context into your team's workflows:
+
+**Content Creation Workflow**
+
+1. Create comprehensive style guide page
+2. Save best examples as reference pages
+3. Use these as consistent context for all new content
+4. Update guides based on what works
+
+**Research Documentation**
+
+1. Maintain research methodology pages
+2. Use previous research as templates
+3. Ensure consistency across research projects
+4. Build institutional research knowledge
+
+**Product Development**
+
+1. Keep technical specification templates
+2. Reference architecture decision records
+3. Maintain coding standards and patterns
+4. Ensure consistent technical documentation
+
+### Collaboration Patterns
+
+**Template Library**
+
+Build a shared library of templates:
+
+- Store in dedicated workspace section
+- Tag appropriately for discovery
+- Update based on usage and feedback
+- Share best practices across team
+
+**Knowledge Base**
+
+Create interconnected knowledge:
+
+- Link related pages together
+- Build on previous documentation
+- Reference foundational pages consistently
+- Maintain current, accurate content
+
+**Review Process**
+
+Implement quality control:
+
+- Review AI-generated content with context
+- Verify appropriate context usage
+- Update reference pages based on learnings
+- Share effective patterns with team
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Create Reference Pages"
+    icon="file-plus"
+    href="/guides/pages/creating-pages"
+  >
+    Build your library of reference pages for AI context
+  </Card>
+  <Card
+    title="AI Content Generation"
+    icon="sparkles"
+    href="/guides/pages/ai-content-generation"
+  >
+    Learn more techniques for AI-powered content creation
+  </Card>
+  <Card title="Understanding Pages" icon="book" href="/concepts/pages">
+    Deep dive into the pages concept and capabilities
+  </Card>
+  <Card
+    title="Configuring AI Agents"
+    icon="robot"
+    href="/guides/agents/configuring-models"
+  >
+    Optimize your agents for content generation
+  </Card>
+</CardGroup>
+
+## Pro Tips
+
+### Efficiency Tips
+
+- **Template First**: Create templates before generating content variations
+- **Reuse Context**: Save effective page context combinations
+- **Batch Similar Tasks**: Use same context for similar content generation
+- **Update Regularly**: Keep reference pages current
+
+### Quality Tips
+
+- **Be Specific**: Explicit prompts get better context usage
+- **Review Examples**: Study how AI uses context in different scenarios
+- **Iterate**: Refine both prompts and reference pages based on results
+- **Test Combinations**: Experiment with different page combinations
+
+### Collaboration Tips
+
+- **Share Discoveries**: Document what context combinations work well
+- **Build Together**: Collaborate on reference page creation
+- **Standardize**: Agree on template and style guide usage
+- **Learn Together**: Share successes and challenges with page context
+
+By mastering page context, you unlock a powerful way to create consistent, high-quality content at scale while maintaining your unique voice, style, and standards across all documentation.

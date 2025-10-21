@@ -1,0 +1,607 @@
+---
+title: "Creating Pages"
+description: "Learn how to create and organize workspace and record-level pages"
+---
+
+## Overview
+
+Pages in Radical Whale come in two types: workspace-level pages for general documentation and record-level pages for specific dataset entries. Both offer rich editing capabilities powered by the Tiptap editor with AI integration.
+
+## Creating Workspace Pages
+
+Workspace pages are accessible to all members of your workspace and serve as your team's documentation hub.
+
+### Step-by-Step Creation
+
+1. **Navigate to Pages**
+
+   - Click "Pages" in your workspace sidebar
+   - This opens the pages list view
+
+2. **Start New Page**
+
+   - Click the "Create Page" button
+   - A new page editor opens immediately
+
+3. **Add Title and Icon**
+
+   - Enter a descriptive title in the title field
+   - Click the icon/emoji area to select a visual identifier
+   - Choose from emoji picker or Lucide icon library
+
+4. **Set Initial Status**
+
+   - Select "Draft" for work-in-progress content
+   - Choose "Published" when ready to share
+   - Use "Archived" for historical reference
+
+5. **Add Tags** (Optional)
+
+   - Click "Add tags" to categorize your page
+   - Type tag names or select from existing tags
+   - Tags help with organization and discovery
+
+6. **Start Writing**
+   - Click in the editor area to begin
+   - Content auto-saves as you type
+   - Use markdown or formatting toolbar
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/create-workspace-page.png"
+  alt="Creating a new workspace page with title and icon selection"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/create-workspace-page.png"
+  alt="Creating a new workspace page with title and icon selection"
+/>
+
+## Creating Record Pages
+
+Record pages are attached to specific dataset records and provide contextual documentation for individual data entries.
+
+### From Dataset Record View
+
+1. **Open Record Details**
+
+   - Navigate to any dataset
+   - Click on a record to open its detail view
+
+2. **Access Pages Tab**
+
+   - Click the "Pages" tab in the record detail panel
+   - See any existing pages for this record
+
+3. **Create New Page**
+
+   - Click "Create Page" button
+   - Page is automatically linked to the record
+
+4. **Configure Page**
+
+   - Add title and icon as with workspace pages
+   - Page inherits record context automatically
+   - Start writing with full access to record data
+
+5. **Use Record Context**
+   - AI has access to all record field values
+   - Reference other columns in your content
+   - Generate content informed by record data
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/create-record-page.png"
+  alt="Creating a page attached to a dataset record"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/create-record-page.png"
+  alt="Creating a page attached to a dataset record"
+/>
+
+## Page Configuration
+
+### Title and Identification
+
+**Effective Titles**
+
+- Be specific and descriptive
+- Include key context or date when relevant
+- Use consistent naming patterns
+- Consider searchability
+
+Examples:
+
+- ✅ "Q4 2024 Marketing Strategy"
+- ✅ "API Integration Documentation"
+- ✅ "Customer Interview - Acme Corp"
+- ❌ "Notes"
+- ❌ "Document1"
+- ❌ "Untitled"
+
+**Icon Selection**
+
+Choose between emojis and Lucide icons:
+
+- **Emojis**: Quick, colorful, expressive
+
+  - 📊 for data and analytics
+  - 📝 for documentation
+  - 🎯 for strategy and goals
+  - 🔬 for research
+
+- **Lucide Icons**: Professional, consistent
+  - File icons for documents
+  - Chart icons for reports
+  - Tool icons for guides
+  - Star icons for favorites
+
+### Status Management
+
+**Draft Status**
+
+Use for:
+
+- Work-in-progress content
+- Incomplete documentation
+- Content under review
+- Personal notes not ready to share
+
+**Published Status**
+
+Use for:
+
+- Finalized content
+- Team-shared documentation
+- Official references
+- Complete analyses
+
+**Archived Status**
+
+Use for:
+
+- Historical documentation
+- Outdated but useful reference
+- Completed projects
+- Legacy content
+
+### Tags and Organization
+
+**Tagging Strategy**
+
+Create a consistent taxonomy:
+
+- **By Project**: "project-alpha", "q4-launch"
+- **By Type**: "template", "research", "report"
+- **By Topic**: "marketing", "engineering", "sales"
+- **By Status**: "needs-review", "approved", "outdated"
+
+**Best Practices**
+
+- Use lowercase for consistency
+- Prefer hyphens over spaces
+- Keep tag list manageable
+- Review and consolidate periodically
+- Document tag meanings for team
+
+## Organization Patterns
+
+### Workspace Page Structures
+
+**Documentation Wiki**
+
+```
+📚 Company Wiki
+  ├─ 🏢 About Us
+  ├─ 📋 Processes
+  ├─ 🎯 Strategies
+  └─ 📖 Resources
+```
+
+**Project Documentation**
+
+```
+🚀 Project Alpha
+  ├─ 📝 Project Brief
+  ├─ 🗓️ Timeline
+  ├─ 👥 Team
+  └─ 📊 Status Updates
+```
+
+**Research Library**
+
+```
+🔬 Research
+  ├─ 📋 Interview Notes
+  ├─ 📊 Data Analysis
+  ├─ 🎯 Insights
+  └─ 📈 Reports
+```
+
+### Record Page Patterns
+
+**Company Records**
+
+```
+Company: Acme Corp
+  ├─ 📋 Overview
+  ├─ 🔬 Research Notes
+  ├─ 📊 Analysis
+  └─ 📞 Contact History
+```
+
+**Customer Records**
+
+```
+Customer: Jane Smith
+  ├─ 💬 Conversation Notes
+  ├─ 📦 Order History
+  ├─ 🎯 Preferences
+  └─ 📈 Analytics
+```
+
+## Quick Start Templates
+
+### Meeting Notes Template
+
+```markdown
+# Meeting: [Topic]
+
+**Date**: [Date]
+**Attendees**: [Names]
+
+## Agenda
+
+1. Item 1
+2. Item 2
+3. Item 3
+
+## Discussion
+
+[Notes on discussion]
+
+## Decisions
+
+- [ ] Decision 1
+- [ ] Decision 2
+
+## Action Items
+
+- [ ] @Person - Task 1
+- [ ] @Person - Task 2
+
+## Next Steps
+
+[Follow-up items]
+```
+
+### Research Notes Template
+
+```markdown
+# Research: [Topic]
+
+**Date**: [Date]
+**Researcher**: [Name]
+
+## Objective
+
+[What are we trying to learn?]
+
+## Methodology
+
+[How did we conduct this research?]
+
+## Key Findings
+
+1. Finding 1
+2. Finding 2
+3. Finding 3
+
+## Data & Evidence
+
+[Supporting data and sources]
+
+## Insights
+
+[What does this mean?]
+
+## Recommendations
+
+[What should we do?]
+
+## Next Steps
+
+- [ ] Action 1
+- [ ] Action 2
+```
+
+### Project Brief Template
+
+```markdown
+# Project: [Name]
+
+**Owner**: [Name]
+**Timeline**: [Dates]
+**Status**: 🟢 On Track
+
+## Overview
+
+[Brief description of the project]
+
+## Goals
+
+1. Goal 1
+2. Goal 2
+3. Goal 3
+
+## Success Metrics
+
+- Metric 1: [Target]
+- Metric 2: [Target]
+- Metric 3: [Target]
+
+## Team
+
+| Role | Name   | Responsibility   |
+| ---- | ------ | ---------------- |
+| Lead | [Name] | [Responsibility] |
+| Dev  | [Name] | [Responsibility] |
+
+## Timeline
+
+- **Phase 1**: [Description] - [Dates]
+- **Phase 2**: [Description] - [Dates]
+- **Launch**: [Date]
+
+## Resources
+
+- [Resource 1]
+- [Resource 2]
+
+## Risks & Mitigation
+
+1. Risk 1 → Mitigation strategy
+2. Risk 2 → Mitigation strategy
+```
+
+## Best Practices
+
+### Naming Conventions
+
+**Dates in Titles**
+
+Include dates when relevant:
+
+- "Q4 2024 Board Report"
+- "Weekly Update - 2024-10-21"
+- "Market Research - October 2024"
+
+**Project Prefixes**
+
+Use consistent prefixes:
+
+- "[Project Alpha] Technical Design"
+- "[Marketing] Campaign Brief"
+- "[Sales] Territory Analysis"
+
+**Version Indicators**
+
+Show version in title when needed:
+
+- "API Documentation v2.0"
+- "Style Guide - Updated 2024"
+- "Process Doc (Latest)"
+
+### Content Organization
+
+**Start with Structure**
+
+Begin with clear headings:
+
+```markdown
+# Main Title
+
+## Section 1
+
+### Subsection 1.1
+
+### Subsection 1.2
+
+## Section 2
+
+### Subsection 2.1
+```
+
+**Use Lists Effectively**
+
+- Bullet points for unordered items
+- Numbered lists for sequences
+- Task lists for action items
+- Nested lists for hierarchy
+
+**Include Visual Breaks**
+
+Use horizontal rules to separate major sections:
+
+```markdown
+## Section 1
+
+Content here...
+
+---
+
+## Section 2
+
+Content here...
+```
+
+### Collaboration Guidelines
+
+**Clear Ownership**
+
+- Include author name or team
+- Specify point of contact
+- Note last updated date
+- Indicate review status
+
+**Regular Updates**
+
+- Update content as information changes
+- Add dates to major revisions
+- Archive outdated pages
+- Link to newer versions
+
+**Accessible Writing**
+
+- Use clear, simple language
+- Define acronyms and jargon
+- Include context and background
+- Provide links to related pages
+
+## Common Use Cases
+
+### 1. Team Documentation
+
+**Purpose**: Create shared knowledge base
+
+**Setup**:
+
+- Create workspace pages for different topics
+- Use consistent naming and tagging
+- Organize with hierarchical structure
+- Link related pages together
+
+**Maintenance**:
+
+- Regular review cycles
+- Update as processes change
+- Archive old procedures
+- Onboard new members with documentation
+
+### 2. Project Management
+
+**Purpose**: Track project information and progress
+
+**Setup**:
+
+- Create project hub page with links
+- Sub-pages for different aspects
+- Use task lists for action items
+- Regular status updates
+
+**Updates**:
+
+- Weekly progress updates
+- Link to related resources
+- Track decisions and changes
+- Document lessons learned
+
+### 3. Research and Analysis
+
+**Purpose**: Document research findings
+
+**Setup**:
+
+- Create page for each research initiative
+- Use record pages for specific cases
+- Link to data sources
+- Include methodology notes
+
+**Structure**:
+
+- Clear research questions
+- Methodology documentation
+- Findings and evidence
+- Insights and recommendations
+
+### 4. Customer Documentation
+
+**Purpose**: Track customer interactions and information
+
+**Setup**:
+
+- Create record pages for customer records
+- Document conversations and notes
+- Track preferences and history
+- Link to related datasets
+
+**Usage**:
+
+- Add notes after each interaction
+- Update contact information
+- Track purchase history
+- Document support issues
+
+## Tips for Success
+
+### Starting Out
+
+**Begin Simple**
+
+- Start with basic text content
+- Add formatting gradually
+- Experiment with features
+- Build complexity over time
+
+**Create Templates**
+
+- Develop standard formats
+- Save as reference pages
+- Use for consistency
+- Share with team
+
+**Iterate and Improve**
+
+- Review what works
+- Refine naming conventions
+- Update organizational structure
+- Gather team feedback
+
+### Scaling Up
+
+**Build Systems**
+
+- Establish naming standards
+- Create tagging taxonomy
+- Define status workflows
+- Document best practices
+
+**Enable Discovery**
+
+- Use descriptive titles
+- Apply consistent tags
+- Link related content
+- Maintain page index
+
+**Maintain Quality**
+
+- Regular content reviews
+- Archive old pages
+- Update outdated information
+- Consolidate duplicate content
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="AI Content Generation"
+    icon="sparkles"
+    href="/guides/pages/ai-content-generation"
+  >
+    Learn how to use AI to generate page content
+  </Card>
+  <Card
+    title="Using Page Context"
+    icon="link"
+    href="/guides/pages/using-page-context"
+  >
+    Master attaching pages as AI context
+  </Card>
+  <Card title="Rich Text Editing" icon="pen" href="/guides/pages/editing-pages">
+    Explore all editor features and formatting options
+  </Card>
+  <Card title="Understanding Pages" icon="book" href="/concepts/pages">
+    Deep dive into pages concepts and capabilities
+  </Card>
+</CardGroup>
