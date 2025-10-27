@@ -34,47 +34,35 @@ After logging in, you'll be guided through workspace creation:
 
 ## Step 2: Set Up Your API Keys
 
-Before creating agents, you'll need to configure your API keys:
+Before creating agents, configure your API keys:
 
-1. Navigate to **Variables** section in the sidebar
+1. Navigate to **Variables** in the sidebar
 2. Click **Create Variable**
 3. Set up an OpenAI API key:
-   - **Name**: `OpenAI API Key`
-   - **Type**: `Secret`
+   - **Name**: `OPENAI_API_KEY`
+   - **Key**: `OPENAI_API_KEY`
    - **Value**: Your OpenAI API key (starts with `sk-`)
 
-[Screenshot Placeholder: Variables management page]
-
 <Warning>
-  Keep your API keys secure! They're encrypted and only visible to workspace
-  members who need them.
+  API keys are encrypted and stored securely. Only workspace members with
+  appropriate permissions can access them.
 </Warning>
 
 ## Step 3: Import Your First Dataset
 
-Now let's get some data into Radical Whale:
+Tablestudio works with structured data. Let's import a sample dataset:
 
-1. Click **Datasets** in the sidebar
-2. Click **Create Dataset**
-3. Fill in the details:
-   - **Name**: "Sample Customer Data"
-   - **Description**: "Customer information for processing"
-4. Click **Create Dataset**
-5. On the dataset page, click **Import CSV**
-6. Upload your CSV file or use our sample customer data
+1. Go to **Datasets** in the sidebar
+2. Click **Import Dataset**
+3. Choose **CSV Upload** and upload a file with customer data (name, email, company, status)
+4. Click **Import**
 
-[Screenshot Placeholder: Dataset creation and import flow]
+The dataset appears in your list. Click it to view records in a spreadsheet-style table. Each record can be expanded for a detailed view.
 
-### Sample Data
-
-If you don't have a CSV file ready, you can use this sample data:
-
-```csv
-company_name,website,description
-Acme Corp,https://acme.com,Manufacturing company
-TechStart Inc,https://techstart.io,Software startup
-Global Solutions,https://globalsolutions.net,Consulting firm
-```
+<Info>
+  Tablestudio supports CSV, Excel, and API imports. For details, see [Importing
+  Data](/guides/datasets/importing-data).
+</Info>
 
 ## Step 4: Configure Dataset Columns
 
@@ -89,88 +77,103 @@ After importing, you'll see your data organized into columns. Let's configure th
 
 [Screenshot Placeholder: Column configuration modal]
 
-## Step 5: Create Your First AI Agent
+## Step 4: Create Your First Agent
 
-Now let's create an AI agent to process your data:
+Agents are AI assistants that can read and write data in your datasets:
 
 1. Click **Agents** in the sidebar
 2. Click **Create Agent**
 3. Configure your agent:
+   - **Name**: "Customer Enrichment Agent"
+   - **Model**: Select "GPT-4" (from OpenAI)
+   - **Prompt**: "You enrich customer records by researching companies and adding insights"
+4. Click **Create**
 
-   - **Name**: "Company Enrichment Agent"
-   - **Description**: "Enriches company data with additional information"
-   - **Model**: Select "gpt-4" (or your preferred model)
-   - **API Key Variable**: Select the OpenAI key you created earlier
-   - **System Prompt**:
-     ```
-     You are a company research assistant. When given company information, you provide accurate and helpful insights about the company, including industry, size, and other relevant details. Always be factual and concise.
-     ```
+Your agent is ready to process data. Next, we'll connect it to your dataset.
 
-4. Click **Create Agent**
+<Tip>
+  Agents can use models from OpenAI, Anthropic, and other providers. Configure
+  them in [Configuring Models](/guides/agents/configuring-models).
+</Tip>
 
-[Screenshot Placeholder: Agent creation form]
+## Step 5: Chat with Your Agent
+
+Test your agent by starting a conversation:
+
+1. Open your agent's page
+2. Click the **Chat** tab
+3. Ask: "What customers do we have in the dataset?"
+4. The agent will use its tools to read your data and respond
+
+The agent can answer questions, analyze patterns, and update records based on your instructions.
+
+<Info>
+  Agents remember conversation context and can perform multi-step tasks. See
+  [Chatting with Agents](/guides/agents/chatting-with-agents).
+</Info>
 
 ## Step 6: Assign Agent to Dataset Column
 
-Let's connect your agent to a dataset column:
+Connect your agent to a dataset column for automatic processing:
 
-1. Go back to your **Datasets** and open your sample dataset
-2. Click on a column you want to process (e.g., "description")
-3. Click **Edit Column**
-4. In the **Agent** dropdown, select "Company Enrichment Agent"
-5. Add instructions like: "Analyze this company description and provide insights about their industry and business model"
+1. Go to your customer dataset
+2. Click **Add Column**
+3. Name it "Enrichment"
+4. In the **Agent** dropdown, select your agent
+5. Add instructions: "Research this company and provide industry insights"
 6. Click **Save**
 
-[Screenshot Placeholder: Assigning agent to column]
+Now your agent can process records automatically.
 
 ## Step 7: Process Your Data
 
-Now for the exciting part - let your AI agent process the data:
+Run your agent on dataset records:
 
-1. Select the rows you want to process (or select all)
-2. Click **Process Selected** or the process button for your column
-3. Watch as your agent analyzes each company and provides insights
+1. Select rows to process
+2. Click **Process Selected**
+3. Watch as the agent researches each company and adds insights to the Enrichment column
 
-[Screenshot Placeholder: Data processing in action]
+Processing happens in real-time with progress shown for each record.
 
 <Info>
-  Processing time depends on the amount of data and the complexity of your
-  agent's tasks. You can monitor progress in real-time.
+  You can process records manually, on a schedule, or via API. See [Working with
+  Records](/guides/datasets/working-with-records).
 </Info>
 
 ## Step 8: Review Results
 
-Once processing is complete:
+After processing completes:
 
-1. View the enriched data in your dataset
-2. Export the results as CSV if needed
-3. Review the agent's work and adjust prompts if necessary
+1. View enriched data in your dataset
+2. Click any record to see the detailed view with all enrichment data
+3. Export results as CSV if needed
 
-[Screenshot Placeholder: Processed dataset with results]
+The agent's outputs are stored in the Enrichment column for each processed record.
 
-## Step 9: Create Your First Page
+## Step 9: Create a Page
 
-Now let's document your work using Pages:
+Document your work with Pages:
 
 1. Click **Pages** in the sidebar
 2. Click **Create Page**
-3. Add a title like "Company Research Notes"
-4. Choose an emoji icon (e.g., 📊 or 📝)
-5. Start writing in the editor
+3. Add a title: "Company Research Notes"
+4. Choose an emoji icon (📊)
+5. Write in the rich text editor
 
-### Try AI Content Generation
+### Use AI Content Generation
 
-1. Type `/ai` at the beginning of a line
-2. Select your "Company Enrichment Agent"
-3. Optionally attach reference pages for context
-4. Write a prompt like: "Write a summary of our company research findings"
-5. Click **Generate** and watch AI create content for you
+Generate content with your agent:
 
-[Screenshot Placeholder: Page editor with AI generation]
+1. Type `/ai` in the editor
+2. Select your agent
+3. Enter a prompt: "Summarize the company research findings"
+4. Click **Generate**
+
+The agent creates content using data from your workspace as context.
 
 <Tip>
-  Pages can be created at the workspace level for general documentation, or
-  attached to specific dataset records for contextual notes and analysis.
+  Pages can be workspace-level documentation or attached to specific records.
+  See [Creating Pages](/guides/pages/creating-pages).
 </Tip>
 
 ## Next Steps
@@ -179,35 +182,49 @@ Congratulations! You've successfully:
 
 - ✅ Created a workspace
 - ✅ Set up API keys
-- ✅ Imported data
+- ✅ Imported a dataset
 - ✅ Created an AI agent
 - ✅ Processed data with AI
-- ✅ Created documentation pages
+- ✅ Created a documentation page
 
-### What's Next?
+### Explore More
 
 <CardGroup cols={2}>
+  <Card title="Core Concepts" icon="book" href="/concepts/workspaces">
+    Understand workspaces, datasets, agents, tools, and pages
+  </Card>
+  <Card
+    title="Managing Tools"
+    icon="wrench"
+    href="/guides/agents/managing-tools"
+  >
+    Give agents access to web search, code execution, and MCP tools
+  </Card>
   <Card
     title="AI Content Generation"
     icon="sparkles"
     href="/guides/pages/ai-content-generation"
   >
-    Master AI-powered page content generation
+    Generate documentation with AI using workspace context
   </Card>
   <Card
-    title="Using Page Context"
-    icon="link"
-    href="/guides/pages/using-page-context"
+    title="Working with Records"
+    icon="table"
+    href="/guides/datasets/working-with-records"
   >
-    Attach pages as context for consistent AI output
+    Filter, search, and manage dataset records effectively
   </Card>
-  <Card
-    title="Create Custom Tools"
-    icon="wrench"
-    href="/guides/tools/creating-tools"
-  >
-    Extend your agents with custom API integrations
-  </Card>
+</CardGroup>
+
+### Need Help?
+
+- **Documentation**: Explore our [user guides](/guides/workspaces/creating-workspaces)
+- **Support**: Email us at support@tablestudio.ai
+
+---
+
+Ready to build something amazing? Start creating in your workspace!
+
   <Card
     title="Advanced Agent Configuration"
     icon="brain"
