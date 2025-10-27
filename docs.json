@@ -41,6 +41,10 @@
             ]
           },
           {
+            "group": "Tools",
+            "pages": ["guides/tools/mcp-tools"]
+          },
+          {
             "group": "Agents",
             "pages": [
               "guides/agents/creating-agents",

@@ -27,14 +27,14 @@ Tools are configurable integrations that allow agents to:
 
 ## Available Tool Types
 
-Radical Whale currently supports API tools with additional types coming soon:
+Radical Whale supports multiple tool types to extend agent capabilities:
 
 <CardGroup cols={2}>
   <Card title="API Request Tools" icon="globe" href="/guides/tools/api-tools">
     Configure HTTP requests to external APIs and web services
   </Card>
   <Card title="MCP Servers" icon="server" href="/guides/tools/mcp-tools">
-    Connect to Model Context Protocol servers (Coming Soon)
+    Connect to Model Context Protocol servers for dynamic tool discovery
   </Card>
 </CardGroup>
 
@@ -110,12 +110,17 @@ Once created, tools can be assigned to agents in your workspace:
 3. **Dynamic Usage**: Agents choose when and how to use tools based on context
 4. **Response Integration**: Tool results are seamlessly incorporated into agent responses
 
-## Coming Soon: MCP Servers
+## MCP Server Tools
 
-Model Context Protocol (MCP) server support will enable:
+Model Context Protocol (MCP) server support enables:
 
+- **Dynamic Tool Discovery**: Connect to an MCP server and automatically discover all available tools
 - **Server Connections**: Direct integration with MCP-compatible services
-- **Standardized Protocols**: Consistent interfaces across different tools
-- **Enhanced Capabilities**: Access to specialized MCP tool libraries
+- **Standardized Protocols**: Consistent interfaces across different tool providers
+- **Popular Integrations**: Access Tavily Search, GitHub, Slack, Google Drive, and more
+
+Learn more about [MCP Server Tools](/guides/tools/mcp-tools).
+
+## Why Use Tools?
 
 Tools transform your agents from simple chatbots into powerful assistants capable of accessing real-time data, performing actions, and integrating with your entire technology stack.

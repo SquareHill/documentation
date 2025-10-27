@@ -1,0 +1,253 @@
+# MCP Server Tools - Quick Start Guide
+
+## What are MCP Server Tools?
+
+MCP (Model Context Protocol) Server Tools allow Radical Whale agents to connect to external MCP servers and use their tools dynamically. Instead of manually configuring each tool, you simply point to an MCP server URL, and all available tools are automatically discovered and made available to your agents.
+
+## Creating an MCP Server Tool
+
+### Via API
+
+```bash
+POST /api/v1/tools
+Content-Type: application/json
+
+{
+  "workspace_id": "your-workspace-id",
+  "name": "Tavily Search Server",
+  "description": "Web search capabilities via Tavily MCP server",
+  "tool_type": "mcp",
+  "configuration": {
+    "server_url": "https://mcp.tavily.com"
+  }
+}
+```
+
+### Via UI (when placeholder is implemented)
+
+1. Navigate to Tools section
+2. Click "New Tool"
+3. Select "MCP Server" as tool type
+4. Enter:
+   - **Name**: A friendly name for the tool (e.g., "Tavily Search")
+   - **Description**: What this MCP server provides
+   - **Server URL**: The MCP server endpoint (e.g., `https://mcp.tavily.com`)
+4. Click "Create Tool"
+
+## Supported URL Formats
+
+### HTTPS + SSE (Recommended)
+```
+https://mcp-server.example.com
+http://localhost:3000  (development only)
+```
+
+### WebSocket
+```
+wss://mcp-server.example.com
+ws://localhost:3000  (development only)
+```
+
+## Assigning MCP Tools to Agents
+
+MCP tools are assigned to agents the same way as API tools:
+
+1. Navigate to your agent configuration
+2. In the "Tools" section, select the MCP server tool
+3. Save the agent
+
+When the agent runs, it will:
+1. Connect to the MCP server
+2. Discover all available tools
+3. Make them available for the LLM to use
+4. Clean up the connection when done
+
+## Example MCP Servers
+
+### Tavily Search (Hypothetical)
+```json
+{
+  "name": "Tavily Web Search",
+  "tool_type": "mcp",
+  "configuration": {
+    "server_url": "https://mcp.tavily.com"
+  }
+}
+```
+
+### Custom Internal MCP Server
+```json
+{
+  "name": "Company Knowledge Base",
+  "tool_type": "mcp",
+  "configuration": {
+    "server_url": "https://mcp.yourcompany.internal"
+  }
+}
+```
+
+### Local Development Server
+```json
+{
+  "name": "Local Test Server",
+  "tool_type": "mcp",
+  "configuration": {
+    "server_url": "http://localhost:8080"
+  }
+}
+```
+
+## How It Works
+
+1. **Tool Creation**: You create an MCP tool with a server URL
+2. **Agent Assignment**: You assign the MCP tool to one or more agents
+3. **Job Execution**: When a job runs for that agent:
+   - Worker connects to the MCP server
+   - Calls `ListTools` to discover available tools
+   - Dynamically creates agent-sdk-go tools for each MCP tool
+   - Makes all tools available to the LLM
+4. **Tool Invocation**: When the LLM decides to use a tool:
+   - The worker calls `CallTool` on the MCP server
+   - The result is formatted and returned to the LLM
+5. **Cleanup**: When the job completes, the MCP connection is closed
+
+## Multiple Tools from One Server
+
+A single MCP server can expose multiple tools. For example, a "Search Tools" MCP server might expose:
+- `web_search`: Search the web
+- `news_search`: Search news articles
+- `image_search`: Search for images
+
+All three tools become available when you add the MCP server to your agent!
+
+## Best Practices
+
+### 1. Use Descriptive Names
+```json
+{
+  "name": "Tavily Web Search Tools",  // ✅ Good - describes what the server provides
+  "name": "MCP Server 1"              // ❌ Bad - not descriptive
+}
+```
+
+### 2. Use HTTPS in Production
+```json
+{
+  "server_url": "https://mcp.example.com"  // ✅ Secure
+  "server_url": "http://mcp.example.com"   // ⚠️ Insecure for production
+}
+```
+
+### 3. Test with a Simple Agent First
+Before using an MCP server in production:
+1. Create a test agent
+2. Assign only the MCP server tool
+3. Run a test job to verify connection
+4. Check logs for successful tool discovery
+
+### 4. Monitor Logs
+The worker logs provide valuable information:
+- `"Connecting to MCP server: <url>"` - Connection started
+- `"Created N tools from MCP server <url>"` - Tools discovered
+- `"Closing MCP client for <url>"` - Connection cleaned up
+- Errors will be logged with full context
+
+## Troubleshooting
+
+### "Failed to connect to MCP server"
+- **Check URL**: Ensure the URL is correct and accessible
+- **Check network**: Verify the worker can reach the server
+- **Check scheme**: Use `https://` for HTTPS+SSE or `wss://` for WebSocket
+
+### "No tools discovered from MCP server"
+- **Check server**: The MCP server might not be implementing `ListTools` correctly
+- **Check logs**: Look for JSON-RPC errors in the worker logs
+- **Test manually**: Try connecting to the server with an MCP client tool
+
+### "MCP tool error: ..."
+- **Check tool parameters**: The LLM might be passing invalid parameters
+- **Check server logs**: The MCP server should log why it failed
+- **Check tool schema**: Ensure the MCP server's tool schema is valid
+
+### Connection Issues
+```
+Failed to connect: dial tcp: lookup mcp.example.com: no such host
+```
+- DNS issue - check that the domain resolves
+- Firewall blocking - ensure outbound connections are allowed
+
+## Security Considerations
+
+### URL Validation
+The system automatically validates MCP server URLs:
+- Must use http, https, ws, or wss scheme
+- Must include a valid host
+- Warns if using localhost/internal IPs
+
+### Connection Isolation
+- Each job gets its own MCP connection
+- Connections are not shared between jobs
+- Full cleanup on job completion/failure
+
+### Network Security
+- In production, only allow HTTPS MCP servers
+- Consider using a firewall allowlist for MCP server domains
+- Monitor for unusual MCP server usage patterns
+
+## Advanced: Running Your Own MCP Server
+
+To create your own MCP server that works with Radical Whale:
+
+1. Implement the MCP protocol (see official MCP documentation)
+2. Expose via HTTPS or WebSocket
+3. Implement required methods:
+   - `initialize`: Return server capabilities
+   - `tools/list`: Return available tools with schemas
+   - `tools/call`: Execute tool and return results
+4. Add your server URL to Radical Whale as an MCP tool
+
+Example Go MCP server:
+```go
+import "github.com/modelcontextprotocol/go-sdk/mcp"
+
+impl := &mcp.Implementation{
+    Tools: []mcp.ToolDefinition{{
+        Name: "my_tool",
+        Description: "Does something useful",
+        InputSchema: /* JSON Schema */,
+    }},
+    ToolHandlers: map[string]mcp.ToolHandler{
+        "my_tool": myToolHandler,
+    },
+}
+
+server := mcp.NewServer(impl, &mcp.ServerOptions{})
+// Serve via HTTP or WebSocket...
+```
+
+## FAQ
+
+**Q: Can I use multiple MCP servers with one agent?**
+A: Yes! Assign multiple MCP server tools to your agent, and all tools from all servers will be available.
+
+**Q: How many tools can an MCP server expose?**
+A: There's no hard limit, but keep it reasonable (< 50 tools) for LLM context window considerations.
+
+**Q: Are MCP connections persistent?**
+A: No, connections are created per-job and cleaned up when the job completes.
+
+**Q: Can I use public MCP servers?**
+A: Yes, as long as they're accessible from your worker and don't require authentication (auth support coming soon).
+
+**Q: What happens if an MCP server is down?**
+A: The job will fail with an error indicating the MCP server could not be reached.
+
+**Q: Can I cache MCP tool definitions?**
+A: Not currently, but this is planned for future enhancement.
+
+## Next Steps
+
+- Check out `/docs/MCP_INTEGRATION.md` for technical details
+- Browse the official MCP documentation at https://modelcontextprotocol.io
+- Explore public MCP servers and add them to your workspace
+- Create your own MCP server for custom integrations
