@@ -57,7 +57,7 @@
           },
           {
             "group": "Tools",
-            "pages": ["guides/tools/api-tools", "guides/tools/mcp-tools"]
+            "pages": ["guides/tools/rest-api", "guides/tools/mcp-tools"]
           },
           {
             "group": "Pages",

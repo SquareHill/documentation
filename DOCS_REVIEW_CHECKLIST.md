@@ -69,7 +69,7 @@ Use this checklist to review and streamline documentation files.
 
 ### Tools Guides
 
-- [ ] `guides/tools/api-tools.mdx`
+- [ ] `guides/tools/rest-api.mdx`
 - [ ] `guides/tools/mcp-tools.mdx` ✅ **COMPLETED**
 
 ### Pages Guides

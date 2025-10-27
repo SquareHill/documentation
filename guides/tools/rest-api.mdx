@@ -1,0 +1,229 @@
+---
+title: "REST API Tools"
+description: "Configure HTTP requests to external APIs and web services"
+---
+
+## Overview
+
+REST API Tools allow your agents to interact with any HTTP API endpoint. Configure the request method, URL, headers, parameters, and body to integrate with external services and data sources.
+
+## Why Use REST API Tools?
+
+**Universal Integration**: Connect to any REST API—weather services, databases, CRMs, payment processors, or custom internal APIs.
+
+**Custom Configuration**: Full control over HTTP methods, headers, authentication, query parameters, and request bodies.
+
+**Schema-Driven**: Define input schemas using JSON Schema to validate parameters and enable intelligent agent usage.
+
+## Creating a REST API Tool
+
+### 1. Start Creation
+
+- Click **Tools** in the sidebar → **New Tool** → Select **REST API**
+
+### 2. Basic Configuration
+
+**Tool Name**: Descriptive name for the API endpoint (e.g., "Weather Lookup", "Search Products")
+
+**Description**: What the tool does and when agents should use it. Be specific to help agents choose the right tool.
+
+```plaintext
+Searches for products in the inventory database by name, category, or SKU
+```
+
+### 3. HTTP Configuration
+
+**Method**: Choose the HTTP method:
+- `GET` - Retrieve data
+- `POST` - Create or submit data
+- `PUT` - Update data
+- `DELETE` - Remove data
+- `PATCH` - Partial update
+
+**URL**: The API endpoint with optional variable substitution:
+
+```plaintext
+https://api.example.com/v1/search?q={{search_query}}&limit={{max_results}}
+```
+
+### 4. Headers
+
+Add HTTP headers for authentication, content type, or custom headers:
+
+```plaintext
+Authorization: Bearer {{api_token}}
+Content-Type: application/json
+X-Custom-Header: value
+```
+
+<Tip>
+  Store sensitive values like API keys as variables in your workspace settings
+  for security.
+</Tip>
+
+### 5. Request Body
+
+For POST, PUT, and PATCH requests, configure the JSON request body:
+
+```json
+{
+  "query": "{{search_query}}",
+  "filters": {
+    "category": "{{category}}",
+    "in_stock": true
+  },
+  "limit": {{max_results}}
+}
+```
+
+### 6. Input Schema
+
+Define the tool's inputs using JSON Schema. This validates parameters and helps agents understand what data to provide:
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "search_query": {
+      "type": "string",
+      "description": "The search term to look for"
+    },
+    "category": {
+      "type": "string",
+      "description": "Filter by category",
+      "enum": ["electronics", "clothing", "books"]
+    },
+    "max_results": {
+      "type": "integer",
+      "description": "Maximum number of results to return",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 100
+    }
+  },
+  "required": ["search_query"]
+}
+```
+
+**Schema Features**:
+- `type`: Data type (string, integer, number, boolean, object, array)
+- `description`: Helps agents understand the parameter
+- `enum`: Restrict to specific values
+- `default`: Default value if not provided
+- `minimum`/`maximum`: Numeric constraints
+- `required`: List of required parameters
+
+## Variable Substitution
+
+Use `{{variable_name}}` syntax to reference schema properties:
+
+**In URLs**:
+```plaintext
+https://api.weather.com/forecast?city={{city}}&units={{units}}
+```
+
+**In Headers**:
+```plaintext
+Authorization: Bearer {{api_key}}
+```
+
+**In Request Body**:
+```json
+{
+  "user_id": "{{user_id}}",
+  "action": "{{action}}"
+}
+```
+
+## Testing Your Tool
+
+Before saving, test your API tool:
+
+1. **Schema Validation**: Enter sample data to verify your schema
+2. **API Test**: Click **Test API** to send a real request
+3. **Response Preview**: View the API response to ensure it works correctly
+4. **Error Debugging**: Check error messages if the request fails
+
+<Note>
+  Testing is highly recommended to catch configuration issues before assigning
+  the tool to agents.
+</Note>
+
+## Authentication Patterns
+
+### Bearer Token
+```plaintext
+Authorization: Bearer {{api_token}}
+```
+
+### Basic Auth
+```plaintext
+Authorization: Basic {{base64_credentials}}
+```
+
+### API Key in Header
+```plaintext
+X-API-Key: {{api_key}}
+```
+
+### API Key in Query Parameter
+```plaintext
+https://api.example.com/data?api_key={{api_key}}&query={{query}}
+```
+
+## Best Practices
+
+**Clear Descriptions**: Help agents understand when and how to use the tool
+
+**Validate Inputs**: Use comprehensive JSON Schema with constraints and defaults
+
+**Test Thoroughly**: Test with various inputs before deployment
+
+**Secure Credentials**: Use workspace variables for API keys, never hardcode them
+
+**Error Handling**: Consider API rate limits and error responses
+
+**Descriptive Names**: Use clear tool names like "Search Inventory" not "API 1"
+
+## Common Use Cases
+
+**Data Retrieval**: Fetch weather, stock prices, user information
+
+**Search Operations**: Search products, documents, or databases
+
+**Data Creation**: Create records, submit forms, or send notifications
+
+**External Actions**: Trigger workflows, send emails, or update systems
+
+**Real-Time Information**: Get current data that changes frequently
+
+## Troubleshooting
+
+**Connection Failed**: Verify URL is correct and accessible, check network/firewall settings
+
+**Authentication Errors**: Confirm API key/token is valid and properly formatted
+
+**Schema Validation Failed**: Check required fields and data types match your schema
+
+**Invalid Response**: Verify API returns expected format, check API documentation
+
+**Rate Limiting**: Consider API rate limits and add delays if needed
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Assign Tools to Agents"
+    icon="link"
+    href="/guides/agents/managing-tools"
+  >
+    Configure agent tool access
+  </Card>
+  <Card
+    title="Test Your Agents"
+    icon="flask"
+    href="/guides/agents/testing-agents"
+  >
+    Test agents with your new tools
+  </Card>
+</CardGroup>
