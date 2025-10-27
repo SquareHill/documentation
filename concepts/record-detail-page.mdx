@@ -1,18 +1,79 @@
 ---
 title: "Record Detail Page"
-description: "Deep dive into individual records with rich notebook pages and AI-powered documentation"
+description: "Individual record views with rich notebook documentation and AI assistance"
 ---
-
-The Record Detail page provides a comprehensive view of individual dataset records, combining structured data visualization with powerful notebook-style documentation capabilities. Each record becomes a canvas for rich analysis, notes, and AI-generated insights.
 
 ## Overview
 
-When you click on any record in your dataset, you enter a dedicated workspace that offers two complementary views:
+The Record Detail page provides comprehensive views of individual dataset records, combining structured data visualization with notebook-style documentation capabilities.
 
-- **Properties Tab**: Structured view of all field values with evidence and sources
-- **Notebook Tab**: Rich text editor for creating documentation pages with AI assistance
+**Two views**:
 
-This dual approach allows you to see both the raw data and create meaningful documentation around specific records.
+- **Properties Tab**: Structured field values with evidence and sources
+- **Notebook Tab**: Rich text editor for creating documentation with AI assistance
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/record_details.png"
+  alt="Record detail page showing structured data with evidence and sources"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/record_details.png"
+  alt="Record detail page showing structured data with evidence and sources"
+/>
+
+## Properties View
+
+**Field data display**: Column names with data type indicators, processed data with formatting, AI reasoning behind generated values, source indicators with favicons.
+
+**Interactive features**: Search fields by name or content, automatic formatting, click sources for detailed attribution, processing status indicators.
+
+**AI evidence**: Detailed reasoning, source links with previews, confidence indicators, processing history timeline.
+
+## Notebook Interface
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/record_notebook.png"
+  alt="Record notebook interface showing rich text editor with AI assistance"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/record_notebook.png"
+  alt="Record notebook interface showing rich text editor with AI assistance"
+/>
+
+**Rich editor** (Tiptap): Rich formatting (bold, italic, code), structured content (headings, lists, blockquotes), tables with full editing, links, task lists, syntax-highlighted code blocks, images, horizontal rules.
+
+**Slash commands**: Type `/` for paragraphs, headings (`/heading1-3`), lists (`/bulletlist`, `/orderedlist`), tasks (`/taskitem`), blockquotes, code blocks, tables, horizontal rules, AI generation (`/ai`).
+
+**AI integration**: Context awareness (understands current record), agent selection, real-time streaming, tool integration for research, generates contextual analysis and insights.
+
+## AI Content Generation
+
+**Capabilities**: Analysis reports from record data, research summaries with external information, data insights and patterns, action plans and recommendations, comparison tables with other records.
+
+**Tool integration**: Web search for current information, API calls to external services, data validation from multiple sources, enrichment with missing context.
+
+## Use Cases
+
+**Research**: Company analysis with market position research, contact profiling with interaction history, meeting summaries, relationship intelligence.
+
+**Data quality**: Document validation issues and corrections, track source verification, note manual overrides, maintain audit trails.
+
+**Processing history**: Record AI decisions and rationale, document interventions, track agent performance, build institutional knowledge.
+
+## Getting Started
+
+1. Navigate to any dataset record
+2. Click "Notebook" tab → "New Page"
+3. Add title and emoji
+4. Start writing with formatting and AI
+5. Type `/ai` to generate content with record context
+6. Edit and refine generated content
+
+Record pages transform individual data points into rich, documented insights that grow more valuable over time through collaborative analysis.
 
 <img
   className="block dark:hidden rounded-lg border shadow-sm"
@@ -141,64 +202,13 @@ When you select `/ai` or use the AI command:
 - **Data Validation**: Verify information against multiple sources
 - **Enrichment**: Add missing context and related information
 
-## Use Cases
-
-### Research Documentation
-
-**Company Analysis**
-
-- Document findings about companies in your dataset
-- Research market position, competitors, and recent news
-- Generate AI-powered analysis combining multiple data sources
-- Create structured reports with recommendations
-
-**Contact Profiling**
-
-- Build detailed profiles of important contacts
-- Track interaction history and preferences
-- Generate meeting summaries and follow-up actions
-- Maintain relationship intelligence over time
-
-### Data Quality Notes
-
-**Field Validation**
-
-- Document data quality issues and corrections needed
-- Track source verification and confidence levels
-- Note manual overrides and reasons for changes
-- Maintain audit trails for important decisions
-
-**Processing History**
-
-- Record AI processing decisions and rationale
-- Document manual interventions and improvements
-- Track performance of different AI agents and models
-- Build institutional knowledge about data patterns
-
 ## Getting Started
 
-### Creating Your First Page
+1. Navigate to any dataset record
+2. Click "Notebook" tab → "New Page"
+3. Add title and emoji
+4. Start writing with formatting and AI
+5. Type `/ai` to generate content with record context
+6. Edit and refine generated content
 
-1. Navigate to any record in your dataset
-2. Click the "Notebook" tab
-3. Click "New Page" to create your first notebook page
-4. Add a title and emoji for easy identification
-5. Start writing with rich formatting and AI assistance
-
-### AI-Assisted Writing
-
-1. Type `/ai` to open the AI prompt
-2. Describe what you want the AI to write
-3. Select an appropriate agent for the task
-4. Watch as content streams in real-time
-5. Edit and refine the generated content as needed
-
-### Building Research Pages
-
-1. Start with record field data as context
-2. Use AI to research external information
-3. Combine structured data with narrative analysis
-4. Create actionable insights and recommendations
-5. Tag and organize for future reference
-
-The Record Detail page transforms individual data points into rich, documented insights that grow more valuable over time. By combining structured data display with powerful documentation capabilities, every record becomes an opportunity for deeper understanding and collaborative analysis.
+Record pages transform individual data points into rich, documented insights that grow more valuable over time through collaborative analysis.

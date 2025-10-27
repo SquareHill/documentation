@@ -1,566 +1,100 @@
 ---
 title: "AI Content Generation"
-description: "Learn how to use AI agents to generate, enhance, and refine page content"
+description: "Use AI agents to generate and enhance page content"
 ---
-
-## Overview
-
-AI content generation transforms how you create documentation in Radical Whale. Instead of starting with a blank page, you can use AI agents to draft, enhance, and refine content while maintaining your style and standards.
-
-The AI integration is built directly into the page editor through slash commands, making it seamlessly available whenever you're writing.
 
 ## Getting Started
 
-### The AI Slash Command
+Type `/ai` in any page to open the AI prompt interface.
 
-Type `/` at the beginning of any line to see available commands:
+**Steps**:
 
-<img
-  className="block dark:hidden rounded-lg border shadow-sm"
-  src="/images/screenshots/slash-command-menu.png"
-  alt="Slash command menu showing AI and formatting options"
-/>
-<img
-  className="hidden dark:block rounded-lg border shadow-sm"
-  src="/images/screenshots/slash-command-menu.png"
-  alt="Slash command menu showing AI and formatting options"
-/>
+1. Select your agent from dropdown
+2. Attach pages (optional) for reference context
+3. Write your prompt describing what you want
+4. Click "Generate" or press ⌘/Ctrl+Enter
+5. Watch content stream in real-time
+6. Review and edit the generated content
 
-**Available Commands**:
+## Writing Prompts
 
-- `/ai` - AI content generation
-- `/h1`, `/h2`, `/h3` - Headings
-- `/bullet`, `/numbered` - Lists
-- `/todo` - Task lists
-- `/code` - Code blocks
-- `/table` - Tables
-- `/image` - Images
-- `/divider` - Horizontal rules
+Be specific with all key elements:
 
-### Invoking AI
+✅ **Good**: "Write a 500-word developer blog post explaining our new API rate limiting feature. Include Python code examples and target intermediate developers."
 
-1. **Type `/ai`** at the start of a new line
-2. **AI prompt appears** with configuration options
-3. **Select your agent** from dropdown
-4. **Attach pages** (optional) for reference context
-5. **Write your prompt** describing what you want
-6. **Click "Generate"** or press ⌘/Ctrl+Enter
-7. **Watch content stream** in real-time
-8. **Review and edit** the generated content
+❌ **Too vague**: "Write about the API"
 
-<img
-  className="block dark:hidden rounded-lg border shadow-sm"
-  src="/images/screenshots/ai-prompt-interface.png"
-  alt="AI prompt interface with agent selection and page context"
-/>
-<img
-  className="hidden dark:block rounded-lg border shadow-sm"
-  src="/images/screenshots/ai-prompt-interface.png"
-  alt="AI prompt interface with agent selection and page context"
-/>
+**Include**: Content type, topic, audience, style/tone, length, format.
 
-## The AI Prompt Interface
+## Page Context
 
-### Agent Selection
+Attach reference pages to inform generation. Click "Attach pages" to select workspace or dataset pages.
 
-Choose which AI agent generates your content:
+**Uses**: Templates (replicate structure), style guides (maintain voice), source material (synthesize information), examples (follow patterns).
 
-**Consider**:
+Attach 1-3 pages for most tasks. More pages = more context but slower generation.
 
-- **Agent Purpose**: Use agents designed for content creation
-- **Model Capabilities**: GPT-4o for complex writing, Claude for analysis
-- **Tools Available**: Agents with research tools for fact-based content
-- **Cost vs Quality**: Balance model sophistication with usage costs
+## Generation Patterns
 
-**Tips**:
-
-- Create specialized content agents for different purposes
-- Configure agents with appropriate system prompts
-- Use the same agent for consistency within a project
-- Test different agents to find what works best
-
-### Page Context Selector
-
-Attach reference pages to inform AI generation:
-
-**How to Use**:
-
-1. Click "Attach pages" in the AI prompt
-2. Search or browse available pages
-3. Select one or more pages
-4. Selected pages shown as badges
-5. AI receives full page content as context
-
-**When to Use**:
-
-- Following templates or formats
-- Maintaining consistent style
-- Referencing existing content
-- Building on previous work
-
-**Best Practices**:
-
-- Attach relevant pages only
-- 2-3 pages for most tasks
-- More pages for complex synthesis
-- Update selection based on needs
-
-### Prompt Writing
-
-The prompt tells AI what to generate:
-
-**Effective Prompts**:
-
-✅ **Good**:
+### Draft from Scratch
 
 ```
-"Write a technical blog post explaining our new API rate limiting feature.
-Target audience is developers. Include code examples. Aim for 800-1000 words."
-```
-
-✅ **Better**:
-
-```
-"Write a developer-focused blog post about our new API rate limiting feature.
-Explain: why we built it, how it works, and how to implement it. Include
-example code in Python and JavaScript. Maintain a helpful, educational tone.
-Approximately 1000 words with 3-4 main sections."
-```
-
-❌ **Too Vague**:
-
-```
-"Write something about the API"
-```
-
-**Prompt Components**:
-
-1. **Content Type**: Blog post, documentation, analysis, etc.
-2. **Topic**: What to write about
-3. **Audience**: Who will read this
-4. **Key Points**: What must be included
-5. **Style/Tone**: How to write it
-6. **Length**: How much to write
-7. **Format**: Structure and organization
-
-## Generation Process
-
-### Real-Time Streaming
-
-Watch as AI generates content:
-
-**Thinking Phase**
-
-- AI analyzes your prompt
-- Considers page context
-- Plans response structure
-
-**Tool Usage** (if applicable)
-
-- Research tools called automatically
-- Real-time tool status updates
-- Results incorporated into content
-
-**Content Generation**
-
-- Text streams line by line
-- Markdown formatted automatically
-- Updates in real-time
-- Preserves formatting and structure
-
-**Completion**
-
-- Generation finishes automatically
-- Final content rendered
-- AI prompt closes
-- Ready for review and editing
-
-### Status Indicators
-
-During generation, you see:
-
-- **"Thinking..."** - AI processing your request
-- **Tool badges** - When AI uses research tools
-- **Streaming dots** - Active generation in progress
-- **"Completed"** - Generation finished
-
-## Working with Generated Content
-
-### Review and Edit
-
-Always review AI-generated content:
-
-**Check For**:
-
-- Factual accuracy
-- Appropriate tone and style
-- Completeness of information
-- Proper formatting
-- Relevant examples
-- Clear structure
-
-**Edit Directly**:
-
-- Fix any inaccuracies
-- Adjust tone or phrasing
-- Add missing information
-- Reorganize sections
-- Update examples
-
-### Regeneration
-
-Not happy with results? Try again:
-
-**Adjust and Retry**:
-
-1. Select and delete generated content
-2. Type `/ai` again
-3. Refine your prompt based on what didn't work
-4. Try different page context
-5. Consider different agent
-6. Generate again with improvements
-
-**Iterative Refinement**:
-
-- Generate initial draft
-- Review and identify gaps
-- Save as page
-- Use as context with refinement prompt
-- Generate improved version
-
-### Combining AI and Manual Writing
-
-Best approach: combine both
-
-**AI for**:
-
-- Initial drafts and outlines
-- Research and data gathering
-- Standard sections and boilerplate
-- Expanding on key points
-- Alternative phrasings
-
-**Manual for**:
-
-- Personal insights and experiences
-- Specific examples from your work
-- Fine-tuning tone and style
-- Final polish and refinement
-- Critical review and fact-checking
-
-## Common Generation Patterns
-
-### 1. Drafting from Scratch
-
-**Scenario**: Starting a new document
-
-**Approach**:
-
-```
-Prompt: "Write a comprehensive guide to setting up our development
-environment. Include: prerequisites, installation steps, configuration,
-and common troubleshooting. Target audience is new developers joining
-our team."
+Prompt: "Write a comprehensive guide to setting up our development environment. Include prerequisites, installation, configuration, and troubleshooting. Target new developers."
 
 Result: Complete first draft to review and refine
 ```
 
-### 2. Expanding Outline
-
-**Scenario**: You have structure, need content
-
-**Approach**:
+### Expand Outline
 
 ```
-Manual: Write section headings and bullet points
-Then: "Expand this outline into full paragraphs. Maintain the structure
-but add detailed explanations, examples, and clear transitions between
-sections."
+Manual: Write section headings
+Then: "Expand this outline into full paragraphs with detailed explanations and examples."
 
 Result: Fleshed-out content from your structure
 ```
 
-### 3. Rewriting with Style
-
-**Scenario**: Content exists but needs different tone
-
-**Approach**:
+### Rewrite with Style
 
 ```
 Attached: "Brand Voice Guide"
-Prompt: "Rewrite the following section in our brand voice. Make it more
-conversational and engaging while keeping all key information:
-[paste content]"
+Prompt: "Rewrite this section in our brand voice - more conversational while keeping key information: [paste content]"
 
 Result: Same information, different style
 ```
 
-### 4. Technical Documentation
-
-**Scenario**: Need to document technical features
-
-**Approach**:
+### Synthesize Information
 
 ```
-Attached: "API Documentation Template"
-Prompt: "Document our new webhook system following our API documentation
-template. Include: overview, authentication, payload format, example
-code in 3 languages, and error handling."
+Attached: "Research Report 1", "Research Report 2"
+Prompt: "Create an executive summary synthesizing key insights from these reports. Focus on findings, implications, and recommendations. Under 500 words."
 
-Result: Structured technical documentation
+Result: Concise summary combining both sources
 ```
 
-### 5. Summarization
+## Agent Selection
 
-**Scenario**: Distill longer content
+**Content creation**: Agents configured for writing, GPT-4o for complex content
+**Research-based**: Agents with web search tools for fact-based content  
+**Technical docs**: Agents with technical specifications access
+**Marketing**: Agents configured for engaging, benefit-focused writing
 
-**Approach**:
+Create specialized agents with appropriate system prompts for each content type.
 
-```
-Attached: "Detailed Research Report"
-Prompt: "Create an executive summary of this research report. Focus on
-key findings, implications, and recommendations. Keep under 500 words."
+## Review Generated Content
 
-Result: Concise summary of main points
-```
+Check for factual accuracy, appropriate tone, completeness, proper formatting, and relevant examples.
 
-### 6. Comparative Analysis
-
-**Scenario**: Compare multiple items
-
-**Approach**:
-
-```
-Attached: "Option A Details", "Option B Details"
-Prompt: "Create a comparison analysis of these two options. Organize by:
-features, costs, implementation complexity, and maintenance. Include a
-recommendation based on our enterprise use case."
-
-Result: Structured comparison with recommendation
-```
-
-## Advanced Techniques
-
-### Multi-Stage Generation
-
-Break complex content into stages:
-
-**Stage 1: Structure**
-
-```
-Prompt: "Create a detailed outline for a whitepaper about AI in healthcare.
-Include main sections, key points, and logical flow."
-```
-
-**Stage 2: Content**
-
-```
-For each section:
-Prompt: "Write the [Section Name] section based on this outline: [outline].
-Aim for 400-500 words with concrete examples."
-```
-
-**Stage 3: Polish**
-
-```
-Prompt: "Review this complete draft for: clarity, flow, consistency, and
-impact. Suggest improvements and refined wording."
-```
-
-### Context Layering
-
-Use multiple reference pages strategically:
-
-**Foundation**
-
-```
-Attached: "Writing Style Guide"
-Base prompt with style expectations
-```
-
-**Add Specifics**
-
-```
-Attached: "Writing Style Guide", "Technical Writing Standards"
-Technical content with appropriate style
-```
-
-**Final Context**
-
-```
-Attached: "Writing Style Guide", "Technical Writing Standards",
-          "Example Best Practices Doc"
-Fully informed generation with style, standards, and examples
-```
-
-### Prompt Chaining
-
-Chain prompts for complex tasks:
-
-**Chain 1: Research**
-
-```
-Attached: Agent with research tools
-Prompt: "Research the latest trends in [topic]. Provide key findings with sources."
-```
-
-**Chain 2: Analysis**
-
-```
-Attached: Research findings from Chain 1
-Prompt: "Analyze these findings. Identify patterns, implications, and opportunities."
-```
-
-**Chain 3: Recommendations**
-
-```
-Attached: Research + Analysis
-Prompt: "Based on this research and analysis, provide strategic recommendations
-for our team."
-```
-
-## Best Practices
-
-### Prompt Engineering
-
-**Be Specific**
-
-- Vague: "Write about our product"
-- Specific: "Write a 500-word product overview for enterprise buyers
-  highlighting security, scalability, and integration capabilities"
-
-**Provide Context**
-
-- Include audience information
-- Specify purpose and use case
-- Mention constraints or requirements
-- Reference style preferences
-
-**Set Expectations**
-
-- Desired length or scope
-- Required sections or elements
-- Formatting preferences
-- Tone and voice guidelines
-
-### Agent Configuration
-
-**Purpose-Built Agents**
-
-Create agents for specific content types:
-
-**Documentation Agent**
-
-```
-System Prompt: "You are a technical documentation specialist. Write
-clear, concise documentation that helps users accomplish their goals.
-Use examples, structure content logically, and maintain consistent
-terminology."
-```
-
-**Marketing Agent**
-
-```
-System Prompt: "You are a marketing copywriter. Create engaging content
-that resonates with target audiences. Use compelling language, focus on
-benefits, and include clear calls to action."
-```
-
-**Research Agent**
-
-```
-System Prompt: "You are a research analyst. Synthesize information from
-multiple sources, identify patterns and insights, and provide evidence-based
-recommendations. Cite sources and acknowledge limitations."
-```
-
-### Quality Control
-
-**Review Checklist**
-
-For every AI-generated piece:
-
-- [ ] Factual accuracy verified
-- [ ] Appropriate tone and style
-- [ ] Complete information provided
-- [ ] Proper formatting applied
-- [ ] Examples are relevant
-- [ ] No hallucinations or false claims
-- [ ] Citations when needed
-- [ ] Logical flow and structure
-- [ ] Audience-appropriate language
-- [ ] Grammar and spelling correct
+**Iterate if needed**: Delete and regenerate with refined prompt, try different page context, consider different agent, or manually edit sections.
 
 ## Troubleshooting
 
-### Common Issues
+**Too generic**: Provide more specific prompts, include examples, attach reference pages
 
-**Issue: Generated content is too generic**
+**Wrong tone**: Attach style guide, be explicit about tone, use purpose-built agent
 
-Solutions:
+**Too short**: Specify length, list required elements, ask for elaboration
 
-- Provide more specific prompts
-- Include relevant examples
-- Attach reference pages
-- Specify unique aspects to emphasize
-- Add constraints or requirements
-
-**Issue: Wrong tone or style**
-
-Solutions:
-
-- Attach style guide as context
-- Be explicit about desired tone
-- Provide tone examples in prompt
-- Use purpose-built agent
-- Edit prompt to emphasize style
-
-**Issue: Content too short or incomplete**
-
-Solutions:
-
-- Specify desired length explicitly
-- List all required elements
-- Ask for more detail on specific points
-- Generate in sections for depth
-- Prompt for elaboration
-
-**Issue: Factual errors or hallucinations**
-
-Solutions:
-
-- Use agents with research tools
-- Attach factual source pages
-- Verify claims manually
-- Edit inaccuracies directly
-- Provide correct information in prompt
-
-### Optimization Tips
-
-**Speed vs Quality**
-
-Balance generation speed with output quality:
-
-- **Fast**: Short prompts, simple tasks, minimal context
-- **Quality**: Detailed prompts, complex tasks, relevant context
-
-**Token Efficiency**
-
-Manage token usage:
-
-- Keep prompts focused
-- Attach only relevant pages
-- Break large tasks into smaller pieces
-- Reuse context across similar generations
-
-**Cost Management**
-
-Control generation costs:
-
-- Use appropriate models (GPT-4o Mini vs GPT-4o)
-- Optimize prompt length
-- Minimize unnecessary regeneration
-- Cache and reuse common content
+**Inaccurate**: Use agents with research tools, attach source pages, verify claims
 
 ## Next Steps
 
@@ -570,34 +104,23 @@ Control generation costs:
     icon="link"
     href="/guides/pages/using-page-context"
   >
-    Master attaching pages for better AI generation
+    Master page context for better generation
   </Card>
   <Card
     title="Creating Agents"
     icon="robot"
     href="/guides/agents/creating-agents"
   >
-    Build purpose-specific agents for content generation
+    Build specialized content agents
   </Card>
   <Card
-    title="Prompt Engineering"
-    icon="message-square"
-    href="/guides/agents/prompt-engineering"
+    title="Creating Pages"
+    icon="file-plus"
+    href="/guides/pages/creating-pages"
   >
-    Learn effective prompt writing techniques
+    Create pages and templates
   </Card>
   <Card title="Understanding Pages" icon="book" href="/concepts/pages">
-    Deep dive into pages concepts and capabilities
+    Pages concepts and capabilities
   </Card>
 </CardGroup>
-
-## Pro Tips
-
-- **Start with structure**: Manually outline, then let AI flesh out content
-- **Iterate freely**: Generation is fast, don't hesitate to try again
-- **Build templates**: Create reference pages for consistent output
-- **Combine approaches**: Mix AI generation with manual editing
-- **Learn from results**: Note what prompts work best for your needs
-- **Share knowledge**: Document effective patterns for your team
-
-By mastering AI content generation, you can dramatically speed up documentation while maintaining quality and consistency across your workspace.

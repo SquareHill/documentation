@@ -1,13 +1,134 @@
 ---
 title: "Pages"
-description: "Create rich, AI-powered notebooks and documentation for your workspace and records"
+description: "Rich AI-powered notebooks for workspace and record documentation"
 ---
 
 ## What are Pages?
 
-Pages are rich-text notebooks built with a powerful editor that enables you to create, organize, and collaborate on documentation across your workspace. Whether you're writing project documentation, analyzing data, or letting AI generate content, pages provide a flexible canvas for knowledge management.
+Pages are rich-text notebooks with powerful editing and AI generation capabilities for creating, organizing, and collaborating on documentation. Create workspace-level pages for general knowledge or attach to specific dataset records for contextual analysis.
 
-Think of pages as intelligent documents that can be created at the workspace level for general knowledge or attached to specific dataset records for contextual analysis and notes.
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/page-editor.png"
+  alt="Page editor interface showing rich text editing capabilities"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/page-editor.png"
+  alt="Page editor interface showing rich text editing capabilities"
+/>
+
+## Core Concepts
+
+**Workspace pages**: Shared documentation, project planning, meeting notes, templates, reference material accessible to all members.
+
+**Record pages**: Context-specific documentation for individual dataset records with data analysis, research notes, case studies, and processing context.
+
+**Rich text editor**: Built with Tiptap offering markdown support, formatting (bold, italic, headings, lists), code blocks, tables, images, links, task lists.
+
+## Creating Pages
+
+**Workspace pages**: Navigate to Pages → Create Page → Enter title and icon → Start writing → Auto-saves.
+
+**Record pages**: Open dataset record → Pages tab → Create Page → Automatically linked → Access record context.
+
+**Metadata**: Title, emoji/icon, status (draft/published/archived), tags, timestamps, author tracking.
+
+**Organization**: Search, filtering by status/tags/author, sorting, favorites, breadcrumbs.
+
+## AI Content Generation
+
+**Slash commands**: Type `/` for AI generation (`/ai`), headings (`/h1`, `/h2`, `/h3`), lists (`/bullet`, `/numbered`, `/todo`), code blocks, tables, images.
+
+**AI assistant**: Select agent → Attach reference pages (optional) → Write prompt → Generate → Real-time streaming → Tool usage visibility → Markdown output.
+
+**Page context**: Attach workspace or dataset pages as reference material for templates, style guides, source material, format replication.
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/ai-prompt-pages.png"
+  alt="AI prompt interface showing page context selector"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/ai-prompt-pages.png"
+  alt="AI prompt interface showing page context selector"
+/>
+
+## Editor Features
+
+**Text formatting**: Bold, italic, strikethrough, inline code, links, headings (H1-H6).
+
+**Block content**: Syntax-highlighted code blocks, tables with row/column operations, task lists with checkboxes, blockquotes, horizontal rules.
+
+**Interactive**: Drag and drop to reorder blocks, selection menus with formatting toolbar, table context menus.
+
+## Record Page Context
+
+**Automatic context**: Pages know parent record, access to field values, reference sibling pages, understanding of dataset structure.
+
+**AI with record context**: AI receives record data automatically, can reference field values and evidence, generates content informed by record details.
+
+**Multi-page records**: Create multiple pages per record for overview, analysis, research, notes, reports.
+
+## Best Practices
+
+**Organization**: Clear descriptive titles, consistent naming conventions, smart tagging by project/topic/purpose, status management (draft/published/archived).
+
+**Content creation**: Structured writing with clear headings, use AI for initial drafts and expansion, reference existing pages for consistency, visual enhancement with emojis and formatting.
+
+**Collaboration**: Create workspace pages for shared knowledge, document team processes, build templates, maintain up-to-date references.
+
+## Page Context System
+
+Attach pages as reference material when generating AI content:
+
+**Uses**: Template replication (copy structure/style), information synthesis (combine sources), consistent voice (maintain style), knowledge reuse (build on existing docs).
+
+**Examples**:
+
+- Style guide application: Attach "Writing Style Guide" → Generate on-brand content
+- Template-based: Attach "Q3 Report Template" → Create Q4 report with current data
+- Multi-source analysis: Attach research notes → Synthesize into executive summary
+
+## Common Use Cases
+
+**Documentation**: Team wiki, project documentation, architecture decisions, post-mortems.
+
+**Research**: Dataset analysis, competitive intelligence, market trends, findings documentation.
+
+**Content creation**: Draft generation with AI, structured reports, consistent formatting, collaborative writing.
+
+**Collaboration**: Meeting notes, brainstorming, strategic planning, action item tracking.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Creating Pages"
+    icon="file-plus"
+    href="/guides/pages/creating-pages"
+  >
+    Create workspace and record pages
+  </Card>
+  <Card
+    title="AI Content Generation"
+    icon="sparkles"
+    href="/guides/pages/ai-content-generation"
+  >
+    Use AI to generate content
+  </Card>
+  <Card
+    title="Using Page Context"
+    icon="link"
+    href="/guides/pages/using-page-context"
+  >
+    Master page context system
+  </Card>
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
+  </Card>
+</CardGroup>
 
 <img
   className="block dark:hidden rounded-lg border shadow-sm"
@@ -435,100 +556,31 @@ Find information across all your pages:
 - Use AI to expand on initial concepts
 - Collaborate on strategic planning
 
-## Integration with Workspace
-
-### Seamless Workflow
-
-Pages integrate naturally with other workspace features:
-
-**Dataset Integration**
-
-- Create record pages directly from dataset views
-- Access record data when generating content
-- Link between datasets and documentation
-- Use dataset information to inform page content
-
-**Agent Collaboration**
-
-- Use any workspace agent for content generation
-- Agents understand page context and structure
-- Tool usage for research and information gathering
-- Consistent agent behavior across features
-
-**Cross-Linking**
-
-- Reference other pages in your workspace
-- Link to dataset records and external resources
-- Build connected knowledge networks
-- Navigate between related documentation
-
-## Getting Started with Pages
-
-### Create Your First Page
-
-1. **Navigate to Pages**: Access pages from workspace sidebar
-2. **Create New Page**: Click "Create Page" button
-3. **Add Title and Icon**: Name your page and select an emoji/icon
-4. **Start Writing**: Use the rich text editor with markdown support
-5. **Try AI Generation**: Type `/ai` to generate content with AI assistance
-6. **Add Context**: Select reference pages for AI to use as context
-7. **Organize**: Add tags and set status for easy discovery
-
-### Tips for Success
-
-**Start Simple**
-
-- Begin with workspace pages for general documentation
-- Experiment with formatting options and blocks
-- Try AI generation with simple prompts
-- Gradually explore advanced features
-
-**Build Templates**
-
-- Create reusable templates for common document types
-- Use templates as reference pages for AI generation
-- Establish consistent structure and style
-- Share templates with team members
-
-**Leverage AI**
-
-- Use AI to speed up content creation
-- Attach reference pages for consistent style
-- Let AI handle first drafts and outlines
-- Focus your time on refinement and strategy
-
-**Stay Organized**
-
-- Use descriptive titles and relevant tags
-- Maintain clear status indicators
-- Regular review and archive old pages
-- Build logical organization structure
-
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Create Your First Page"
+    title="Creating Pages"
     icon="file-plus"
     href="/guides/pages/creating-pages"
   >
-    Step-by-step guide to creating workspace and record pages
+    Create workspace and record pages
   </Card>
   <Card
     title="AI Content Generation"
     icon="sparkles"
     href="/guides/pages/ai-content-generation"
   >
-    Learn how to use AI to generate and enhance page content
+    Use AI to generate content
   </Card>
   <Card
     title="Using Page Context"
     icon="link"
     href="/guides/pages/using-page-context"
   >
-    Master the page context system for powerful AI generation
+    Master page context system
   </Card>
-  <Card title="Understanding AI Agents" icon="robot" href="/concepts/agents">
-    Learn about the agents that power content generation
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
   </Card>
 </CardGroup>

@@ -1,344 +1,108 @@
 ---
 title: "Testing Agents"
-description: "Comprehensive testing strategies for validating agent behavior and performance"
+description: "Validate agent behavior before deployment"
 ---
 
-## Overview
+## Chat-Based Testing
 
-Testing agents is crucial for ensuring reliable, consistent, and accurate behavior before deploying them on important datasets. This guide covers testing methodologies, validation techniques, and best practices for agent quality assurance.
+Navigate to **Agents** → Select agent → **Start Chat**.
 
-## Testing Methodologies
+Test with different conversation types:
 
-### Interactive Testing
+- **Simple queries**: Basic understanding and responses
+- **Complex requests**: Multi-step tasks requiring reasoning
+- **Edge cases**: Unusual inputs or boundary conditions
+- **Error handling**: Invalid inputs and how agent recovers
 
-#### Chat-Based Testing
-The most immediate way to test agents is through the chat interface:
+Document behavior including tool usage, response quality, and accuracy.
 
-1. **Navigate to Agents** in your workspace
-2. **Select your agent** and click "Start Chat"
-3. **Conduct conversations** that simulate real-world scenarios
-4. **Observe behavior** including tool usage and response quality
-5. **Document results** for comparison and improvement
+## Creating Test Cases
 
-#### Conversation Scenarios
-- **Simple Queries**: Test basic understanding and responses
-- **Complex Requests**: Multi-step tasks requiring reasoning
-- **Edge Cases**: Unusual inputs or boundary conditions
-- **Error Conditions**: Invalid inputs and error handling
-- **Context Switching**: Changes in topic or task focus
+Define expected behavior for validation:
 
-### Structured Testing
+**What to test**:
 
-#### Test Case Development
-Create systematic test cases that cover:
+- Task completion accuracy
+- Tool selection and usage
+- Response format consistency
+- Error handling
+- Response time
 
-```json
-{
-  "test_case": "Company Information Extraction",
-  "input": "Extract key information about Apple Inc.",
-  "expected_behavior": {
-    "tools_used": ["web_search", "company_database"],
-    "response_format": "structured_json",
-    "required_fields": ["name", "industry", "headquarters", "founded"]
-  },
-  "success_criteria": {
-    "accuracy": "> 95%",
-    "completeness": "all required fields present",
-    "response_time": "< 30 seconds"
-  }
-}
-```
+**Example test**: "Extract key information about Apple Inc."
 
-#### Validation Criteria
-- **Accuracy**: Correctness of extracted information
-- **Completeness**: Coverage of required data points
-- **Consistency**: Similar results for similar inputs
-- **Format Adherence**: Proper output structure
-- **Performance**: Response time and resource usage
+- Expected tools: web_search
+- Required fields: name, industry, headquarters
+- Success: All fields present and accurate
 
-### Automated Testing
+## Batch Testing
 
-#### Batch Testing
-Run agents on test datasets to evaluate performance at scale:
+Test agents on sample datasets before production use.
 
-1. **Prepare Test Data**: Create representative sample datasets
-2. **Define Metrics**: Establish measurable success criteria
-3. **Execute Tests**: Run agents on test data
-4. **Analyze Results**: Compare outputs against expected results
-5. **Generate Reports**: Document findings and recommendations
+1. Create test dataset with 10-50 records
+2. Run agent on test data
+3. Review output quality and accuracy
+4. Fix issues and retest
+5. Deploy when quality meets standards
 
-#### Regression Testing
-Ensure changes don't break existing functionality:
-- **Baseline Establishment**: Record current performance metrics
-- **Change Implementation**: Update agent configuration or prompts
-- **Comparison Testing**: Re-run tests and compare results
-- **Issue Identification**: Flag any performance degradation
-- **Resolution**: Address issues before deployment
+Compare outputs against expected results to catch issues early.
 
-## Test Categories
+## Performance Validation
 
-### Functional Testing
+**Speed**: Simple queries < 2 seconds, complex analysis < 30 seconds
 
-#### Core Functionality
-- **Task Completion**: Can the agent complete its assigned tasks?
-- **Instruction Following**: Does it adhere to system prompt guidelines?
-- **Output Format**: Are responses in the expected format?
-- **Data Accuracy**: Is extracted information correct?
+**Quality**: Check response relevance, accuracy, completeness, and clarity
 
-#### Tool Integration
-- **Tool Selection**: Does the agent choose appropriate tools?
-- **Parameter Passing**: Are tool parameters correct and complete?
-- **Result Processing**: How well does it integrate tool responses?
-- **Error Recovery**: How does it handle tool failures?
+**Consistency**: Same input should yield similar results across tests
 
-#### Example Test Cases
-```
-Test: Web Search Integration
-Input: "Find the current stock price of Tesla"
-Expected: Uses web search tool, returns current price with timestamp
-Validation: Price accuracy, data freshness, proper formatting
+Monitor resource usage and tool call patterns for optimization opportunities.
 
-Test: Error Handling  
-Input: Provide invalid search query to trigger tool error
-Expected: Graceful error handling, informative user message
-Validation: No crashes, helpful error explanation
-```
+## Common Issues
 
-### Performance Testing
+**Inconsistent results**: Model variability is normal. Run multiple tests to identify patterns.
 
-#### Speed and Efficiency
-- **Response Time**: How quickly does the agent respond?
-- **Tool Usage**: Are tools used efficiently and appropriately?
-- **Resource Consumption**: CPU, memory, and API usage
-- **Throughput**: How many requests can it handle?
+**Slow performance**: Review tool usage, consider caching frequent queries, optimize system prompt.
 
-#### Scalability
-- **Load Testing**: Performance under high request volumes
-- **Concurrent Users**: Behavior with multiple simultaneous users
-- **Large Datasets**: Performance on substantial data volumes
-- **Resource Scaling**: Behavior as resource availability changes
+**Accuracy problems**: Refine system prompt instructions, adjust tool configurations, add examples.
 
-#### Benchmarking
-```
-Performance Baseline:
-- Simple queries: < 2 seconds
-- Complex analysis: < 30 seconds  
-- Tool-heavy tasks: < 60 seconds
-- Batch processing: 100 records/minute
-```
-
-### Quality Testing
-
-#### Output Quality
-- **Relevance**: How relevant are responses to the input?
-- **Accuracy**: Factual correctness of information
-- **Completeness**: Coverage of all requested information
-- **Clarity**: How clear and understandable are responses?
-
-#### Consistency Testing
-- **Repeated Queries**: Same input should yield consistent results
-- **Similar Queries**: Related inputs should have coherent responses
-- **Cross-Session**: Consistency across different chat sessions
-- **Temporal**: Results should be stable over time (when appropriate)
-
-#### Bias and Fairness
-- **Demographic Bias**: Fair treatment across different groups
-- **Cultural Sensitivity**: Appropriate responses for diverse contexts
-- **Language Bias**: Consistent quality across different languages
-- **Topic Bias**: Balanced treatment of controversial subjects
-
-## Testing Tools and Techniques
-
-### Manual Testing
-
-#### Exploratory Testing
-- **Free-form Interaction**: Open-ended conversations to discover issues
-- **Boundary Testing**: Push agents to their limits
-- **Creative Input**: Unusual or unexpected query types
-- **User Simulation**: Role-play different user personas
-
-#### Structured Manual Testing
-- **Test Scripts**: Predefined sequences of interactions
-- **Checklist Testing**: Systematic verification of features
-- **Scenario Testing**: Real-world usage scenarios
-- **Comparative Testing**: Side-by-side comparison with other agents
-
-### Automated Testing
-
-#### Test Automation Framework
-```python
-class AgentTester:
-    def __init__(self, agent_id, test_suite):
-        self.agent_id = agent_id
-        self.test_suite = test_suite
-    
-    def run_tests(self):
-        results = []
-        for test in self.test_suite:
-            result = self.execute_test(test)
-            results.append(result)
-        return self.analyze_results(results)
-    
-    def execute_test(self, test):
-        response = self.send_message(test.input)
-        return self.validate_response(response, test.criteria)
-```
-
-#### Continuous Testing
-- **Integration**: Include agent testing in CI/CD pipelines
-- **Monitoring**: Continuous validation in production environments
-- **Alerting**: Automatic notifications of test failures
-- **Reporting**: Regular test result summaries and trends
-
-### A/B Testing
-
-#### Comparative Analysis
-Test different agent configurations to find optimal settings:
-
-- **Model Comparison**: Different AI models for same task
-- **Prompt Variations**: Multiple system prompt versions
-- **Tool Configurations**: Different tool combinations
-- **Parameter Tuning**: Various model parameters and settings
-
-#### Statistical Validation
-- **Sample Size**: Ensure statistically significant test sizes
-- **Random Assignment**: Proper randomization of test conditions
-- **Confidence Intervals**: Statistical confidence in results
-- **Significance Testing**: Validate that differences are meaningful
-
-## Quality Assurance
-
-### Review Processes
-
-#### Peer Review
-- **Code Review**: System prompt and configuration review
-- **Test Review**: Validation of test cases and criteria
-- **Result Review**: Analysis of test outcomes and implications
-- **Documentation Review**: Accuracy and completeness of documentation
-
-#### Expert Validation
-- **Domain Experts**: Subject matter expert review of outputs
-- **Technical Review**: Software engineering best practices
-- **Security Review**: Security and privacy considerations
-- **Compliance Review**: Regulatory and policy compliance
-
-### Certification Process
-
-#### Agent Validation Checklist
-```
-□ Functional tests pass with > 95% accuracy
-□ Performance meets established benchmarks
-□ Error handling works properly
-□ Security requirements satisfied
-□ Documentation complete and accurate
-□ Peer review completed
-□ Domain expert approval obtained
-□ Production readiness verified
-```
-
-#### Sign-off Process
-1. **Developer Testing**: Initial validation by creator
-2. **QA Testing**: Independent quality assurance testing
-3. **Stakeholder Review**: Business stakeholder approval
-4. **Technical Review**: Technical lead or architect approval
-5. **Production Deployment**: Controlled rollout with monitoring
+**Tool failures**: Verify API credentials, check rate limits, test connectivity.
 
 ## Production Testing
 
-### Deployment Strategies
+**Gradual rollout**: Test on small dataset subset first, then expand gradually.
 
-#### Gradual Rollout
-- **Canary Deployment**: Test with small subset of data first
-- **Blue-Green Deployment**: Parallel testing with production fallback
-- **Feature Flags**: Gradual feature activation for testing
-- **A/B Testing**: Production comparison of different configurations
+**Monitor continuously**: Track accuracy, response times, error rates in production.
 
-#### Monitoring and Validation
-- **Real-time Monitoring**: Live performance and accuracy tracking
-- **Error Tracking**: Automatic detection and alerting of issues
-- **User Feedback**: Collection and analysis of user reports
-- **Performance Metrics**: Continuous measurement of key indicators
-
-### Production Test Scenarios
-
-#### Shadow Testing
-Run new agents alongside production systems without affecting outputs:
-- **Parallel Processing**: Process same data with both systems
-- **Result Comparison**: Compare outputs for consistency
-- **Performance Analysis**: Measure relative performance
-- **Issue Identification**: Detect problems before full deployment
-
-#### Load Testing
-Validate production performance under realistic conditions:
-- **Traffic Simulation**: Realistic usage patterns and volumes
-- **Stress Testing**: Performance under peak load conditions
-- **Endurance Testing**: Stability over extended periods
-- **Recovery Testing**: Behavior after failures or interruptions
-
-## Troubleshooting Test Failures
-
-### Common Issues
-
-#### Inconsistent Results
-- **Root Causes**: Model variability, external data changes, timing issues
-- **Solutions**: Increase test sample sizes, control external dependencies
-- **Prevention**: Design tests for inherent variability
-
-#### Performance Degradation
-- **Symptoms**: Slower response times, higher resource usage
-- **Diagnosis**: Profiling tools, performance monitoring
-- **Resolution**: Optimization, resource scaling, configuration tuning
-
-#### Accuracy Problems
-- **Identification**: Statistical analysis of output quality
-- **Analysis**: Review of failure patterns and common errors  
-- **Remediation**: Prompt tuning, training data improvement, tool adjustments
-
-### Resolution Strategies
-
-#### Systematic Debugging
-1. **Issue Reproduction**: Consistently recreate the problem
-2. **Environment Isolation**: Test in controlled conditions
-3. **Component Testing**: Isolate specific parts of the system
-4. **Root Cause Analysis**: Identify underlying causes
-5. **Solution Implementation**: Apply targeted fixes
-6. **Validation**: Verify resolution effectiveness
-
-#### Continuous Improvement
-- **Test Enhancement**: Improve test coverage and accuracy
-- **Process Refinement**: Optimize testing procedures
-- **Tool Development**: Build better testing and validation tools
-- **Knowledge Sharing**: Document lessons learned and best practices
+**User feedback**: Collect and review user reports to identify improvement areas.
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
     title="Chat with Agents"
-    icon="message-circle"
+    icon="message"
     href="/guides/agents/chatting-with-agents"
   >
-    Start with interactive testing through the chat interface
+    Start testing through chat
   </Card>
   <Card
     title="Managing Tools"
     icon="wrench"
     href="/guides/agents/managing-tools"
   >
-    Test tool configurations and integrations
+    Test tool configurations
   </Card>
   <Card
     title="Configuring Models"
     icon="brain"
     href="/guides/agents/configuring-models"
   >
-    Optimize model settings based on test results
+    Optimize model settings
   </Card>
   <Card
-    title="Production Deployment"
-    icon="rocket"
-    href="/guides/deployment/production-deployment"
+    title="Creating Agents"
+    icon="plus"
+    href="/guides/agents/creating-agents"
   >
-    Deploy tested agents to production environments
+    Create new agents
   </Card>
 </CardGroup>

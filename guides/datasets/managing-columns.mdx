@@ -1,615 +1,64 @@
 ---
 title: "Managing Columns"
-description: "Complete guide to configuring and optimizing dataset columns"
+description: "Configure and optimize dataset columns"
 ---
 
-## Overview
+## Column Configuration
 
-Columns are the foundation of your dataset structure in Radical Whale. Each column can be configured with specific data types, validation rules, and AI agents to process and enhance your data. This guide covers everything from basic column management to advanced configurations that maximize the power of your data processing pipeline.
+Open your dataset → Click column header → **Edit Column**.
 
-## Prerequisites
+**Column Name & Description**: Use descriptive names and explain the column's purpose.
 
-- Access to a Radical Whale workspace
-- A dataset with imported data
-- Basic understanding of your data structure and requirements
-- Familiarity with data types and validation concepts
+**Data Type**: Short Text, Long Text, Number, Date, Boolean, Email, URL, Phone, or JSON.
 
-## Understanding Column Types
+**Validation Rules**: Set length limits, format patterns, value lists, min/max ranges, or conditional rules based on other columns.
 
-Radical Whale supports several column types, each optimized for different kinds of data:
-
-<CardGroup cols={2}>
-  <Card title="Text Columns" icon="font">
-    Names, descriptions, addresses, and free-form text
-  </Card>
-  <Card title="Number Columns" icon="hashtag">
-    Integers, decimals, currencies, and calculations
-  </Card>
-  <Card title="Date Columns" icon="calendar">
-    Timestamps, dates, and time-based data
-  </Card>
-  <Card title="Boolean Columns" icon="toggle-on">
-    True/false, yes/no, and binary values
-  </Card>
-  <Card title="URL Columns" icon="link">
-    Web addresses, API endpoints, and links
-  </Card>
-  <Card title="Email Columns" icon="envelope">
-    Email addresses with built-in validation
-  </Card>
-</CardGroup>
-
-## Accessing Column Management
-
-### Navigate to Column Settings
-
-1. Open your target dataset
-2. Locate the column you want to configure
-3. Click the **column header** to access settings
-4. Select **Edit Column** from the dropdown menu
-
-[Screenshot Placeholder: Column management interface]
-
-### Column Overview Panel
-
-The column management interface shows:
-
-- **Column Name**: Current column identifier
-- **Data Type**: Current type assignment
-- **Sample Data**: Preview of actual column values
-- **Processing Status**: Agent assignment and processing state
-- **Statistics**: Data quality metrics and value distributions
-
-## Basic Column Configuration
-
-### Column Name and Description
-
-#### Naming Best Practices
-
-- **Descriptive Names**: Use clear, meaningful names like "Company Website" instead of "URL1"
-- **Consistent Format**: Maintain consistent naming conventions across your dataset
-- **Avoid Special Characters**: Stick to letters, numbers, and underscores
-- **Consider Length**: Keep names concise but informative
-
-#### Adding Descriptions
-
-Provide detailed descriptions to help team members understand the column's purpose:
+### Example Validation
 
 ```
-Column: company_website
-Description: Primary website URL for the company. Used for web scraping
-and company research. Should be the main corporate website, not social
-media profiles or subsidiary sites.
-```
-
-[Screenshot Placeholder: Column name and description editor]
-
-### Data Type Configuration
-
-#### Changing Data Types
-
-1. **Select New Type**: Choose from the dropdown of available types
-2. **Review Conversion**: System shows preview of how data will be converted
-3. **Handle Errors**: Address any values that can't be converted
-4. **Confirm Change**: Apply the new data type
-
-#### Type-Specific Settings
-
-**Text Columns**
-
-- **Max Length**: Set character limits
-- **Format Patterns**: Define expected formats (e.g., phone numbers)
-- **Case Handling**: Standardize to uppercase, lowercase, or title case
-
-**Number Columns**
-
-- **Decimal Places**: Set precision for monetary values
-- **Min/Max Values**: Define acceptable ranges
-- **Number Format**: Configure currency symbols and thousand separators
-
-**Date Columns**
-
-- **Date Format**: Specify input format (MM/DD/YYYY, DD-MM-YYYY, etc.)
-- **Timezone**: Set default timezone for timestamp data
-- **Default Values**: Choose how to handle missing dates
-
-[Screenshot Placeholder: Data type configuration options]
-
-### Validation Rules
-
-#### Built-in Validation
-
-Each column type includes automatic validation:
-
-- **Text**: Length limits, pattern matching
-- **Number**: Range validation, numeric format checking
-- **Date**: Date format validation, reasonable date ranges
-- **Email**: Email format validation using industry standards
-- **URL**: URL format and accessibility checking
-
-#### Custom Validation Rules
-
-Create custom validation for specific business rules:
-
-**Pattern Matching**
-
-```regex
 Phone Numbers: ^\+?1?\d{9,15}$
-SKU Codes: ^[A-Z]{2}\d{4}-[A-Z]{3}$
-Postal Codes: ^\d{5}(-\d{4})?$
+Industry Values: Technology, Healthcare, Finance, Manufacturing, Retail, Other
+Conditional: If Country = "US", then State must be valid US state code
 ```
-
-**Value Lists**
-Define acceptable values for categorical data:
-
-```
-Industry: Technology, Healthcare, Finance, Manufacturing, Retail, Other
-Company Size: Startup, Small, Medium, Large, Enterprise
-Status: Active, Inactive, Pending, Archived
-```
-
-**Conditional Validation**
-Set rules based on other column values:
-
-```
-If "Country" = "US", then "State" must be a valid US state code
-If "Company Size" = "Enterprise", then "Employee Count" must be > 1000
-```
-
-[Screenshot Placeholder: Validation rules configuration]
 
 ## AI Agent Assignment
 
-### Assigning Agents to Columns
+Assign agents to columns for automatic processing:
 
-#### Select Agent
+**Enrichment Mode**: Agent adds information to empty cells, preserving existing data.
 
-1. **Choose Agent**: Select from available agents in your workspace
-2. **Preview Agent**: Review agent capabilities and configuration
-3. **Test Assignment**: Run agent on sample data to verify results
+**Enhancement Mode**: Agent improves or standardizes existing data.
 
-#### Agent Processing Modes
+**Analysis Mode**: Agent analyzes data and adds insights, original data preserved.
 
-**Enrichment Mode**
+### Column Instructions
 
-- Agent adds information to empty cells
-- Existing data remains unchanged
-- Best for: Adding missing information, enhancing incomplete records
-
-**Enhancement Mode**
-
-- Agent improves or standardizes existing data
-- May modify existing values for consistency
-- Best for: Data cleaning, format standardization, quality improvement
-
-**Analysis Mode**
-
-- Agent analyzes existing data and adds insights
-- Original data preserved, new columns may be created
-- Best for: Sentiment analysis, categorization, scoring
-
-[Screenshot Placeholder: Agent assignment interface]
-
-### Column-Specific Instructions
-
-#### Customizing Agent Behavior
-
-Enhance the agent's system prompt with column-specific guidance:
-
-**Example for Company Name Column**
+Customize agent behavior with column-specific guidance:
 
 ```
-For this "Company Name" column, focus on:
-- Extracting the official business name from any source text
-- Removing unnecessary legal suffixes (LLC, Inc, Corp) unless part of brand
-- Standardizing capitalization and formatting
-- Identifying parent company relationships when relevant
-- Handling abbreviations and acronyms consistently
-```
-
-**Example for Industry Column**
-
-```
-For this "Industry" column, classify companies using these categories:
-- Technology (Software, Hardware, IT Services)
-- Healthcare (Medical, Pharmaceutical, Biotech)
-- Financial Services (Banking, Insurance, Investment)
-- Manufacturing (Industrial, Consumer Goods, Automotive)
-- Retail (E-commerce, Physical Stores, Consumer Services)
-- Other (specify when none of the above apply)
-
-Use the most specific category that applies.
-```
-
-### Batch Processing Configuration
-
-#### Processing Settings
-
-- **Batch Size**: Number of records to process at once (default: 100)
-- **Rate Limiting**: Delay between batches to respect API limits
-- **Error Handling**: Continue processing or stop on first error
-- **Progress Tracking**: Enable detailed progress reporting
-
-#### Scheduling Options
-
-- **Immediate**: Process all records right away
-- **Scheduled**: Process during off-peak hours
-- **Triggered**: Process when new data is added
-- **Manual**: Process only when explicitly requested
-
-[Screenshot Placeholder: Batch processing configuration]
-
-## Advanced Column Features
-
-### Computed Columns
-
-#### Creating Calculated Fields
-
-Computed columns automatically calculate values based on other columns:
-
-**Simple Calculations**
-
-```
-Full Name = First Name + " " + Last Name
-Total Revenue = Unit Price * Quantity
-Age = Today() - Birth Date
-```
-
-**Conditional Logic**
-
-```
-Lead Score = IF(Company Size = "Enterprise", 100,
-              IF(Industry = "Technology", 75, 50))
-
-Status = IF(Last Contact Date < 30 days ago, "Active",
-          IF(Last Contact Date < 90 days ago, "Warm", "Cold"))
-```
-
-**Complex Formulas**
-
-```
-Company Maturity Score =
-  (Years Since Founded * 0.3) +
-  (LOG(Employee Count) * 0.4) +
-  (Website Quality Score * 0.3)
-```
-
-[Screenshot Placeholder: Computed column editor]
-
-### Column Dependencies
-
-#### Understanding Dependencies
-
-Some columns depend on others for processing:
-
-- **Address Standardization**: Requires Country field for proper formatting
-- **Phone Validation**: Needs Country Code for international numbers
-- **Industry Classification**: May use Company Name and Website for context
-
-#### Managing Dependencies
-
-1. **Identify Requirements**: Review agent documentation for required fields
-2. **Process in Order**: Ensure prerequisite columns are processed first
-3. **Handle Missing Data**: Configure fallback behavior when dependencies are missing
-4. **Update Cascading**: Configure whether changes trigger re-processing of dependent columns
-
-### Column Groups and Organization
-
-#### Creating Column Groups
-
-Organize related columns for better management:
-
-**Contact Information Group**
-
-- First Name, Last Name, Email, Phone
-- Apply consistent validation and formatting
-- Bulk processing and updates
-
-**Company Details Group**
-
-- Company Name, Website, Industry, Size
-- Coordinated enrichment agents
-- Related data quality rules
-
-#### Group-Level Operations
-
-- **Bulk Editing**: Apply changes to all columns in a group
-- **Group Processing**: Process all columns with coordinated agents
-- **Access Control**: Set permissions at the group level
-- **Export/Import**: Handle groups as units for data transfer
-
-[Screenshot Placeholder: Column grouping interface]
-
-## Data Quality Management
-
-### Quality Metrics
-
-#### Automatic Quality Scoring
-
-Radical Whale automatically calculates quality metrics for each column:
-
-- **Completeness**: Percentage of non-empty values
-- **Validity**: Percentage of values passing validation rules
-- **Consistency**: Standardization and format consistency
-- **Accuracy**: Estimated accuracy based on validation and cross-checks
-
-#### Quality Thresholds
-
-Set quality thresholds to trigger alerts:
-
-```
-Completeness: > 95% (Alert if below)
-Validity: > 98% (Alert if below)
-Consistency: > 90% (Alert if below)
-Accuracy: > 85% (Alert if below)
-```
-
-[Screenshot Placeholder: Data quality dashboard]
-
-### Data Cleaning Rules
-
-#### Automatic Cleaning
-
-Configure automatic data cleaning for common issues:
-
-**Text Cleaning**
-
-- Remove leading/trailing whitespace
+For "Company Name":
+- Extract official business name
+- Remove LLC/Inc unless part of brand
 - Standardize capitalization
-- Remove special characters
-- Fix encoding issues
-
-**Format Standardization**
-
-- Phone number formatting: (555) 123-4567
-- Date formatting: YYYY-MM-DD
-- Currency formatting: $1,234.56
-- URL formatting: https://example.com
-
-**Value Standardization**
-
-- Country names: "US" → "United States"
-- Industry terms: "Tech" → "Technology"
-- Boolean values: "Y" → true, "N" → false
-
-#### Manual Review Workflows
-
-Set up workflows for manual data review:
-
-1. **Flag Questionable Data**: Automatically identify suspicious values
-2. **Review Queue**: Present flagged items for human review
-3. **Correction Interface**: Easy tools for making corrections
-4. **Approval Process**: Require approval for significant changes
-
-### Duplicate Detection
-
-#### Detecting Duplicates
-
-Configure duplicate detection rules:
-
-- **Exact Matches**: Identical values in specified columns
-- **Fuzzy Matches**: Similar values accounting for typos and variations
-- **Composite Keys**: Multiple columns that together identify duplicates
-
-#### Handling Duplicates
-
-Choose how to handle detected duplicates:
-
-- **Merge Records**: Combine information from duplicate records
-- **Keep First**: Retain the first occurrence, delete others
-- **Keep Latest**: Retain the most recently added/updated record
-- **Manual Review**: Flag for human decision
-
-[Screenshot Placeholder: Duplicate detection settings]
-
-## Performance Optimization
-
-### Processing Performance
-
-#### Optimizing Agent Processing
-
-- **Batch Size Tuning**: Find optimal batch sizes for your data and agents
-- **Agent Selection**: Choose appropriate AI models for task complexity
-- **Parallel Processing**: Enable parallel processing where safe
-- **Caching**: Use result caching to avoid reprocessing unchanged data
-
-#### Memory and Storage
-
-- **Column Indexing**: Enable indexing for frequently queried columns
-- **Data Compression**: Use compression for large text columns
-- **Archive Old Data**: Move historical data to archive storage
-- **Cleanup Routines**: Regular cleanup of temporary processing files
-
-### Query Performance
-
-#### Index Strategy
-
-Create indexes for columns used in:
-
-- **Filtering**: Columns used in WHERE clauses
-- **Sorting**: Columns used in ORDER BY clauses
-- **Joining**: Columns used to relate datasets
-- **Grouping**: Columns used in GROUP BY operations
-
-#### Query Optimization
-
-- **Column Selection**: Query only needed columns
-- **Filter Early**: Apply filters as early as possible
-- **Limit Results**: Use pagination for large result sets
-- **Cache Results**: Cache frequently accessed data
-
-[Screenshot Placeholder: Performance optimization dashboard]
-
-## Column Security and Access Control
-
-### Access Permissions
-
-#### Column-Level Security
-
-Control who can access sensitive columns:
-
-- **View Permissions**: Who can see column data
-- **Edit Permissions**: Who can modify column values
-- **Configuration Permissions**: Who can change column settings
-- **Processing Permissions**: Who can run agents on the column
-
-#### Sensitive Data Handling
-
-Special handling for sensitive columns:
-
-- **PII Protection**: Automatic detection and protection of personal information
-- **Data Masking**: Show masked values to unauthorized users
-- **Audit Logging**: Track all access to sensitive columns
-- **Encryption**: Additional encryption for highly sensitive data
-
-### Compliance Features
-
-#### GDPR Compliance
-
-- **Data Subject Rights**: Easy tools for data export and deletion
-- **Consent Tracking**: Track consent for processing personal data
-- **Purpose Limitation**: Restrict data use to specified purposes
-- **Data Minimization**: Tools to identify and remove unnecessary data
-
-#### Industry Compliance
-
-- **HIPAA**: Healthcare data protection features
-- **SOX**: Financial data controls and audit trails
-- **PCI DSS**: Payment card data security measures
-- **Custom Policies**: Configure custom compliance rules
-
-[Screenshot Placeholder: Security and compliance settings]
-
-## Monitoring and Alerting
-
-### Column Monitoring
-
-#### Real-time Monitoring
-
-Track column health in real-time:
-
-- **Processing Status**: Current agent processing status
-- **Error Rates**: Frequency of processing errors
-- **Quality Metrics**: Live data quality scores
-- **Performance Metrics**: Processing speed and resource usage
-
-#### Historical Tracking
-
-Monitor trends over time:
-
-- **Quality Trends**: Track data quality improvements or degradation
-- **Processing Volume**: Monitor data processing volumes
-- **Error Patterns**: Identify recurring issues
-- **Performance Trends**: Track processing performance over time
-
-### Alert Configuration
-
-#### Quality Alerts
-
-Set up alerts for data quality issues:
-
-```yaml
-Completeness Alert:
-  Trigger: Completeness < 95%
-  Action: Email data team, Slack notification
-  Frequency: Immediate
-
-Validation Alert:
-  Trigger: Validation errors > 50 per hour
-  Action: Page on-call engineer
-  Frequency: Every 15 minutes
+- Handle abbreviations consistently
 ```
 
-#### Processing Alerts
+### Processing Settings
 
-Monitor agent processing:
+**Batch Size**: Records to process at once (default: 100)
 
-```yaml
-Processing Failure:
-  Trigger: Agent processing fails 3 times in a row
-  Action: Disable automatic processing, notify admin
+**Schedule**: Immediate, scheduled, triggered, or manual processing
 
-Performance Degradation:
-  Trigger: Processing speed < 50% of normal
-  Action: Email performance team
-```
+## Data Quality
 
-[Screenshot Placeholder: Monitoring and alerting dashboard]
+The system calculates quality metrics for each column:
 
-## Troubleshooting Common Issues
+**Completeness**: % of non-empty values
+**Validity**: % passing validation rules
+**Consistency**: Standardization and format consistency
+**Accuracy**: Estimated accuracy from validation
 
-### Data Type Issues
-
-**"Cannot Convert Value" Errors**
-
-- Review sample data that's causing conversion failures
-- Check for unexpected formats or special characters
-- Consider creating a staging column for gradual conversion
-- Use data cleaning rules to standardize formats first
-
-**Date Parsing Problems**
-
-- Verify date format configuration matches your data
-- Check for mixed date formats within the same column
-- Handle null or empty date values appropriately
-- Consider using fuzzy date parsing for varied formats
-
-### Agent Processing Issues
-
-**Agent Not Processing Column**
-
-- Verify agent is active and properly configured
-- Check API key validity and quota availability
-- Review column assignment and agent selection
-- Look for processing errors in the activity log
-
-**Poor Quality Results**
-
-- Review and refine agent system prompts
-- Add column-specific instructions for better context
-- Test with different AI models or configurations
-- Increase batch size for better processing context
-
-### Performance Problems
-
-**Slow Column Processing**
-
-- Reduce batch sizes to avoid timeouts
-- Check for complex validation rules that slow processing
-- Consider processing during off-peak hours
-- Monitor API rate limits and adjust accordingly
-
-**High Memory Usage**
-
-- Enable data compression for large text columns
-- Archive historical data not needed for processing
-- Consider splitting very large columns
-- Monitor and adjust caching settings
-
-[Screenshot Placeholder: Troubleshooting guide]
-
-## Best Practices
-
-### Column Design
-
-- **Start Simple**: Begin with basic data types and add complexity gradually
-- **Plan Dependencies**: Consider which columns depend on others for processing
-- **Document Everything**: Use clear names and detailed descriptions
-- **Test Incrementally**: Test configuration changes on small data samples first
-
-### Data Quality
-
-- **Set Clear Standards**: Define what constitutes quality data for each column
-- **Automate When Possible**: Use validation rules and cleaning rules extensively
-- **Monitor Continuously**: Set up alerts for quality degradation
-- **Regular Reviews**: Schedule periodic manual reviews of data quality
-
-### Performance
-
-- **Right-size Batches**: Find optimal batch sizes for your specific use case
-- **Index Strategically**: Create indexes for columns used in queries
-- **Cache Intelligently**: Use caching for frequently accessed data
-- **Archive Regularly**: Move old data to archive to maintain performance
+Set thresholds to trigger alerts when quality drops below acceptable levels.
 
 ## Next Steps
 
@@ -619,34 +68,27 @@ Performance Degradation:
     icon="table"
     href="/guides/datasets/working-with-records"
   >
-    Learn to edit, filter, and manage your data records
+    Edit, filter, and manage data records
   </Card>
   <Card
     title="Creating Agents"
     icon="robot"
     href="/guides/agents/creating-agents"
   >
-    Build AI agents to process your column data
+    Build AI agents to process column data
   </Card>
   <Card
-    title="Configuring Models"
-    icon="brain"
-    href="/guides/agents/configuring-models"
+    title="Importing Data"
+    icon="upload"
+    href="/guides/datasets/importing-data"
   >
-    Advanced AI model configuration for better results
+    Import data into your datasets
   </Card>
   <Card
     title="API Reference"
     icon="code"
     href="/api-reference/datasets/columns"
   >
-    Technical documentation for column management APIs
+    Technical documentation for columns
   </Card>
 </CardGroup>
-
-## Related Resources
-
-- [Understanding Datasets](/concepts/datasets) - Conceptual overview
-- [Data Import Guide](/guides/datasets/importing-data) - Getting data into your datasets
-- [Agent Configuration](/guides/agents/creating-agents) - Setting up AI processing
-- [API Documentation](/api-reference/datasets/columns) - Technical reference

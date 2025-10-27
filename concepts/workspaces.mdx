@@ -1,13 +1,116 @@
 ---
 title: "Workspaces"
-description: "Understanding workspaces and team collaboration in Radical Whale"
+description: "Team collaboration environments for data work"
 ---
 
 ## What are Workspaces?
 
-Workspaces are the foundation of your Radical Whale experience - isolated environments that contain all your team's resources including datasets, agents, tools, variables, and processing machines. Each workspace acts as a complete data collaboration environment where teams can work together on projects while maintaining security and organization.
+Workspaces are isolated environments containing all your team's resources: datasets, agents, tools, variables, and processing machines. Each workspace is a complete data collaboration environment with security and organization.
 
-Think of a workspace as your team's digital headquarters for data work, where everything from structured datasets to AI agents and custom workflows lives together in one organized, secure space.
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/workspaces.png"
+  alt="Workspaces overview showing team collaboration interface"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/workspaces.png"
+  alt="Workspaces overview showing team collaboration interface"
+/>
+
+## Components
+
+**Datasets & Records**: Smart tables from CSV/Excel, record management with expandable views, AI-powered cell processing, page editor for documentation.
+
+**AI Agents**: Conversational AI with workspace context, custom configurations, data-aware responses, multi-model support (OpenAI, Anthropic).
+
+**Tools & Automations**: API tools for external integrations, workflow builder, custom functions for team needs.
+
+**Variables**: Encrypted storage for API keys and credentials, team sharing based on permissions, environment management for dev/prod.
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/variables.png"
+  alt="Variables interface showing secure credential and configuration management"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/variables.png"
+  alt="Variables interface showing secure credential and configuration management"
+/>
+
+**Processing Infrastructure**: Dedicated machines for heavy data work (paid plans), queue management, resource scaling.
+
+## Team Collaboration
+
+**Roles**:
+
+- **Owner**: Complete control, member management, billing, workspace settings, full access
+- **Admin**: Resource management (datasets, agents, tools), member management (except owners), variable management, limited settings
+- **Member**: Access existing resources, create new resources with standard permissions, view variables (read-only)
+
+**Workspace switching**: Easily switch between workspaces using sidebar switcher with complete resource isolation, independent billing, separate teams, dedicated processing queues.
+
+**Invitations**: Email invitations with role assignment, automatic expiration, pending invite tracking.
+
+## Management
+
+**Creating workspaces**: Basic setup (name, description), plan selection (Free, Starter, Pro), team invitations, final configuration.
+
+**Settings**: General information, member management, billing and subscription, usage tracking.
+
+**Monitoring**: Queue metrics with live monitoring, machine management for paid plans (CPU/memory utilization, resource scaling, regional deployment).
+
+## Plans & Pricing
+
+**Free**: 3 members, 1,000 records/month, 5 datasets, standard support, shared resources.
+
+**Starter**: 10 members, 10,000 records/month, 25 datasets, email support, dedicated machines available, advanced agents.
+
+**Pro**: Unlimited members, 100,000 records/month, unlimited datasets, priority support, dedicated machines included, advanced monitoring, premium integrations.
+
+## Best Practices
+
+**Organization**: Project-based structure, clear naming, resource cleanup, documentation.
+
+**Security**: Least privilege access, regular access reviews, variable security for credentials, data classification.
+
+**Performance**: Machine scaling during high usage (paid plans), queue monitoring, data lifecycle policies, API rate limiting management.
+
+## Common Use Cases
+
+**Product teams**: Feature development workspaces, environment separation (dev/staging/prod), user research, A/B testing.
+
+**Data teams**: Client projects with dedicated workspaces, research initiatives, data pipeline development, report automation.
+
+**Business ops**: Department isolation (HR, finance, marketing), vendor management, compliance tracking, process documentation.
+
+**Consulting**: Client separation with data isolation, project lifecycle management, team collaboration, deliverable preparation.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Creating Workspaces"
+    icon="plus"
+    href="/guides/workspaces/creating-workspaces"
+  >
+    Set up a new workspace
+  </Card>
+  <Card
+    title="Understanding Datasets"
+    icon="database"
+    href="/concepts/datasets"
+  >
+    Learn about organizing data
+  </Card>
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
+  </Card>
+  <Card title="Understanding Tools" icon="wrench" href="/concepts/tools">
+    Learn about tool integrations
+  </Card>
+</CardGroup>
 
 <img
   className="block dark:hidden rounded-lg border shadow-sm"
@@ -242,62 +345,27 @@ Track workspace activity and performance:
 - **Team Collaboration**: Shared access to project resources and findings
 - **Deliverable Preparation**: Organize final reports and presentations
 
-## Getting Started
-
-### Workspace Creation Process
-
-When you first sign up for Radical Whale or need to create a new workspace:
-
-1. **Check for Invitations**: The system first checks if you have pending workspace invitations
-2. **Accept or Create**: Either accept an existing invitation or create your own workspace
-3. **Choose Your Plan**: Select from Free, Starter, or Pro based on your needs
-4. **Set Up Team**: Optionally invite team members during the initial setup
-5. **Start Building**: Begin uploading data and creating your first datasets
-
-### First Steps in Your Workspace
-
-- **Upload your first dataset** from CSV, Excel, or other structured data sources
-- **Set up workspace variables** for any API keys or external service credentials
-- **Invite team members** with appropriate roles for collaboration
-- **Create your first agent** to start exploring data with AI assistance
-- **Build API tools** to connect with external services and data sources
-
-### Navigation
-
-- **Workspace Switcher**: Located in the sidebar for easy switching between workspaces
-- **Main Navigation**: Access datasets, agents, tools, and variables from the primary menu
-- **Settings Access**: Workspace settings, member management, and billing through dedicated pages
-- **Monitoring Dashboard**: Track processing queues and machine performance (paid plans)
-
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Create Your First Workspace"
+    title="Creating Workspaces"
     icon="plus"
     href="/guides/workspaces/creating-workspaces"
   >
-    Step-by-step guide to setting up a new workspace from scratch
-  </Card>
-  <Card
-    title="Managing Team Members"
-    icon="users"
-    href="/guides/workspaces/managing-members"
-  >
-    Learn how to invite colleagues and manage team permissions
-  </Card>
-  <Card
-    title="Workspace Settings & Configuration"
-    icon="settings"
-    href="/guides/workspaces/workspace-settings"
-  >
-    Configure billing, monitoring, and advanced workspace features
+    Set up a new workspace
   </Card>
   <Card
     title="Understanding Datasets"
     icon="database"
     href="/concepts/datasets"
   >
-    Learn about organizing and working with your data in Radical Whale
+    Learn about organizing data
+  </Card>
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
+  </Card>
+  <Card title="Understanding Tools" icon="wrench" href="/concepts/tools">
+    Learn about tool integrations
   </Card>
 </CardGroup>

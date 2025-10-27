@@ -1,9 +1,11 @@
 ---
 title: "Tools"
-description: "Extend agent capabilities with external integrations and custom functionality"
+description: "Extend agent capabilities with external integrations"
 ---
 
-Tools enable your agents to go beyond conversation by connecting to external APIs, services, and data sources. They provide agents with the ability to retrieve real-time information, perform actions, and integrate with your existing systems.
+## What are Tools?
+
+Tools enable agents to access external APIs, services, and data sources, going beyond conversation to retrieve real-time information, perform actions, and integrate with existing systems.
 
 <img
   className="block dark:hidden rounded-lg border shadow-sm"
@@ -16,18 +18,7 @@ Tools enable your agents to go beyond conversation by connecting to external API
   alt="Tools interface showing API configuration and external integrations"
 />
 
-## What are Tools?
-
-Tools are configurable integrations that allow agents to:
-
-- **Access External APIs**: Connect to web services and retrieve data
-- **Process Information**: Transform and analyze responses
-- **Extend Capabilities**: Add specialized functionality to agents
-- **Integrate Systems**: Bridge agents with your existing infrastructure
-
-## Available Tool Types
-
-Radical Whale supports multiple tool types to extend agent capabilities:
+## Tool Types
 
 <CardGroup cols={2}>
   <Card title="API Request Tools" icon="globe" href="/guides/tools/api-tools">
@@ -40,20 +31,11 @@ Radical Whale supports multiple tool types to extend agent capabilities:
 
 ## API Request Tools
 
-API Request Tools are the primary tool type, allowing you to configure HTTP requests to any external API:
+Configure HTTP requests to any external API:
 
-### Configuration Options
+**Configuration**: HTTP method (GET, POST, PUT, DELETE, etc.), request URL with variable substitution, headers (including auth), query parameters, request body (JSON), input schema (JSON Schema format).
 
-- **HTTP Method**: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS
-- **Request URL**: Dynamic URLs with variable substitution
-- **Headers**: Custom headers including authentication
-- **Query Parameters**: URL parameters with dynamic values
-- **Request Body**: JSON payload configuration
-- **Input Schema**: Define required parameters using JSON Schema
-
-### Input Schema Definition
-
-Tools use JSON Schema to define what parameters agents need to provide:
+**Input schema example**:
 
 ```json
 {
@@ -61,13 +43,10 @@ Tools use JSON Schema to define what parameters agents need to provide:
   "properties": {
     "search_query": {
       "type": "string",
-      "description": "The search term to look for"
+      "description": "The search term"
     },
     "max_results": {
       "type": "integer",
-      "description": "Maximum number of results to return",
-      "minimum": 1,
-      "maximum": 50,
       "default": 10
     }
   },
@@ -75,52 +54,22 @@ Tools use JSON Schema to define what parameters agents need to provide:
 }
 ```
 
-### Dynamic Variable Substitution
-
-Use variables from the input schema in your API configuration:
-
-- **URL**: `https://api.example.com/search?q={{search_query}}&limit={{max_results}}`
-- **Headers**: `Authorization: Bearer {{api_token}}`
-- **Body**: Include schema variables in JSON request bodies
+**Variable substitution**: Use schema variables in URLs (`https://api.example.com/search?q={{search_query}}`), headers (`Authorization: Bearer {{api_token}}`), and request bodies.
 
 ## Tool Testing
 
-The tool interface includes built-in testing capabilities:
-
-1. **Schema Validation**: Test your input schema with sample data
-2. **API Testing**: Send test requests to verify connectivity
-3. **Response Preview**: See actual API responses before deployment
-4. **Error Debugging**: Identify and fix configuration issues
+Built-in testing capabilities: Schema validation with sample data, API testing to verify connectivity, response preview before deployment, error debugging.
 
 ## Managing Tools
 
-Tools are managed through the Tools dashboard where you can:
-
-- **Create New Tools**: Configure API integrations step-by-step
-- **Edit Existing Tools**: Update configurations and schemas
-- **Test Tools**: Validate functionality before agent deployment
-- **Organize Tools**: Search and filter your tool library
+Tools dashboard for creating new tools, editing configurations, testing functionality, and organizing your tool library with search and filtering.
 
 ## Agent Integration
 
-Once created, tools can be assigned to agents in your workspace:
-
-1. **Tool Assignment**: Select which tools each agent can access
-2. **Automatic Discovery**: Agents automatically understand tool capabilities
-3. **Dynamic Usage**: Agents choose when and how to use tools based on context
-4. **Response Integration**: Tool results are seamlessly incorporated into agent responses
+Assign tools to agents → Agents discover capabilities automatically → Agents choose when and how to use tools → Tool results seamlessly incorporated into responses.
 
 ## MCP Server Tools
 
-Model Context Protocol (MCP) server support enables:
-
-- **Dynamic Tool Discovery**: Connect to an MCP server and automatically discover all available tools
-- **Server Connections**: Direct integration with MCP-compatible services
-- **Standardized Protocols**: Consistent interfaces across different tool providers
-- **Popular Integrations**: Access Tavily Search, GitHub, Slack, Google Drive, and more
+Model Context Protocol support for dynamic tool discovery, server connections, standardized protocols, popular integrations (Tavily Search, GitHub, Slack, Google Drive).
 
 Learn more about [MCP Server Tools](/guides/tools/mcp-tools).
-
-## Why Use Tools?
-
-Tools transform your agents from simple chatbots into powerful assistants capable of accessing real-time data, performing actions, and integrating with your entire technology stack.

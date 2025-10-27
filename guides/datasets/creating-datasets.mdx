@@ -1,347 +1,62 @@
 ---
 title: "Creating Datasets"
-description: "Learn how to create and structure datasets for AI processing"
+description: "Create and structure datasets for AI processing"
 ---
 
-## Overview
+## Creating a Dataset
 
-Datasets are the foundation of data processing in Radical Whale. This guide will walk you through creating datasets, defining their structure, and preparing them for AI agent processing.
+Click **Datasets** in the sidebar → **Create Dataset**.
 
-## Prerequisites
+**Dataset Name**: Choose descriptive names like "Customer Contact Data" or "Product Inventory Q4". Avoid generic names like "Dataset 1".
 
-- Access to a Radical Whale workspace
-- Basic understanding of your data structure
-- Sample data file (CSV recommended) or plan for manual data entry
-
-## Step 1: Navigate to Datasets
-
-### Accessing the Datasets Section
-
-1. Log into your Radical Whale workspace
-2. Click **Datasets** in the left sidebar
-3. You'll see the datasets overview page showing existing datasets (if any)
-
-[Screenshot Placeholder: Datasets overview page]
-
-### Understanding the Datasets Interface
-
-- **Datasets List**: Shows all datasets in your workspace
-- **Create Button**: Primary action to create new datasets
-- **Search & Filter**: Find specific datasets quickly
-- **Import Options**: Different ways to add data
-
-## Step 2: Create a New Dataset
-
-### Starting Dataset Creation
-
-1. Click the **Create Dataset** button
-2. You'll be presented with the dataset creation form
-
-### Basic Information
-
-#### Dataset Name
-
-Choose a descriptive name that clearly identifies your data:
-
-- **Good examples**: "Customer Contact Data", "Product Inventory Q4", "Survey Responses 2024"
-- **Avoid**: Generic names like "Dataset 1" or unclear abbreviations
-
-#### Description
-
-Add a detailed description explaining:
-
-- What type of data this dataset contains
-- The source of the data
-- How it will be used
-- Any important context or notes
-
-Example:
+**Description**: Explain what data the dataset contains, its source, and intended use.
 
 ```
-Customer contact information collected from our website sign-up forms
-between January-March 2024. Includes company names, contact details,
-and initial interest areas. Will be used for lead qualification and
-sales outreach preparation.
+Customer contact information collected from website sign-ups
+January-March 2024. For lead qualification and sales outreach.
 ```
 
-[Screenshot Placeholder: Dataset creation form]
+## Column Planning
 
-<Tip>
-  Detailed descriptions help team members understand the dataset's purpose and
-  context, making collaboration more effective.
-</Tip>
+Plan your column structure before creating the dataset. Consider:
 
-## Step 3: Define Dataset Structure
+- **Unique Identifier**: Column that uniquely identifies each record
+- **Primary Data**: Main information to process
+- **Context Columns**: Additional supporting information
+- **Output Columns**: Where processed results are stored
 
-### Column Planning
+You can start empty and add columns later, or import data with columns defined from CSV headers.
 
-Before creating the dataset, plan your column structure:
+## Adding Columns
 
-#### Essential Columns
+Click **Add Column** to configure each field:
 
-- **Unique Identifier**: A column that uniquely identifies each record
-- **Primary Data**: The main information you want to process
-- **Context Columns**: Additional information that provides context
-- **Output Columns**: Where processed results will be stored
+**Column Name & Key**: Display name (e.g., "Company Name") and system identifier (e.g., "company_name")
 
-#### Column Types to Consider
+**Data Type**: Short Text, Long Text, Email, URL, Phone, Number, Date, Boolean, or JSON
 
-- **Text Fields**: Names, descriptions, addresses
-- **Contact Information**: Emails, phone numbers, websites
-- **Numeric Data**: Quantities, scores, financial amounts
-- **Dates**: Creation dates, deadlines, events
-- **Categories**: Industry, status, priority levels
+**Description**: What the column contains and how it should be used
 
-### Initial Column Setup
+**AI Instructions**: (Optional) How agents should process this column
 
-You can either:
+**Validation Rules**: Data quality requirements
 
-1. **Start Empty**: Create the dataset structure first, then add data
-2. **Import with Data**: Create columns based on imported CSV headers
-3. **Template Approach**: Use a predefined template for common use cases
-
-[Screenshot Placeholder: Column planning interface]
-
-## Step 4: Configure Dataset Settings
-
-### Access Control
-
-- **Visibility**: Who can see this dataset within the workspace
-- **Edit Permissions**: Who can modify the data and structure
-- **Processing Permissions**: Who can run AI agents on this data
-
-### Data Quality Settings
-
-- **Validation Rules**: Set up automatic data validation
-- **Required Fields**: Specify which columns must have values
-- **Format Constraints**: Define acceptable formats for specific columns
-
-### Processing Configuration
-
-- **Batch Size**: How many records to process at once
-- **Timeout Settings**: Maximum time for processing operations
-- **Error Handling**: How to handle processing failures
-
-[Screenshot Placeholder: Dataset settings panel]
-
-## Step 5: Create the Dataset
-
-### Final Review
-
-Before creating, review:
-
-- Dataset name and description
-- Planned column structure
-- Access and permission settings
-- Processing configuration
-
-### Create Dataset
-
-1. Click **Create Dataset** to finalize
-2. The system will create your dataset structure
-3. You'll be redirected to the dataset detail page
-
-### Confirmation
-
-You should see:
-
-- Dataset successfully created message
-- Empty dataset with your planned structure
-- Options to add columns or import data
-
-[Screenshot Placeholder: Newly created dataset page]
-
-## Step 6: Add Columns (If Starting Empty)
-
-### Column Creation Process
-
-1. Click **Add Column** on the dataset page
-2. Configure each column with the following details:
-
-#### Basic Column Settings
-
-- **Column Name**: Display name (e.g., "Company Name")
-- **Column Key**: System identifier (e.g., "company_name")
-- **Data Type**: Select from available types
-- **Description**: Explain what this column contains
-
-#### Data Types Available
-
-- **Short Text**: Names, titles, brief descriptions (up to 255 chars)
-- **Long Text**: Detailed descriptions, content, notes
-- **Email**: Email addresses with validation
-- **URL**: Website addresses with validation
-- **Phone**: Phone numbers with formatting
-- **Number**: Numeric values (integer or decimal)
-- **Date**: Date values with various formats
-- **Boolean**: True/false values
-- **JSON**: Complex structured data
-
-#### Processing Configuration
-
-- **AI Instructions**: How agents should process this column
-- **Agent Assignment**: Which agent should process this column (set later)
-- **Dependencies**: Which other columns this depends on
-- **Validation Rules**: Data quality requirements
-
-[Screenshot Placeholder: Column creation form]
-
-### Example Column Configuration
-
-#### Company Name Column
+### Example Column
 
 ```
 Name: Company Name
 Key: company_name
 Type: Short Text
-Description: Official company name from website or business registration
-Instructions: Extract the official company name, removing any suffixes like LLC, Inc, etc. unless they are part of the brand identity
+Description: Official company name from website or registration
+Instructions: Extract official name, remove LLC/Inc unless part of brand
 Required: Yes
-Validation: Minimum 2 characters, no special characters except spaces and hyphens
 ```
 
-#### Contact Email Column
+## Importing Data
 
-```
-Name: Contact Email
-Key: contact_email
-Type: Email
-Description: Primary contact email address for the company
-Instructions: Find the main contact email, preferably a specific person rather than info@ or support@
-Required: No
-Validation: Valid email format, no generic emails like noreply@
-```
+After creating your dataset structure, import data via CSV/Excel upload. The system will map file columns to your dataset columns and validate data during import.
 
-## Step 7: Import Initial Data (Optional)
-
-### CSV Import Process
-
-If you have existing data to import:
-
-1. Click **Import Data** or **Import CSV**
-2. Upload your CSV file
-3. Map CSV columns to dataset columns
-4. Review data preview
-5. Configure import settings
-6. Execute import
-
-### Import Configuration
-
-- **Header Row**: Specify if first row contains headers
-- **Delimiter**: Comma, semicolon, tab, or custom
-- **Encoding**: UTF-8, ASCII, or other character encodings
-- **Quote Character**: How text fields are quoted in the CSV
-
-### Column Mapping
-
-- Match CSV headers to your dataset columns
-- Create new columns for unmapped CSV fields
-- Skip columns you don't need
-- Transform data during import if needed
-
-[Screenshot Placeholder: CSV import wizard]
-
-<Info>
-  You can also add data manually by creating records individually, which is
-  useful for small datasets or testing purposes.
-</Info>
-
-## Step 8: Validate Dataset Structure
-
-### Data Quality Check
-
-After creation and initial data import:
-
-1. **Review Columns**: Ensure all necessary columns are present
-2. **Check Data Types**: Verify data types match your data
-3. **Test Validation**: Try adding sample data to test validation rules
-4. **Review Relationships**: Confirm column dependencies are correct
-
-### Common Validation Issues
-
-- **Data Type Mismatches**: Numbers stored as text, dates in wrong format
-- **Missing Required Fields**: Empty values in required columns
-- **Format Problems**: Invalid emails, URLs, or phone numbers
-- **Encoding Issues**: Special characters not displaying correctly
-
-### Fixing Issues
-
-- **Edit Columns**: Modify column definitions as needed
-- **Data Transformation**: Clean up data formatting issues
-- **Re-import**: Fix source data and re-import if necessary
-- **Manual Correction**: Fix individual records manually
-
-[Screenshot Placeholder: Data validation results]
-
-## Best Practices
-
-### Dataset Design
-
-- **Keep It Focused**: Each dataset should serve a specific purpose
-- **Consistent Naming**: Use clear, consistent naming conventions
-- **Document Everything**: Add descriptions to datasets and columns
-- **Plan for Growth**: Design structure that can accommodate future needs
-
-### Column Organization
-
-- **Logical Grouping**: Group related columns together
-- **Clear Dependencies**: Make column relationships explicit
-- **Avoid Redundancy**: Don't duplicate information unnecessarily
-- **Consider Processing**: Design with AI agent processing in mind
-
-### Data Quality
-
-- **Validation Rules**: Set up appropriate validation for each column
-- **Required Fields**: Mark essential columns as required
-- **Format Standards**: Establish consistent formatting rules
-- **Regular Reviews**: Periodically review and clean data
-
-### Security Considerations
-
-- **Sensitive Data**: Be careful with personally identifiable information
-- **Access Control**: Set appropriate permissions for different team members
-- **Data Retention**: Plan for how long data should be kept
-- **Compliance**: Ensure compliance with relevant data protection regulations
-
-## Troubleshooting
-
-### Common Issues
-
-**Dataset Creation Fails**
-
-- Check workspace permissions
-- Verify all required fields are filled
-- Ensure dataset name doesn't conflict with existing datasets
-- Try refreshing the page and starting over
-
-**Column Configuration Problems**
-
-- Review data type selections for your data
-- Check validation rules aren't too restrictive
-- Ensure column names are unique
-- Verify required field settings are appropriate
-
-**Import Issues**
-
-- Check CSV file formatting and encoding
-- Verify column mapping is correct
-- Look for special characters or formatting issues
-- Try importing a smaller sample first
-
-**Performance Problems**
-
-- Large datasets may take time to process
-- Consider breaking large datasets into smaller chunks
-- Review column validation complexity
-- Contact support for optimization advice
-
-### Getting Help
-
-For dataset-related issues:
-
-- Check our [data import guide](/guides/datasets/importing-data)
-- Review [column management documentation](/guides/datasets/managing-columns)
-- Contact [support](mailto:support@radicalwhale.com) for complex issues
+<Info>You can also create records manually for small datasets or testing.</Info>
 
 ## Next Steps
 
@@ -351,34 +66,27 @@ For dataset-related issues:
     icon="upload"
     href="/guides/datasets/importing-data"
   >
-    Learn how to import CSV files and other data sources
+    Import CSV files and other data sources
   </Card>
   <Card
     title="Manage Columns"
     icon="columns"
     href="/guides/datasets/managing-columns"
   >
-    Configure column types, validation, and processing rules
+    Configure column types and validation
   </Card>
   <Card
     title="Create AI Agents"
     icon="robot"
     href="/guides/agents/creating-agents"
   >
-    Build agents to process your dataset automatically
+    Build agents to process your dataset
   </Card>
   <Card
     title="Work with Records"
     icon="table"
     href="/guides/datasets/working-with-records"
   >
-    Add, edit, and manage individual records in your dataset
+    Add and manage individual records
   </Card>
 </CardGroup>
-
-## Related Resources
-
-- [Understanding Datasets](/concepts/datasets) - Conceptual overview
-- [Data Import Guide](/guides/datasets/importing-data) - Detailed import instructions
-- [Column Management](/guides/datasets/managing-columns) - Advanced column configuration
-- [API Reference - Datasets](/api-reference/datasets/create) - Technical documentation

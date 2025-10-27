@@ -1,22 +1,9 @@
 ---
 title: "Importing Data"
-description: "Complete guide to importing data into your Radical Whale datasets"
+description: "Import data into your datasets"
 ---
 
-## Overview
-
-Getting your data into Radical Whale is the foundation of your data processing workflow. This guide covers all available import methods, from simple CSV uploads to automated API integrations, helping you choose the best approach for your specific needs.
-
-## Prerequisites
-
-- Access to a Radical Whale workspace
-- A dataset already created in your workspace
-- Source data ready for import (files, database access, or API credentials)
-- Understanding of your data structure and requirements
-
-## Import Methods Overview
-
-Radical Whale supports multiple ways to import data:
+## Import Methods
 
 <CardGroup cols={2}>
   <Card title="File Upload" icon="upload">
@@ -26,194 +13,54 @@ Radical Whale supports multiple ways to import data:
     Real-time data import via REST API
   </Card>
   <Card title="Database Connection" icon="database">
-    Direct connection to PostgreSQL, MySQL, and more
+    PostgreSQL, MySQL, SQL Server, Oracle, MongoDB
   </Card>
-  <Card title="Third-Party Integrations" icon="link">
+  <Card title="Third-Party" icon="link">
     Google Sheets, Airtable, webhooks
   </Card>
 </CardGroup>
 
-## Method 1: File Upload
+## File Upload
 
-### Supported File Formats
+Navigate to your dataset → **Import Data** → **File Upload**.
 
-#### CSV Files
+### Supported Formats
 
-- **Best for**: Structured tabular data
-- **Size limit**: 100MB per file
-- **Encoding**: UTF-8 recommended
-- **Requirements**: Headers in first row
+**CSV**: Best for structured data. UTF-8 encoding recommended, 100MB limit.
 
-#### Excel Files
+**Excel**: .xlsx/.xls files, multiple sheets supported, formulas converted to values.
 
-- **Formats**: .xlsx, .xls
-- **Features**: Multiple sheets supported
-- **Size limit**: 100MB per file
-- **Notes**: Formulas will be converted to values
-
-#### JSON Files
-
-- **Best for**: Nested or hierarchical data
-- **Format**: Array of objects or line-delimited JSON
-- **Features**: Automatic schema detection
-- **Notes**: Complex nesting may require flattening
-
-[Screenshot Placeholder: File format selection interface]
+**JSON**: Array of objects or line-delimited JSON, automatic schema detection.
 
 ### Upload Process
 
-#### Step 1: Access Upload Interface
+1. **Select File**: Browse or drag-and-drop your file
+2. **Configure**: System detects headers, delimiters, and encoding automatically
+3. **Map Columns**: Match file columns to dataset columns, create new columns if needed
+4. **Handle Issues**: System flags missing headers, type mismatches, duplicates, invalid dates
+5. **Choose Import Mode**:
+   - **Append**: Add to existing data
+   - **Replace**: Replace all data
+   - **Update**: Update existing records by key column
+6. **Execute Import**: Review summary and start processing
 
-1. Navigate to your target dataset
-2. Click **Import Data** button
-3. Select **File Upload** option
+### Best Practices
 
-#### Step 2: Select and Configure File
+**File Preparation**: Use clean headers, consistent formatting, UTF-8 encoding, remove empty rows.
 
-1. **Choose File**: Click "Browse" or drag and drop your file
-2. **Preview Data**: Review the first 10 rows to verify formatting
-3. **Configure Settings**:
-   - Header row detection (usually automatic)
-   - Column separator for CSV (comma, semicolon, tab)
-   - Text encoding (UTF-8, Latin-1, etc.)
-   - Date format recognition
+**Large Files**: Split files over 100MB, remove unnecessary columns, test with sample first.
 
-[Screenshot Placeholder: File upload configuration screen]
+## API Integration
 
-#### Step 3: Map Columns
+Use the REST API for real-time or automated imports.
 
-1. **Review Detected Columns**: System automatically detects column names and types
-2. **Map to Dataset Columns**:
-   - Match uploaded columns to existing dataset columns
-   - Create new columns if needed
-   - Skip columns you don't want to import
-3. **Data Type Verification**: Confirm each column's data type (text, number, date, etc.)
+### Setup
 
-<Info>
-  New columns will be created automatically if they don't exist in your dataset.
-  You can always modify column configurations after import.
-</Info>
+1. **Get API Key**: Workspace Settings → API Keys → Create with `datasets:write` permission
+2. **Use Endpoint**: `POST /api/v1/workspaces/{workspace_id}/datasets/{dataset_id}/records`
+3. **Authentication**: Bearer token in Authorization header
 
-#### Step 4: Handle Data Issues
-
-The system will flag potential issues:
-
-- **Missing Headers**: Columns without names
-- **Type Mismatches**: Data that doesn't match expected types
-- **Duplicate Records**: Rows that might be duplicates
-- **Invalid Dates**: Date values that can't be parsed
-
-Options for handling issues:
-
-- **Skip Problematic Rows**: Exclude rows with errors
-- **Convert Data Types**: Attempt automatic conversion
-- **Manual Review**: Flag for later manual correction
-
-[Screenshot Placeholder: Data validation and error handling interface]
-
-#### Step 5: Import Settings
-
-Configure how the data should be imported:
-
-**Import Mode**
-
-- **Append**: Add new records to existing data
-- **Replace**: Replace all existing data
-- **Update**: Update existing records based on key column
-
-**Duplicate Handling**
-
-- **Allow Duplicates**: Import all records as-is
-- **Skip Duplicates**: Don't import duplicate records
-- **Update Existing**: Update existing records with new data
-
-**Key Column Selection** (for update mode)
-Choose which column(s) to use for identifying existing records
-
-[Screenshot Placeholder: Import settings configuration]
-
-#### Step 6: Execute Import
-
-1. **Review Summary**: Confirm import settings and data preview
-2. **Start Import**: Click "Import Data" to begin processing
-3. **Monitor Progress**: Watch the import progress bar
-4. **Review Results**: See summary of imported, skipped, and error records
-
-### File Upload Best Practices
-
-#### Data Preparation
-
-- **Clean Headers**: Use clear, consistent column names
-- **Consistent Formatting**: Ensure data types are consistent within columns
-- **Remove Empty Rows**: Delete blank rows that might cause issues
-- **Handle Special Characters**: Use UTF-8 encoding for international characters
-
-#### Large File Handling
-
-- **Split Large Files**: Break files over 100MB into smaller chunks
-- **Remove Unnecessary Columns**: Import only the data you need
-- **Compress When Possible**: ZIP files to reduce upload time
-- **Test with Sample**: Try a small sample first for large datasets
-
-[Screenshot Placeholder: Large file handling recommendations]
-
-## Method 2: API Integration
-
-### API Import Overview
-
-Use Radical Whale's REST API to programmatically import data:
-
-- **Real-time**: Import data as it becomes available
-- **Automated**: Set up scheduled imports
-- **Flexible**: Full control over data transformation and validation
-
-### Getting Started with API Import
-
-#### Step 1: Get API Credentials
-
-1. Navigate to **Workspace Settings**
-2. Go to **API Keys** section
-3. Click **Create API Key**
-4. Choose appropriate permissions:
-   - `datasets:write` - Required for data import
-   - `datasets:read` - Helpful for validation
-5. Copy and securely store your API key
-
-[Screenshot Placeholder: API key creation interface]
-
-#### Step 2: Understand the Import Endpoint
-
-```
-POST /api/v1/workspaces/{workspace_id}/datasets/{dataset_id}/records
-```
-
-**Authentication**: Bearer token in Authorization header
-**Content-Type**: application/json
-
-#### Step 3: Prepare Your Data
-
-Format your data as JSON array of objects:
-
-```json
-[
-  {
-    "company_name": "Acme Corporation",
-    "website": "https://acme.com",
-    "industry": "Technology",
-    "employees": 150
-  },
-  {
-    "company_name": "Beta Industries",
-    "website": "https://beta.com",
-    "industry": "Manufacturing",
-    "employees": 500
-  }
-]
-```
-
-### Example API Implementation
-
-#### Python Example
+### Example
 
 ```python
 import requests
@@ -251,372 +98,45 @@ else:
     print(f"Import failed: {response.status_code} - {response.text}")
 ```
 
-#### JavaScript/Node.js Example
-
-```javascript
-const axios = require("axios");
+**Batch Processing**: Use 100-1000 records per batch for large datasets.
 
-const importData = async () => {
-  const config = {
-    method: "post",
-    url: `https://api.radicalwhale.com/api/v1/workspaces/${workspaceId}/datasets/${datasetId}/records`,
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
-    },
-    data: [
-      {
-        company_name: "Example Corp",
-        website: "https://example.com",
-        industry: "Technology"
-      }
-    ]
-  };
-
-  try {
-    const response = await axios(config);
-    console.log(
-      `Successfully imported ${response.data.imported_count} records`
-    );
-  } catch (error) {
-    console.error("Import failed:", error.response?.data || error.message);
-  }
-};
-
-importData();
-```
-
-### Advanced API Features
-
-#### Batch Processing
-
-For large datasets, process in batches:
-
-- **Recommended batch size**: 100-1000 records
-- **Rate limiting**: Respect API rate limits
-- **Error handling**: Process failed batches separately
-
-#### Validation Options
-
-Include validation parameters:
+**Validation**: Include `validate_schema`, `skip_duplicates`, `update_existing` in options.
 
-```json
-{
-  "data": [...],
-  "options": {
-    "validate_schema": true,
-    "skip_duplicates": true,
-    "update_existing": false
-  }
-}
-```
+## Database Connections
 
-#### Webhook Notifications
+Workspace Settings → Integrations → **Add Database Connection**.
 
-Set up webhooks to be notified when imports complete:
+**Supported**: PostgreSQL (9.6+), MySQL (5.7+), SQL Server (2017+), Oracle (12c+), MongoDB (4.0+)
 
-1. Configure webhook URL in workspace settings
-2. Include `webhook_on_complete: true` in import request
-3. Receive POST notification with import results
+**Setup**: Enter host, port, database name, credentials, and SSL settings. Test connection before saving.
 
-[Screenshot Placeholder: API integration dashboard]
+**Import**: Select tables/views, map columns, add filtering with WHERE clauses, schedule automatic syncs.
 
-## Method 3: Database Connections
+**Custom SQL**: Use custom queries for advanced data selection and transformation.
 
-### Supported Databases
+### Best Practices
 
-- **PostgreSQL** (9.6+)
-- **MySQL** (5.7+)
-- **SQL Server** (2017+)
-- **Oracle** (12c+)
-- **MongoDB** (4.0+)
+**Performance**: Use indexes, limit results with WHERE clauses, schedule during off-hours, use incremental updates.
 
-### Setting Up Database Connection
+**Security**: Read-only database accounts, SSL/TLS connections, IP whitelisting.
 
-#### Step 1: Create Connection
+## Third-Party Integrations
 
-1. Go to **Workspace Settings** → **Integrations**
-2. Click **Add Database Connection**
-3. Select your database type
-4. Enter connection details:
-   - Host and port
-   - Database name
-   - Username and password
-   - SSL settings (if required)
+### Google Sheets
 
-#### Step 2: Test Connection
+Connect Google account → Select spreadsheet → Configure range → Set sync schedule.
 
-1. Click **Test Connection** to verify credentials
-2. Review connection status and any warnings
-3. Save connection if test succeeds
+**Tips**: Use headers in first row, consistent data types, avoid merged cells, remove empty rows.
 
-[Screenshot Placeholder: Database connection configuration]
+### Airtable
 
-#### Step 3: Configure Data Import
+Enter Airtable API key → Select base and tables → Map fields → Configure attachment and linked record handling.
 
-1. **Select Tables/Views**: Choose which database objects to import
-2. **Column Mapping**: Map database columns to dataset columns
-3. **Filtering**: Add WHERE clauses to limit imported data
-4. **Scheduling**: Set up automatic sync schedule
+### Webhooks
 
-### SQL Query Import
+Get webhook endpoint URL → Configure security tokens → Define payload format → Test with sample data.
 
-For advanced users, import data using custom SQL queries:
-
-```sql
-SELECT
-  company_name,
-  website,
-  CASE
-    WHEN employee_count < 50 THEN 'Small'
-    WHEN employee_count < 500 THEN 'Medium'
-    ELSE 'Large'
-  END as company_size,
-  created_date
-FROM companies
-WHERE created_date >= '2024-01-01'
-  AND status = 'active'
-ORDER BY created_date DESC
-```
-
-### Database Import Best Practices
-
-#### Performance Optimization
-
-- **Use Indexes**: Ensure source tables have appropriate indexes
-- **Limit Results**: Use WHERE clauses to import only needed data
-- **Schedule Off-Hours**: Run large imports during low-traffic periods
-- **Incremental Updates**: Import only changed records when possible
-
-#### Security Considerations
-
-- **Read-Only Access**: Use database accounts with minimal required permissions
-- **Network Security**: Ensure secure connections (SSL/TLS)
-- **Credential Management**: Store database credentials securely
-- **IP Whitelisting**: Restrict database access to Radical Whale servers
-
-[Screenshot Placeholder: Database security settings]
-
-## Method 4: Third-Party Integrations
-
-### Google Sheets Integration
-
-#### Setup Process
-
-1. **Authorize Access**: Connect your Google account
-2. **Select Spreadsheet**: Choose the Google Sheet to import
-3. **Configure Range**: Specify which sheets and cell ranges to import
-4. **Set Sync Schedule**: Choose automatic update frequency
-
-#### Google Sheets Best Practices
-
-- **Use Headers**: Ensure first row contains column headers
-- **Consistent Data Types**: Keep data types consistent within columns
-- **Avoid Merged Cells**: Can cause import issues
-- **Regular Cleanup**: Remove empty rows and columns
-
-[Screenshot Placeholder: Google Sheets integration setup]
-
-### Airtable Integration
-
-#### Connection Setup
-
-1. **Get Airtable API Key**: From your Airtable account settings
-2. **Configure Base**: Select which Airtable base to connect
-3. **Choose Tables**: Select specific tables to import
-4. **Field Mapping**: Map Airtable fields to dataset columns
-
-#### Airtable-Specific Features
-
-- **Attachment Handling**: Options for importing file attachments
-- **Linked Records**: Handle relationships between tables
-- **Formula Fields**: Import calculated field values
-- **View Filters**: Import only records from specific views
-
-### Webhook Integration
-
-#### Setting Up Webhooks
-
-1. **Configure Webhook URL**: Get your unique webhook endpoint
-2. **Set Authentication**: Configure webhook security tokens
-3. **Define Payload Format**: Specify expected data structure
-4. **Test Integration**: Send test data to verify setup
-
-#### Webhook Data Processing
-
-- **Real-time Import**: Data imported immediately upon receipt
-- **Validation**: Incoming data validated against dataset schema
-- **Error Handling**: Failed webhooks logged and can be retried
-- **Rate Limiting**: Built-in protection against spam or overload
-
-[Screenshot Placeholder: Webhook configuration interface]
-
-## Import Monitoring and Management
-
-### Import History
-
-Track all your data imports:
-
-- **Import Logs**: Detailed history of all import operations
-- **Success Rates**: Track successful vs. failed imports
-- **Performance Metrics**: Import speed and processing times
-- **Error Analysis**: Common issues and resolution patterns
-
-### Real-time Monitoring
-
-During active imports:
-
-- **Progress Tracking**: Real-time progress bars and status updates
-- **Error Reporting**: Immediate notification of issues
-- **Resource Usage**: Monitor API usage and rate limits
-- **Performance Metrics**: Records per second, processing time
-
-[Screenshot Placeholder: Import monitoring dashboard]
-
-### Automated Import Management
-
-Set up automated imports:
-
-- **Scheduled Imports**: Regular automatic data updates
-- **Trigger-based Imports**: Import when specific conditions are met
-- **Dependency Management**: Chain imports in specific order
-- **Failure Handling**: Automatic retry and error notification
-
-## Data Validation and Quality
-
-### Automatic Validation
-
-Radical Whale automatically validates imported data:
-
-- **Schema Compliance**: Data matches expected column types
-- **Required Fields**: All mandatory columns have values
-- **Format Validation**: Dates, emails, URLs properly formatted
-- **Range Checks**: Numeric values within expected ranges
-
-### Quality Reports
-
-After each import, receive detailed quality reports:
-
-- **Data Summary**: Record counts, column statistics
-- **Issue Detection**: Potential data quality problems
-- **Suggestions**: Recommendations for improving data quality
-- **Comparison**: Changes from previous imports
-
-### Manual Review Process
-
-For imports with quality issues:
-
-1. **Review Flagged Records**: Examine records that failed validation
-2. **Correction Options**: Fix data in-place or re-import corrected files
-3. **Approval Workflow**: Require manual approval for problematic imports
-4. **Documentation**: Track decisions and changes made to data
-
-[Screenshot Placeholder: Data quality validation interface]
-
-## Troubleshooting Common Issues
-
-### File Upload Problems
-
-**"File Too Large" Error**
-
-- Split large files into smaller chunks (under 100MB each)
-- Remove unnecessary columns to reduce file size
-- Compress files using ZIP before upload
-
-**"Invalid File Format" Error**
-
-- Verify file extension matches content (.csv files should be CSV format)
-- Check for special characters in file names
-- Ensure proper file encoding (UTF-8 recommended)
-
-**"Column Mapping Failed" Error**
-
-- Verify column headers are in the first row
-- Check for duplicate column names
-- Remove special characters from column headers
-
-### API Integration Issues
-
-**Authentication Errors**
-
-- Verify API key is correct and active
-- Check API key permissions include required scopes
-- Ensure Authorization header format: `Bearer YOUR_API_KEY`
-
-**Rate Limiting**
-
-- Reduce batch size or request frequency
-- Implement exponential backoff for retries
-- Monitor usage against your plan limits
-
-**Data Format Errors**
-
-- Validate JSON format before sending
-- Ensure all required fields are included
-- Check data type compatibility with dataset schema
-
-### Database Connection Problems
-
-**Connection Timeout**
-
-- Verify network connectivity and firewall settings
-- Check database server status and load
-- Consider increasing connection timeout values
-
-**Permission Denied**
-
-- Verify database credentials are correct
-- Ensure user has SELECT permissions on required tables
-- Check for IP address restrictions
-
-**Data Type Mismatches**
-
-- Review database column types vs. dataset expectations
-- Use explicit type casting in SQL queries
-- Configure appropriate data type mappings
-
-[Screenshot Placeholder: Troubleshooting guide interface]
-
-## Performance Optimization
-
-### Import Speed Optimization
-
-- **Batch Size**: Optimize batch sizes for your data and connection
-- **Parallel Processing**: Use multiple connections when supported
-- **Index Optimization**: Ensure source systems have appropriate indexes
-- **Network**: Use high-bandwidth connections for large imports
-
-### Resource Management
-
-- **Memory Usage**: Monitor memory consumption during large imports
-- **API Quotas**: Track and manage API usage limits
-- **Storage**: Monitor dataset storage usage and costs
-- **Processing Power**: Consider upgrading plans for better performance
-
-### Cost Optimization
-
-- **Import Frequency**: Balance data freshness with import costs
-- **Data Selection**: Import only necessary columns and rows
-- **Compression**: Use compressed formats when possible
-- **Scheduling**: Take advantage of off-peak pricing if available
-
-## Security and Compliance
-
-### Data Security
-
-- **Encryption**: All data encrypted in transit and at rest
-- **Access Control**: Role-based access to import functions
-- **Audit Logging**: Complete logs of all import activities
-- **Data Retention**: Configure retention policies for imported data
-
-### Compliance Considerations
-
-- **GDPR**: Tools for handling personal data and deletion requests
-- **SOC 2**: Security controls and compliance monitoring
-- **Industry Standards**: Support for healthcare, financial, and other regulated industries
-- **Data Residency**: Control where your data is stored and processed
-
-[Screenshot Placeholder: Security and compliance dashboard]
+Real-time import with automatic validation, error logging, and rate limiting.
 
 ## Next Steps
 
@@ -626,30 +146,23 @@ For imports with quality issues:
     icon="columns"
     href="/guides/datasets/managing-columns"
   >
-    Configure and optimize your dataset columns
+    Configure and optimize dataset columns
   </Card>
   <Card
     title="Working with Records"
     icon="table"
     href="/guides/datasets/working-with-records"
   >
-    Edit, filter, and manage your imported data
+    Edit, filter, and manage imported data
   </Card>
   <Card
     title="Creating Agents"
     icon="robot"
     href="/guides/agents/creating-agents"
   >
-    Set up AI agents to process your imported data
+    Set up AI agents to process imported data
   </Card>
   <Card title="API Reference" icon="code" href="/api-reference/datasets/import">
-    Technical documentation for data import APIs
+    Technical documentation for import APIs
   </Card>
 </CardGroup>
-
-## Related Resources
-
-- [Understanding Datasets](/concepts/datasets) - Conceptual overview
-- [Dataset Management](/guides/datasets/creating-datasets) - Creating and configuring datasets
-- [Column Configuration](/guides/datasets/managing-columns) - Advanced column settings
-- [API Documentation](/api-reference/datasets/import) - Technical reference

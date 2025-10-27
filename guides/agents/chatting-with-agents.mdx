@@ -1,270 +1,72 @@
 ---
 title: "Chatting with Agents"
-description: "Interactive conversations and real-time testing with your AI agents"
+description: "Interactive conversations and testing with AI agents"
 ---
 
-## Overview
+## Starting a Chat
 
-The chat interface allows you to have interactive conversations with your agents, test their capabilities, and see how they respond to different inputs. This is an essential tool for validating agent behavior, debugging issues, and exploring agent capabilities before deploying them on datasets.
+Navigate to **Agents** → Find your agent → Click **Start Chat**.
 
-## Accessing Agent Chat
-
-### From the Agents List
-
-1. Navigate to **Agents** in your workspace
-2. Find the agent you want to chat with
-3. Click the **Start Chat** button on the agent card
-4. You'll be taken to the dedicated chat interface
-
-### Chat Interface Components
-
-The chat interface provides a comprehensive environment for agent interaction:
-
-- **Header**: Shows agent name, description, model, and status
-- **Chat Area**: Scrollable conversation history with message timestamps  
-- **Tool Activity**: Real-time display of tool usage and execution status
-- **Input Area**: Message composition with send functionality
-- **Copy Function**: Easy copying of agent responses
+The chat interface provides an interactive environment for testing agents before deploying them on datasets.
 
 ## Chat Features
 
-### Message Types
+**Message Input**: Type messages, use Shift+Enter for multi-line. Messages support plain text.
 
-#### User Messages
-- Your input messages appear on the right side with a blue background
-- Support multi-line text using Shift + Enter
-- Automatically scrolls to show latest messages
+**Agent Responses**: Appear on the left with full markdown rendering including **bold**, _italic_, `code`, lists, and links. Streaming responses show typing indicator.
 
-#### Agent Responses  
-- Agent messages appear on the left with full markdown rendering
-- Support rich formatting including:
-  - **Bold** and *italic* text
-  - Code blocks and inline `code`
-  - Lists and bullet points
-  - Links and references
-- Streaming responses show a typing indicator
-- Copy button available for each completed response
+**Tool Activity**: Real-time display when agents use tools:
 
-### Tool Integration
+- **Blue badges**: Tool is running
+- **Green badges**: Tool completed successfully
+- **Red badges**: Tool encountered error
+- Click badges to see parameters, results, and timing
 
-#### Real-time Tool Monitoring
-When agents use tools during conversations, you'll see:
+**Copy Responses**: Click copy button next to any agent response.
 
-- **Tool Badges**: Colored indicators showing which tools are active
-- **Status Updates**: Real-time status for each tool call (running, completed, failed)
-- **Expandable Details**: Click tool badges to see:
-  - Tool parameters and inputs
-  - Execution results and outputs  
-  - Error messages if tools fail
-  - Execution timing information
+**Clear Chat**: Use Clear button to reset conversation.
 
-#### Tool Status Indicators
-- **Blue**: Tool is running or starting
-- **Green**: Tool completed successfully
-- **Red**: Tool encountered an error
+## Testing Strategies
 
-### Conversation Management
+**Start Simple**: Ask about capabilities, test basic functionality.
 
-#### Chat History
-- All messages persist during your session
-- Timestamps show when each message was sent
-- Automatic scrolling keeps latest messages visible
-- Messages are cleared when you refresh or navigate away
+**Test Edge Cases**: Empty messages, very long inputs, special characters, different languages.
 
-#### Clear Chat
-- Use the **Clear** button in the header to reset the conversation
-- This removes all messages and starts fresh
-- Useful for testing different scenarios or starting new conversations
+**Validate Tools**: Ask questions that should trigger specific tools, verify correct parameters and result integration.
 
-#### Copy Messages
-- Click the copy button next to any agent response  
-- Copies the full message content to your clipboard
-- Green checkmark confirms successful copying
-- Useful for saving interesting responses or sharing results
+**Build Context**: Test memory by referencing previous messages and asking follow-up questions.
 
-## Best Practices
+## Debugging
 
-### Testing Agent Behavior
+**Slow Responses**: Check tool execution times in badges.
 
-#### Start with Simple Questions
-```
-"What can you help me with?"
-"Explain your capabilities"
-"How do you process data?"
-```
+**Unexpected Behavior**: Review system prompt alignment.
 
-#### Test Edge Cases
-- Send empty messages
-- Try very long inputs
-- Test with special characters
-- Use different languages if supported
+**Tool Failures**: Examine error messages in tool details.
 
-#### Validate Tool Usage
-- Ask questions that should trigger specific tools
-- Verify tools are called with correct parameters
-- Check that tool results are properly integrated into responses
-
-### Conversation Strategies
-
-#### Context Building
-- Build up context gradually in conversations
-- Reference previous messages to test memory
-- Ask follow-up questions to test understanding
-
-#### Role Testing
-- Test the agent's adherence to its system prompt
-- Try to get the agent to act outside its defined role
-- Validate response consistency across similar queries
-
-### Debugging with Chat
-
-#### Identify Issues
-- **Slow Responses**: Check tool execution times
-- **Unexpected Behavior**: Review system prompt alignment
-- **Tool Failures**: Examine error messages in tool details
-- **Inconsistent Answers**: Test with similar questions
-
-#### Performance Analysis
-- Monitor response times for different query types
-- Track which tools are used most frequently
-- Observe patterns in successful vs. failed interactions
-
-## Common Use Cases
-
-### Agent Validation
-
-#### Before Dataset Deployment
-- Test with sample data similar to your dataset
-- Verify the agent understands your domain
-- Check output format consistency
-- Validate error handling behavior
-
-#### System Prompt Testing
-- Confirm the agent follows instructions correctly
-- Test boundary conditions and edge cases
-- Verify tone and style match expectations
-- Check adherence to output formatting rules
-
-### Iterative Development
-
-#### Prompt Refinement
-1. Chat with current agent version
-2. Identify issues or areas for improvement  
-3. Update system prompt or configuration
-4. Test changes through new chat sessions
-5. Compare responses across iterations
-
-#### Tool Configuration
-- Test individual tools through conversation
-- Verify tool combinations work correctly  
-- Check error handling when tools fail
-- Optimize tool selection based on usage patterns
-
-### User Training
-
-#### Team Onboarding
-- Demonstrate agent capabilities to team members
-- Show examples of effective queries
-- Explain tool functionality through live interaction
-- Build confidence in agent reliability
-
-#### Documentation Creation
-- Generate example conversations for documentation
-- Create FAQs based on common chat patterns
-- Document best practices discovered through testing
-
-## Advanced Features
-
-### Streaming Responses
-
-The chat interface supports real-time streaming:
-- Messages appear word-by-word as the agent generates them
-- Animated cursor shows active generation
-- Tool calls are shown immediately when started
-- Interruption handling if connection issues occur
-
-### Tool Execution Transparency  
-
-Detailed tool monitoring provides:
-- **Parameter Visibility**: See exactly what data is sent to tools
-- **Execution Timing**: Track how long each tool call takes
-- **Result Processing**: Watch how tool outputs influence responses
-- **Error Diagnostics**: Debug tool failures with detailed error messages
-
-### Context Preservation
-
-The chat maintains context throughout conversations:
-- Previous messages inform subsequent responses
-- Tool results are available for reference
-- Conversation flow remains natural and coherent
-- No artificial conversation resets or memory limitations
-
-## Troubleshooting
-
-### Common Issues
-
-#### Agent Not Responding
-- Check agent status in header (should be "Active")
-- Verify API key configuration is correct
-- Look for error messages in the interface
-- Try refreshing the page and starting a new chat
-
-#### Tool Execution Failures  
-- Expand tool badges to see detailed error messages
-- Check if required tools are properly configured
-- Verify tool permissions and API credentials
-- Review tool parameter formatting
-
-#### Slow Performance
-- Monitor tool execution times in expanded view
-- Check if agent is using unnecessary tools
-- Consider optimizing system prompt to reduce tool calls
-- Review model selection for performance vs. quality tradeoffs
-
-#### Unexpected Responses
-- Review system prompt for clarity and specificity
-- Test with similar queries to identify patterns
-- Check if tools are returning unexpected data
-- Verify agent configuration matches intended behavior
-
-### Getting Help
-
-If you encounter persistent issues:
-
-1. **Document the Issue**: Copy problematic responses and note conversation context
-2. **Test Reproducibility**: Try the same queries in new chat sessions
-3. **Check Configuration**: Review agent settings, tools, and system prompts
-4. **Contact Support**: Include chat transcripts and error messages when reporting issues
+**Inconsistent Answers**: Test with similar questions across multiple sessions.
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Deploy to Datasets"
-    icon="table"
-    href="/guides/datasets/connecting-agents"
-  >
-    Connect your tested agent to datasets for batch processing
+  <Card title="Create Agents" icon="plus" href="/guides/agents/creating-agents">
+    Create and configure agents
   </Card>
-  <Card
-    title="Monitor Performance"
-    icon="chart-line"
-    href="/guides/agents/monitoring-performance"  
-  >
-    Track agent performance and optimize for production use
-  </Card>
-  <Card
-    title="Advanced Configuration"
-    icon="gear"
-    href="/guides/agents/advanced-configuration"
-  >
-    Fine-tune agent behavior with advanced settings
+  <Card title="Test Agents" icon="flask" href="/guides/agents/testing-agents">
+    Comprehensive testing strategies
   </Card>
   <Card
     title="Tool Management"
     icon="wrench"
     href="/guides/agents/managing-tools"
   >
-    Add and configure tools to extend agent capabilities
+    Configure agent tools
+  </Card>
+  <Card
+    title="Deploy to Datasets"
+    icon="database"
+    href="/guides/datasets/managing-columns"
+  >
+    Connect agents to datasets
   </Card>
 </CardGroup>

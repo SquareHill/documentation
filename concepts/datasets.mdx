@@ -1,13 +1,130 @@
 ---
 title: "Datasets"
-description: "Understanding datasets, records, and intelligent data management in Radical Whale"
+description: "Intelligent data tables with AI-driven research and analysis"
 ---
 
 ## What are Datasets?
 
-Datasets are the heart of your data work in Radical Whale - intelligent data tables where each row becomes a rich record and every cell can be enhanced by AI. Unlike traditional spreadsheets, datasets combine structured data storage with powerful AI-driven research and analysis capabilities.
+Datasets are intelligent data tables where each row becomes a rich record and every cell can be enhanced by AI. Unlike traditional spreadsheets, datasets combine structured data storage with powerful AI-driven research and analysis capabilities.
 
-Think of a dataset as a smart table where your raw data comes alive through AI agents that can research, validate, enrich, and analyze information automatically.
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset.png"
+  alt="Dataset interface showing intelligent data tables with AI processing"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset.png"
+  alt="Dataset interface showing intelligent data tables with AI processing"
+/>
+
+## Core Components
+
+**Datasets**: Flexible schema with metadata, real-time processing, team collaboration, and CSV export capabilities.
+
+**Records**: Each row with expandable views, rich pages for documentation, processing history, and cross-references.
+
+**Columns**: Data types (short text, long text, numbers, dates, URLs, checkboxes, selects), AI instructions, agent assignment, validation rules, batch operations.
+
+**Cells**: Structured values with metadata, AI evidence showing reasoning and sources, processing status, manual override, source tracking.
+
+## Data Types
+
+- **Text**: Short text (names, titles), long text (descriptions), URLs (with validation)
+- **Structured**: Numbers (integers/decimals), dates (intelligent parsing), checkboxes (true/false)
+- **Selection**: Select (single choice), multiselect (multiple choices)
+
+## Creating and Managing
+
+**Dataset creation**: Name, description, import CSV or build from scratch, configure columns.
+
+**Data import**: CSV upload with automatic header detection, data type inference, flexible encoding, large file handling.
+
+**Column management**: Choose data types, assign AI agents, set validation rules, create dropdown options, define dependencies.
+
+## AI-Powered Processing
+
+**Individual cell research**: Click research button to queue for AI processing, agents analyze context from other columns, results include value plus evidence and sources.
+
+**Batch operations**: Run All (process every cell), Run Missing (process empty cells only), queue selected rows, background processing.
+
+**Processing states**: Empty, queued, processing, completed, error (with detailed information).
+
+**Evidence**: Reasoning explaining AI's approach, source links with previews, confidence indicators, manual override capability.
+
+## Features
+
+**Record details**: Field overview, evidence browser, search and filter, related data connections.
+
+**Pages**: Markdown editor for record documentation, multiple pages per record, version history, team collaboration.
+
+**Filtering**: Column-based filters, text search, status filters (processed/pending/error), creator filters.
+
+**Management**: Favorites, bulk operations, export to CSV, sorting with persistent preferences.
+
+## Chat-Driven Operations
+
+Work with datasets through conversation: create columns, add records, analyze data through natural language with agents that understand dataset context.
+
+<img
+  className="block dark:hidden rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset_chat.png"
+  alt="Dataset chat interface showing conversational data management"
+/>
+<img
+  className="hidden dark:block rounded-lg border shadow-sm"
+  src="/images/screenshots/dataset_chat.png"
+  alt="Dataset chat interface showing conversational data management"
+/>
+
+## Best Practices
+
+**Organization**: Purpose-driven names, consistent structure, rich descriptions, regular maintenance.
+
+**Column design**: Appropriate data types, clear AI instructions, logical dependencies, validation rules.
+
+**Processing**: Batch operations, strategic agent assignment, monitor queues, balance speed with cost.
+
+**Quality**: Regular reviews, source verification, manual validation, prompt error resolution.
+
+## Common Use Cases
+
+**Business intelligence**: Company analysis, market research, lead qualification, investment research.
+
+**Content management**: Document processing, content categorization, research organization, knowledge base building.
+
+**Customer data**: Contact enrichment, social media analysis, survey processing, personnel research.
+
+**Operations**: Vendor management, compliance monitoring, process documentation, quality assurance.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Creating Datasets"
+    icon="plus"
+    href="/guides/datasets/creating-datasets"
+  >
+    Create and set up datasets
+  </Card>
+  <Card
+    title="Importing Data"
+    icon="upload"
+    href="/guides/datasets/importing-data"
+  >
+    Import CSV files and configure columns
+  </Card>
+  <Card
+    title="Working with Records"
+    icon="table"
+    href="/guides/datasets/working-with-records"
+  >
+    Explore records and manage data
+  </Card>
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
+  </Card>
+</CardGroup>
 
 <img
   className="block dark:hidden rounded-lg border shadow-sm"
@@ -282,59 +399,31 @@ The chat interface understands your dataset context and can perform complex oper
 - **Process Documentation**: Structure operational procedures and best practices
 - **Quality Assurance**: Track issues, resolutions, and improvement initiatives
 
-Each use case benefits from the combination of structured data storage, AI-powered research, and collaborative analysis tools that make Radical Whale unique.
-
-## Getting Started with Datasets
-
-### Your First Dataset
-
-1. **Create a New Dataset**: Start from the datasets page with a clear, descriptive name
-2. **Import Your Data**: Upload a CSV file or start building columns manually
-3. **Configure Columns**: Set appropriate data types and processing instructions
-4. **Assign AI Agents**: Choose agents for columns that need research or processing
-5. **Process Your Data**: Use batch operations or process individual cells as needed
-
-### Navigation and Interface
-
-- **Dataset List**: View, search, and filter all datasets in your workspace
-- **Grid View**: Interactive table showing all your data with real-time updates
-- **Record Details**: Deep dive into individual records with full context
-- **Chat Interface**: Conversational access to your data and processing capabilities
-
-### Key Features to Explore
-
-- **Intelligent Processing**: Let AI agents research and enrich your data automatically
-- **Rich Documentation**: Create notebook pages for detailed analysis and notes
-- **Team Collaboration**: Share insights and work together on data analysis
-- **Export Capabilities**: Download your enhanced data for use in other tools
-
-Datasets in Radical Whale transform static data into dynamic, intelligent information that grows and improves over time through AI collaboration.
-
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Create Your First Dataset"
+    title="Creating Datasets"
     icon="plus"
     href="/guides/datasets/creating-datasets"
   >
-    Step-by-step guide to creating and setting up your first intelligent dataset
+    Create and set up datasets
   </Card>
   <Card
-    title="Import and Structure Data"
+    title="Importing Data"
     icon="upload"
     href="/guides/datasets/importing-data"
   >
-    Learn how to import CSV files and configure columns for AI processing
+    Import CSV files and configure columns
   </Card>
   <Card
     title="Working with Records"
     icon="table"
     href="/guides/datasets/working-with-records"
   >
-    Explore individual records, create notebook pages, and manage data
+    Explore records and manage data
   </Card>
-  <Card title="Understanding AI Agents" icon="robot" href="/concepts/agents">
-    Learn how AI agents process and enhance your dataset information
+  <Card title="Understanding Agents" icon="robot" href="/concepts/agents">
+    Learn about AI agents
   </Card>
 </CardGroup>

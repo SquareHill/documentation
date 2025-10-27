@@ -5,256 +5,88 @@ description: "Connect to Model Context Protocol servers for dynamic tool discove
 
 ## Overview
 
-MCP (Model Context Protocol) Server Tools enable your agents to connect to external MCP servers and automatically discover available tools. Instead of manually configuring each tool, you simply point to an MCP server URL, and all its tools become instantly available to your agents.
+MCP (Model Context Protocol) Server Tools connect your agents to external MCP servers, automatically discovering all available tools. Instead of configuring each tool manually, point to an MCP server URL and all its tools become available instantly.
 
 ## Why Use MCP Tools?
 
-### Dynamic Tool Discovery
+**Dynamic Discovery**: Tools are discovered automatically when agents run—no manual configuration needed. One MCP server can provide dozens of tools.
 
-- **Automatic**: Tools are discovered when agents run—no manual configuration needed
-- **Up-to-date**: Always uses the latest tools and schemas from the server
-- **Scalable**: One MCP server can provide dozens of tools instantly
-
-### Popular MCP Servers
-
-MCP is a growing ecosystem with servers for common use cases:
-
-<CardGroup cols={2}>
-  <Card title="Tavily Search" icon="magnifying-glass">
-    Web search and research capabilities powered by Tavily's search API
-  </Card>
-  <Card title="Brave Search" icon="search">
-    Privacy-focused web search with Brave's search engine
-  </Card>
-  <Card title="Google Drive" icon="folder">
-    Access and manage files in Google Drive workspaces
-  </Card>
-  <Card title="Slack" icon="slack">
-    Send messages, read channels, and manage Slack workspaces
-  </Card>
-  <Card title="GitHub" icon="github">
-    Repository management, issue tracking, and code operations
-  </Card>
-  <Card title="PostgreSQL" icon="database">
-    Query and manage PostgreSQL databases safely
-  </Card>
-  <Card title="Puppeteer" icon="browser">
-    Web scraping and browser automation
-  </Card>
-  <Card title="Google Maps" icon="map">
-    Location data, directions, and place information
-  </Card>
-</CardGroup>
-
-### Key Benefits
-
-- **No Schema Maintenance**: Server updates its tools automatically
-- **Consistent Interface**: Standard MCP protocol across all servers
-- **Easy Integration**: Connect once, get multiple tools
-- **Community Ecosystem**: Growing library of public MCP servers
+**Community Ecosystem**: Connect to popular services like Tavily Search, GitHub, Slack, Google Drive, PostgreSQL, and more through standardized MCP servers.
 
 ## Creating an MCP Server Tool
 
-### Step 1: Navigate to Tools
+### 1. Start Creation
 
-1. Click **Tools** in the left sidebar
-2. Click **Create Tool** button
-3. Select **MCP Server** as the tool type
+- Click **Tools** in the sidebar → **New Tool** → Select **MCP Server**
 
-### Step 2: Configure Server Connection
+### 2. Configure
 
-#### Server Name
+**Tool Name**: Descriptive name like "Tavily Search" or "GitHub Tools"
 
-Give your MCP server a descriptive name:
+**Description**: What the server provides and when to use it
 
-- **Good**: "Tavily Web Search", "Company GitHub Tools"
-- **Avoid**: "MCP Server 1", "Test"
-
-#### Description
-
-Explain what tools this server provides:
+**Server URL**: The MCP server endpoint
 
 ```
-Provides web search and research tools via Tavily's MCP server.
-Includes web_search, news_search, and research capabilities.
-```
-
-#### Server URL
-
-Enter the MCP server endpoint:
-
-<CodeGroup>
-```bash Production (HTTPS)
 https://mcp.tavily.com
 ```
 
-```bash Development (HTTP)
-http://localhost:3000
-```
-
-```bash WebSocket
-wss://mcp.example.com
-```
-</CodeGroup>
+**API Key** (Optional): Enter if the server requires authentication
 
 <Note>
-  Always use HTTPS (`https://`) or secure WebSocket (`wss://`) URLs in production for security.
+  Use HTTPS (`https://`) or WSS (`wss://`) in production. HTTP/WS only for local
+  development.
 </Note>
 
-### Step 3: Test Connection
+### 3. Verify Server
 
-Before saving, test the connection:
+Click **Verify Server**. The system connects to the server and shows discovered tools. Verification is required before saving.
 
-1. Click **Test Connection** button
-2. The system will connect to the MCP server
-3. You'll see a list of discovered tools
-4. Verify the tools match your expectations
+### 4. Create Tool
 
-### Step 4: Save and Assign
+Click **Create Tool**. You'll be redirected to the Tools page.
 
-1. Click **Create Tool** to save the configuration
-2. Navigate to your agent
-3. In the **Tools** section, select your new MCP server tool
-4. Save the agent configuration
+## Using MCP Tools
 
-## Using MCP Tools with Agents
+Assign the MCP tool to your agent in the agent's Tools section. When the agent runs, it automatically discovers and uses all tools from the server.
 
-Once you've created an MCP server tool and assigned it to an agent:
-
-1. **Automatic Discovery**: The agent will automatically discover all tools from the server when it runs
-2. **Multiple Tools**: A single MCP server often provides multiple related tools
-3. **Dynamic Usage**: The agent chooses which tools to use based on the task
-
-### Example: Web Search Agent
-
-After connecting a Tavily Search MCP server to your agent:
-
-- Agent automatically gets access to `web_search`, `news_search`, and other search tools
-- No need to configure each tool individually
-- Agent knows how to use each tool from the server's schemas
+**Example**: Connect Tavily MCP server → Agent gains `web_search`, `news_search`, and `research_query` tools automatically.
 
 ## Best Practices
 
-### 1. Use Descriptive Names
+**Descriptive Names**: Use clear names like "Tavily Web Search", not "MCP Server 1"
 
-<CodeGroup>
-```json Good
-{
-  "name": "Tavily Web Search Tools",
-  "description": "Provides web search, news search, and research capabilities"
-}
-```
+**Verify Before Saving**: Required step ensures the server is accessible and working
 
-```json Avoid
-{
-  "name": "MCP Server 1",
-  "description": "Tools"
-}
-```
-</CodeGroup>
-
-### 2. Test Before Production
-
-1. Create a test agent with only the MCP tool
-2. Run a simple job to verify connection
-3. Check logs for successful tool discovery
-4. Test each discovered tool individually
-
-### 3. Monitor Performance
-
-Check your agent execution logs to verify:
-
-- ✅ Successful connection to MCP server
-- ✅ Tools discovered correctly
-- ❌ Any connection errors or timeouts
-
-### 4. Secure Your Connections
-
-<Warning>
-  Only use HTTP URLs (`http://`) for local development. Always use HTTPS (`https://`) in production environments.
-</Warning>
-
-## Multiple MCP Servers
-
-You can assign multiple MCP servers to a single agent to give it access to a wide variety of tools:
-
-**Example: Research Assistant Agent**
-- Tavily Web Search (MCP) - for web research
-- GitHub Tools (MCP) - for repository information
-- Company API (API Tool) - for internal data
-
-All tools from all sources work together seamlessly.
+**Use HTTPS in Production**: Only use HTTP for local development
 
 ## Troubleshooting
 
-### Connection Failed
+**Connection Failed**: Verify URL, check network/firewall, ensure correct protocol
 
-**Error**: `"Failed to connect to MCP server"`
+**No Tools Discovered**: Confirm server implements MCP correctly, check server health
 
-**Solutions**:
-- Verify the server URL is correct and accessible
-- Check that your worker can reach the server (firewalls, network)
-- Ensure you're using the correct protocol (`https://` or `wss://`)
-- Test the URL in a browser or with `curl`
-
-### No Tools Discovered
-
-**Error**: `"No tools discovered from MCP server"`
-
-**Solutions**:
-- Confirm the MCP server implements `tools/list` correctly
-- Check server logs for errors
-- Verify the server is running and healthy
-- Test with a different MCP client to isolate the issue
-
-### Tool Execution Errors
-
-**Error**: `"MCP tool error: ..."`
-
-**Solutions**:
-- Check that the agent is passing correct parameters
-- Verify the tool's input schema matches what the agent provides
-- Review MCP server logs for specific error messages
-- Test the tool directly via the MCP protocol
-
-### DNS or Network Issues
-
-**Error**: `"dial tcp: lookup mcp.example.com: no such host"`
-
-**Solutions**:
-- Verify the domain resolves correctly (`nslookup mcp.example.com`)
-- Check firewall rules allow outbound connections
-- Ensure the server is publicly accessible
-- Try accessing from the same network as your worker
+**Tool Errors**: Verify agent parameters match tool schema, check server logs
 
 ## Finding MCP Servers
 
-### Official MCP Servers
-
-Browse the official Model Context Protocol server repository:
-- [github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
-
-### Popular Community Servers
-
-Many companies and developers are publishing MCP servers:
-- Search GitHub for "mcp-server"
-- Check the MCP documentation for featured servers
-- Look for MCP integrations from your favorite tools and services
+Browse official servers at [github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) or search GitHub for "mcp-server".
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Assign Tools to Agents" icon="link" href="/guides/agents/managing-tools">
-    Learn how to configure agent tool access
+  <Card
+    title="Assign Tools to Agents"
+    icon="link"
+    href="/guides/agents/managing-tools"
+  >
+    Configure agent tool access
   </Card>
-  <Card title="Test Your Agents" icon="flask" href="/guides/agents/testing-agents">
-    Test agents with MCP tools before production
-  </Card>
-  <Card title="MCP Protocol Docs" icon="book" href="https://modelcontextprotocol.io">
-    Official Model Context Protocol documentation
-  </Card>
-  <Card title="API Request Tools" icon="globe" href="/guides/tools/api-tools">
-    Learn about creating custom API tools
+  <Card
+    title="Test Your Agents"
+    icon="flask"
+    href="/guides/agents/testing-agents"
+  >
+    Test agents before production
   </Card>
 </CardGroup>
-
