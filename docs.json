@@ -33,25 +33,38 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Pages",
-            "pages": [
-              "guides/pages/creating-pages",
-              "guides/pages/ai-content-generation",
-              "guides/pages/using-page-context"
-            ]
+            "group": "Workspaces",
+            "pages": ["guides/workspaces/creating-workspaces"]
           },
           {
-            "group": "Tools",
-            "pages": ["guides/tools/mcp-tools"]
+            "group": "Datasets",
+            "pages": [
+              "guides/datasets/creating-datasets",
+              "guides/datasets/importing-data",
+              "guides/datasets/managing-columns",
+              "guides/datasets/working-with-records"
+            ]
           },
           {
             "group": "Agents",
             "pages": [
               "guides/agents/creating-agents",
+              "guides/agents/chatting-with-agents",
               "guides/agents/configuring-models",
               "guides/agents/managing-tools",
-              "guides/agents/chatting-with-agents",
               "guides/agents/testing-agents"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": ["guides/tools/api-tools", "guides/tools/mcp-tools"]
+          },
+          {
+            "group": "Pages",
+            "pages": [
+              "guides/pages/creating-pages",
+              "guides/pages/ai-content-generation",
+              "guides/pages/using-page-context"
             ]
           }
         ]
